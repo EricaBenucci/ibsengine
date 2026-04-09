@@ -9,26 +9,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css">
 
-    <script type="text/javascript" src="https://embeds.iubenda.com/widgets/14d443be-cc02-412d-bf92-5069a3101354.js"></script>
+    <script type="text/javascript">
+    var _iub = _iub || [];
+    _iub.csConfiguration = {
+        "askOnlyOnce": true,
+        "siteId": 3615330, // Inserisci il tuo Site ID reale se diverso
+        "cookiePolicyId": 56017209,
+        "lang": "it",
+        "banner": { "acceptButtonDisplay": true, "customizeButtonDisplay": true, "position": "float-top-center" }
+    };
+    </script>
+    <script type="text/javascript" src="https://cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
 </head>
 <body>
 
     <div class="overlay">
         <header>
-            <button class="hamburger-menu" aria-label="Menu">
+            <button class="hamburger-menu" aria-label="Menu" onclick="toggleMenu()">
                 <span class="line"></span>
                 <span class="line"></span>
                 <span class="line"></span>
             </button>
             <div class="logo-container">
                 <a href="index.html">
-                    <img src="logonew.png" alt="Logo ITALIAN BEER SCHOOL" />
+                    <img src="logo-italian-beer-school.webp" alt="Logo ITALIAN BEER SCHOOL" />
                 </a>
             </div>
         </header>
 
-        <div class="menu-pop-up">
-            <div class="close-menu">&times;</div>
+        <div class="menu-pop-up" id="sideMenu">
+            <div class="close-menu" onclick="toggleMenu()">&times;</div>
             <a href="index.html">HOME</a>
             <a href="prossimieventi.html">PROSSIMI EVENTI</a>
             <a href="corsidibirra.html">CORSI DI BIRRA</a>
@@ -43,7 +53,7 @@
                 
                 <div class="event-box">
                     <a href="iga.html"> 
-                        <img src="iga.jpg" alt="IGA Italian Grape Ale" />
+                        <img src="birra-artigianale-iga-uva-italiana.webp" alt="IGA Italian Grape Ale" />
                         <div class="event-title">🍇 IGA ITALIAN GRAPE ALE</div>
                         <div class="event-date">Un Punto d’Incontro tra Malto e Uva<br>10 giugno</div>
                     </a>
@@ -51,7 +61,7 @@
 
                 <div class="event-box">
                     <a href="corsidibirra.html">
-                        <img src="corsohome.jpg" alt="Corso di Birra" />
+                        <img src="corso-birra-base-firenze.webp" alt="Corso di Birra" />
                         <div class="event-title">🍺 CORSO DI BIRRA</div>
                         <div class="event-date">Corso in 4 serate<br>1, 8, 15 e 22 ottobre 2026</div>
                     </a>
@@ -63,14 +73,12 @@
         <footer class="footer">
             <div>IBS ITALIAN BEER SCHOOL – P.IVA: IT07436420488</div>
             <div class="footer-legal-links">
-                <a href="https://www.iubenda.com/privacy-policy/56017209" class="iubenda-white iubenda-noiframe iubenda-embed" title="Privacy Policy">Privacy Policy</a>
-                <a href="https://www.iubenda.com/privacy-policy/56017209/cookie-policy" class="iubenda-white iubenda-noiframe iubenda-embed" title="Cookie Policy">Cookie Policy</a>
+                <a href="https://www.iubenda.com/privacy-policy/56017209" class="iubenda-white">Privacy Policy</a>
+                <a href="https://www.iubenda.com/privacy-policy/56017209/cookie-policy" class="iubenda-white">Cookie Policy</a>
             </div>
         </footer>
     </div>
 
     <script src="script.js"></script>
-    <script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
-
 </body>
 </html>
