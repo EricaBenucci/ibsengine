@@ -2,132 +2,212 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8" />
+    <meta name="google-site-verification" content="FFhcd98mR3QTa7Taxvf0Dti0ztHZHrU676BqkiBrtSk" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Corso di Birra - ITALIAN BEER SCHOOL</title>
+    <title>Home - Italian Beer School</title>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css">
-    
-    <script type="text/javascript">
-    var _iub = _iub || [];
-    _iub.csConfiguration = {"askOnlyOnce":true,"siteId":3615330,"cookiePolicyId":56017209,"lang":"it", "banner":{ "acceptButtonDisplay":true,"customizeButtonDisplay":true,"position":"float-top-center" }};
-    </script>
-    <script type="text/javascript" src="https://cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
-    
-    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+    <style>
+        /* ---------------------- */
+        /* Base pagina e sfondo   */
+        /* ---------------------- */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Quicksand', sans-serif;
+            background: url('sfondobichiere.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .overlay {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        /* ---------------------- */
+        /* Header / Navbar        */
+        /* ---------------------- */
+        header {
+            display: flex;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px; /* Banda più stretta */
+            position: relative;
+            z-index: 10;
+        }
+        .logo-container {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .logo-container img {
+            height: 80px; /* Dimensione ottimale */
+            display: block;
+        }
+        .hamburger-menu {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            z-index: 11;
+        }
+        .hamburger-menu .line {
+            width: 30px;
+            height: 3px;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+        /* ---------------------- */
+        /* Menu Laterale          */
+        /* ---------------------- */
+        .menu-pop-up {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 280px;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            padding-top: 80px;
+            transition: left 0.3s ease;
+            z-index: 20;
+        }
+        .menu-pop-up.open { left: 0; }
+        .menu-pop-up a {
+            padding: 15px 20px;
+            display: block;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2em;
+            cursor: pointer;
+        }
+        /* ---------------------- */
+        /* Contenuto Eventi       */
+        /* ---------------------- */
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+        .event-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+            max-width: 1200px;
+        }
+        .event-box {
+            flex: 1;
+            min-width: 280px;
+            max-width: 400px;
+            text-align: center;
+        }
+        .event-box img {
+            width: 100%;
+            max-width: 300px; /* Dimensione come vecchio sito */
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+        .event-box a:hover img { transform: scale(1.05); }
+        .event-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #e0ac4c; /* Colore oro per i titoli */
+        }
+        .event-date {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+        /* ---------------------- */
+        /* Footer                 */
+        /* ---------------------- */
+        .footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            text-align: center;
+            padding: 20px;
+            font-size: 0.85em;
+        }
+        /* ---------------------- */
+        /* Responsive             */
+        /* ---------------------- */
+        @media (max-width: 600px) {
+            .event-title { font-size: 1.5em; }
+            .logo-container img { height: 60px; }
+        }
+    </style>
 </head>
 <body>
-
     <div class="overlay">
         <header>
-            <button class="hamburger-menu" aria-label="Menu" onclick="toggleMenu()">
+            <button class="hamburger-menu" aria-label="Menu">
                 <span class="line"></span>
                 <span class="line"></span>
                 <span class="line"></span>
             </button>
             <div class="logo-container">
                 <a href="index.html">
-                    <img src="logo-italian-beer-school.webp" alt="Logo ITALIAN BEER SCHOOL" />
+                    <img src="logonew.png" alt="Logo ITALIAN BEER SCHOOL" />
                 </a>
             </div>
         </header>
 
-        <div class="menu-pop-up" id="sideMenu">
-            <div class="close-menu" onclick="toggleMenu()">&times;</div>
+        <nav class="menu-pop-up">
+            <div class="close-menu">&times;</div>
             <a href="index.html">HOME</a>
+            <a href="bio.html">CHI SONO</a>
             <a href="prossimieventi.html">PROSSIMI EVENTI</a>
-            <a href="corsidibirra.html">CORSI DI BIRRA</a>
             <a href="losapeviche.html">LO SAPEVI CHE?</a>
-            <a href="quiz.html">QUIZ</a>
+            <a href="corsodibirra.html">CORSO DI BIRRA</a>
             <a href="degustazionipassate.html">DEGUSTAZIONI PASSATE</a>
             <a href="contatti.html">CONTATTI</a>
-        </div>
+        </nav>
 
         <main class="content">
-            <div class="section" style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; align-items: flex-start; max-width: 1100px; margin: auto;">
-                
-                <div class="description-container" style="flex: 1; min-width: 300px; line-height: 1.6;">
-                    <h1 style="color: #d4a017; font-size: 2.2em;">CORSO DI BIRRA – 2026</h1>
-                    <p>Quattro serate per scoprire il mondo della birra artigianale, tra tecnica, cultura e piacere della degustazione. Il corso è pensato per chi vuole approfondire le proprie conoscenze, imparare a degustare con consapevolezza e riconoscere le caratteristiche che rendono ogni birra unica.</p>
-                    <p>Inizieremo dalle basi della produzione per capire come nascano stili così diversi. Analizzeremo gli stili birrari di Germania, Belgio, Isole Britanniche, Italia e USA. Parleremo di degustazione, difetti, servizio e abbinamento.</p>
-                    
-                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px; border-left: 5px solid #d4a017; margin: 20px 0;">
-                        <strong>📅 Quando:</strong> 1, 8, 15 e 22 ottobre 2026<br>
-                        <strong>⏰ Orario:</strong> 20:30 – 23.00 circa<br>
-                        <strong>📍 Dove:</strong> LUOGO DA DEFINIRE – Firenze<br>
-                        <strong>💰 Costo:</strong> €120<br>
-                        <strong>📧 Info:</strong> italianbeerschool@gmail.com
-                    </div>
-
-                    <div class="stripe-container" style="margin-top: 30px;">
-                        <stripe-buy-button
-                            buy-button-id="buy_btn_1TCoXaDr58zog1ugqYpth2MZ"
-                            publishable-key="pk_live_51T9ryfDr58zog1uge0JD8PovKc0fGetzsGpFkt7TEKkrHavI0580YPj85wHf9sT1v4q0Ecx973slY7KRIlkxePon00mLxwI2tL"
-                        >
-                        </stripe-buy-button>
-                    </div>
+            <div class="event-grid">
+                <div class="event-box">
+                    <a href="iga.html"> 
+                        <img src="iga.jpg" alt="IGA Italian Grape Ale" />
+                        <div class="event-title">IGA ITALIAN GRAPE ALE</div>
+                        <div class="event-date">Un Punto d’Incontro tra Malto e Uva<br>10 giugno</div>
+                    </a>
                 </div>
-
-                <div class="image-container" style="flex: 1; min-width: 300px; display: flex; justify-content: center;">
-                    <img src="corso-birra-base-firenze.webp" alt="Corso di Birra" 
-                         style="width: 350px; height: 350px; border-radius: 50%; object-fit: cover; border: 4px solid #d4a017; box-shadow: 0 0 20px rgba(212, 160, 23, 0.4);">
-                </div>
-            </div>
-
-            <div class="event-grid" style="margin-top: 60px;">
-                <div class="course-row" style="background: none; border: none; flex-wrap: wrap; gap: 20px;">
-                    
-                    <div style="border: 2px dashed #d4a017; border-radius: 20px 50px; padding: 20px; width: 260px; background: rgba(0,0,0,0.4);">
-                        <h3 style="color: #d4a017;">1ª SERATA</h3>
-                        <ul style="padding-left: 15px; font-size: 0.9em;">
-                            <li>Produzione e ingredienti</li>
-                            <li>Processo produttivo</li>
-                            <li>4 birre in degustazione</li>
-                        </ul>
-                    </div>
-
-                    <div style="border: 2px dashed #d4a017; border-radius: 20px 50px; padding: 20px; width: 260px; background: rgba(0,0,0,0.4);">
-                        <h3 style="color: #d4a017;">2ª SERATA</h3>
-                        <ul style="padding-left: 15px; font-size: 0.9em;">
-                            <li>Servizio e tecnica</li>
-                            <li>Caratteristiche e difetti</li>
-                            <li>4 birre in degustazione</li>
-                        </ul>
-                    </div>
-
-                    <div style="border: 2px dashed #d4a017; border-radius: 20px 50px; padding: 20px; width: 260px; background: rgba(0,0,0,0.4);">
-                        <h3 style="color: #d4a017;">3ª SERATA</h3>
-                        <ul style="padding-left: 15px; font-size: 0.9em;">
-                            <li>Stili dal mondo</li>
-                            <li>Europa e USA</li>
-                            <li>4 birre in degustazione</li>
-                        </ul>
-                    </div>
-
-                    <div style="border: 2px dashed #d4a017; border-radius: 20px 50px; padding: 20px; width: 260px; background: rgba(0,0,0,0.4);">
-                        <h3 style="color: #d4a017;">4ª SERATA</h3>
-                        <ul style="padding-left: 15px; font-size: 0.9em;">
-                            <li>Birra a tavola</li>
-                            <li>Abbinamenti e assaggi</li>
-                            <li>4 birre in degustazione</li>
-                        </ul>
-                    </div>
-
+                <div class="event-box">
+                    <a href="corsodibirra.html">
+                        <img src="corsohome.jpg" alt="Corso di Birra" />
+                        <div class="event-title">CORSO DI BIRRA</div>
+                        <div class="event-date">Corso in 4 serate<br>1, 8, 15 e 22 ottobre 2026</div>
+                    </a>
                 </div>
             </div>
         </main>
 
         <footer class="footer">
-            <div>IBS ITALIAN BEER SCHOOL – P.IVA: IT07436420488</div>
-            <div class="footer-legal-links">
-                <a href="https://www.iubenda.com/privacy-policy/56017209">Privacy Policy</a>
-            </div>
+            2025 IBS ITALIAN BEER SCHOOL – P.IVA: IT07436420488 | <a href="privacy.html" style="text-decoration: underline;">Privacy</a>
         </footer>
     </div>
 
     <script>
-        function toggleMenu() {
-            document.getElementById('sideMenu').classList.toggle('open');
-        }
+        const burger = document.querySelector('.hamburger-menu');
+        const menu = document.querySelector('.menu-pop-up');
+        const close = document.querySelector('.close-menu');
+
+        burger.addEventListener('click', () => menu.classList.add('open'));
+        close.addEventListener('click', () => menu.classList.remove('open'));
     </script>
 </body>
 </html>
