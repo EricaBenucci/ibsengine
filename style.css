@@ -1,0 +1,165 @@
+/* ----------------------------------------------- */
+/* STYLE.CSS - ITALIAN BEER SCHOOL                */
+/* ----------------------------------------------- */
+
+/* Base pagina e sfondo */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Quicksand', sans-serif;
+    background: url('sfondobichiere.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s;
+}
+
+/* Overlay scuro per leggibilità */
+.overlay {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* HEADER - Ridotto come richiesto */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 15px 20px; /* Ridotto da 85px a 15px */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-container img {
+    height: 60px; /* Logo più contenuto e bilanciato */
+    display: block;
+}
+
+/* Menu Hamburger */
+.hamburger-menu {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 1100;
+}
+
+.hamburger-menu .line {
+    width: 30px;
+    height: 3px;
+    background-color: #d4a017; /* Oro per contrasto */
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+/* Menu Laterale Pop-up */
+.menu-pop-up {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 280px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    padding-top: 80px;
+    transition: 0.3s ease-in-out;
+    z-index: 1050;
+}
+
+.menu-pop-up.open {
+    left: 0;
+}
+
+.menu-pop-up a {
+    padding: 15px 25px;
+    display: block;
+    font-size: 1.1em;
+    border-bottom: 1px solid rgba(212, 160, 23, 0.2);
+}
+
+.menu-pop-up a:hover {
+    color: #d4a017;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Griglia Eventi / Corsi */
+.content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.event-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    max-width: 1200px;
+}
+
+.event-box {
+    flex: 1;
+    min-width: 280px;
+    max-width: 400px;
+    text-align: center;
+}
+
+.event-box img {
+    width: 100%;
+    border-radius: 50%;
+    border: 3px solid #d4a017;
+    box-shadow: 0 0 15px rgba(212, 160, 23, 0.3);
+    transition: 0.3s;
+}
+
+.event-box:hover img {
+    transform: scale(1.05);
+}
+
+.event-title {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #d4a017;
+    margin-top: 15px;
+}
+
+.event-date {
+    font-size: 1.2em;
+    margin-top: 5px;
+}
+
+/* FOOTER Legale */
+.footer {
+    background-color: rgba(0, 0, 0, 0.9);
+    text-align: center;
+    padding: 20px;
+    font-size: 0.85em;
+    border-top: 1px solid #d4a017;
+}
+
+.footer-legal-links {
+    margin-top: 10px;
+}
+
+.footer-legal-links a {
+    margin: 0 10px;
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .logo-container img { height: 45px; }
+    .event-title { font-size: 1.5em; }
+}
