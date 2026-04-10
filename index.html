@@ -5,63 +5,222 @@
     <meta name="google-site-verification" content="FFhcd98mR3QTa7Taxvf0Dti0ztHZHrU676BqkiBrtSk" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home - Italian Beer School</title>
-    
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css">
-
+    
     <script type="text/javascript">
     var _iub = _iub || [];
     _iub.csConfiguration = {
         "askOnlyOnce": true,
-        "siteId": 3615330, // Inserisci il tuo Site ID reale se diverso
+        "siteId": 3615330, 
         "cookiePolicyId": 56017209,
         "lang": "it",
-        "banner": { "acceptButtonDisplay": true, "customizeButtonDisplay": true, "position": "float-top-center" }
+        "banner": { "acceptButtonDisplay": true, "customizeButtonDisplay": true, "position": "float-bottom-center", "acceptButtonColor": "#e0ac4c", "acceptButtonCaptionColor": "#000" }
     };
     </script>
     <script type="text/javascript" src="https://cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
+
+    <style>
+        /* ---------------------- */
+        /* Base pagina e sfondo   */
+        /* ---------------------- */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Quicksand', sans-serif;
+            background: url('sfondobichiere.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; }
+
+        .overlay {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        /* ---------------------- */
+        /* Header Sottile e Pulito*/
+        /* ---------------------- */
+        header {
+            display: flex;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 0 20px;
+            height: 70px; /* Header più sottile */
+            position: relative;
+            z-index: 10;
+            /* Righina gialla rimossa */
+        }
+
+        .logo-container {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .logo-container img {
+            height: 80px; /* Logo ben visibile ma non enorme */
+            display: block;
+        }
+
+        .hamburger-menu {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            z-index: 11;
+        }
+        .hamburger-menu .line {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            border-radius: 2px;
+        }
+
+        /* ---------------------- */
+        /* Menu Laterale          */
+        /* ---------------------- */
+        .menu-pop-up {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 280px;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            padding-top: 60px;
+            transition: 0.3s ease-in-out;
+            z-index: 20;
+        }
+        .menu-pop-up.open { left: 0; }
+        .menu-pop-up a {
+            padding: 15px 25px;
+            display: block;
+            font-size: 1.1em;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .close-menu {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2em;
+            cursor: pointer;
+        }
+
+        /* ---------------------- */
+        /* Contenuto Home         */
+        /* ---------------------- */
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+        
+        .event-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 60px;
+            justify-content: center;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .event-box {
+            flex: 1;
+            min-width: 300px;
+            max-width: 450px;
+            text-align: center;
+        }
+
+        .event-box img {
+            width: 100%;
+            max-width: 350px;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s;
+        }
+        .event-box a:hover img { transform: scale(1.03); }
+
+        .event-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #e0ac4c;
+        }
+        
+        .event-date {
+            font-size: 1.2em;
+            margin-top: 5px;
+        }
+
+        /* ---------------------- */
+        /* Footer                 */
+        /* ---------------------- */
+        .footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            text-align: center;
+            padding: 20px;
+            font-size: 0.85em;
+            /* Righina gialla rimossa */
+        }
+        .footer a { text-decoration: underline; margin-left: 10px; }
+
+        @media screen and (max-width: 800px) {
+            .event-grid { flex-direction: column; align-items: center; }
+            .logo-container img { height: 60px; }
+        }
+    </style>
 </head>
 <body>
 
     <div class="overlay">
         <header>
-            <button class="hamburger-menu" aria-label="Menu" onclick="toggleMenu()">
-                <span class="line"></span>
-                <span class="line"></span>
-                <span class="line"></span>
+            <button class="hamburger-menu" onclick="toggleMenu()">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
             </button>
             <div class="logo-container">
                 <a href="index.html">
-                    <img src="logo-italian-beer-school.webp" alt="Logo ITALIAN BEER SCHOOL" />
+                    <img src="logonew.png" alt="Logo IBS" />
                 </a>
             </div>
         </header>
 
-        <div class="menu-pop-up" id="sideMenu">
+        <nav class="menu-pop-up" id="side-menu">
             <div class="close-menu" onclick="toggleMenu()">&times;</div>
             <a href="index.html">HOME</a>
+            <a href="bio.html">CHI SONO</a>
             <a href="prossimieventi.html">PROSSIMI EVENTI</a>
-            <a href="corsidibirra.html">CORSI DI BIRRA</a>
             <a href="losapeviche.html">LO SAPEVI CHE?</a>
-            <a href="quiz.html">QUIZ</a>
+            <a href="corsodibirra.html">CORSO DI BIRRA</a>
             <a href="degustazionipassate.html">DEGUSTAZIONI PASSATE</a>
             <a href="contatti.html">CONTATTI</a>
-        </div>
+        </nav>
 
         <main class="content">
             <div class="event-grid">
                 
                 <div class="event-box">
                     <a href="iga.html"> 
-                        <img src="birra-artigianale-iga-uva-italiana.webp" alt="IGA Italian Grape Ale" />
+                        <img src="iga.jpg" alt="IGA Italian Grape Ale" />
                         <div class="event-title">🍇 IGA ITALIAN GRAPE ALE</div>
                         <div class="event-date">Un Punto d’Incontro tra Malto e Uva<br>10 giugno</div>
                     </a>
                 </div>
 
                 <div class="event-box">
-                    <a href="corsidibirra.html">
-                        <img src="corso-birra-base-firenze.webp" alt="Corso di Birra" />
+                    <a href="corsodibirra.html">
+                        <img src="corsohome.jpg" alt="Corso di Birra" />
                         <div class="event-title">🍺 CORSO DI BIRRA</div>
                         <div class="event-date">Corso in 4 serate<br>1, 8, 15 e 22 ottobre 2026</div>
                     </a>
@@ -71,14 +230,17 @@
         </main>
 
         <footer class="footer">
-            <div>IBS ITALIAN BEER SCHOOL – P.IVA: IT07436420488</div>
-            <div class="footer-legal-links">
-                <a href="https://www.iubenda.com/privacy-policy/56017209" class="iubenda-white">Privacy Policy</a>
-                <a href="https://www.iubenda.com/privacy-policy/56017209/cookie-policy" class="iubenda-white">Cookie Policy</a>
-            </div>
+            © 2025 IBS ITALIAN BEER SCHOOL – P.IVA: IT07436420488 
+            <br>
+            <a href="https://www.iubenda.com/privacy-policy/56017209" class="iubenda-white">Privacy Policy</a>
+            <a href="https://www.iubenda.com/privacy-policy/56017209/cookie-policy" class="iubenda-white">Cookie Policy</a>
         </footer>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        function toggleMenu() {
+            document.getElementById('side-menu').classList.toggle('open');
+        }
+    </script>
 </body>
 </html>
