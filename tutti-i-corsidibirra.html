@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutti i Corsi - Italian Beer School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+        html, body {
+            margin: 0; padding: 0; height: 100%;
+            font-family: 'Quicksand', sans-serif;
+            background: url('sfondo-birra-scuola.webp') no-repeat center center fixed;
+            background-size: cover; color: #fff; overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; transition: opacity 0.3s; width: 100%; }
+        a:hover { opacity: 0.9; }
+        
+        .overlay {
+            display: flex; flex-direction: column; min-height: 100vh;
+            background-color: rgba(0, 0, 0, 0.6); position: relative; z-index: 1;
+        }
+
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            background-color: rgba(0, 0, 0, 0.8); padding: 25px 20px;
+            position: relative; z-index: 10; min-height: 80px;
+        }
+        .logo-container {
+            position: absolute; left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .logo-container img { height: 90px; display: block; }
+
+        .nav-right { display: flex; align-items: center; gap: 20px; z-index: 15; }
+        .ig-link { font-size: 1.5em; color: #fff; }
+
+        .hamburger-menu {
+            background: none; border: none; cursor: pointer;
+            display: flex; flex-direction: column; gap: 6px; width: 30px; z-index: 15;
+        }
+        .hamburger-menu .line {
+            width: 30px; height: 3px; background-color: #fff; border-radius: 5px; transition: all 0.3s ease;
+        }
+
+        .menu-pop-up {
+            position: fixed; top: 0; left: -300px; width: 280px; height: 100%;
+            background-color: rgba(0, 0, 0, 0.95); padding-top: 80px;
+            transition: left 0.3s ease-in-out; z-index: 14; display: flex; flex-direction: column;
+        }
+        .menu-pop-up a { padding: 12px 25px; font-size: 1.1em; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        
+        .menu-pop-up a.sub-menu {
+            padding-left: 45px;
+            font-size: 0.95em;
+            color: #e0ac4c;
+            border-bottom: none;
+            opacity: 0.8;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .menu-pop-up.open { left: 0; }
+        .close-menu { position: absolute; top: 25px; right: 25px; font-size: 2.5em; cursor: pointer; }
+
+        /* Icone Bandiere per PC/Mobile */
+        .flag-rect { width: 20px; height: auto; border-radius: 2px; vertical-align: middle; }
+        .flag-round { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; vertical-align: middle; margin-left: 10px; border: 1px solid rgba(255,255,255,0.2); }
+
+        .content { flex: 1; padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
+
+        .courses-grid { display: flex; flex-direction: column; gap: 20px; }
+
+        .course-card {
+            display: flex; flex-direction: column; align-items: center;
+            background: rgba(45, 25, 10, 0.8); padding: 25px;
+            border-radius: 20px; text-align: center; gap: 15px;
+            border: 1px solid rgba(224, 172, 76, 0.2);
+        }
+
+        .img-circle { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+        .border-gold { border: 3px solid rgba(224, 172, 76, 0.5); }
+
+        .course-card h2, .course-card h3 { 
+            margin: 0; font-size: 1.5em; color: #e0ac4c; text-transform: uppercase; 
+            display: flex; align-items: center; justify-content: center;
+        }
+        .course-card p { margin: 5px 0; font-size: 1.1em; font-weight: bold; }
+
+        @media screen and (min-width: 900px) {
+            .courses-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+            .course-card { flex-direction: row; text-align: left; background: rgba(0, 0, 0, 0.4); }
+            .wset1 { grid-column: 1; grid-row: 1; }
+            .wset2 { grid-column: 1; grid-row: 2; }
+            .base  { grid-column: 2; grid-row: 1; }
+            .avanzato { grid-column: 2; grid-row: 2; }
+            .img-circle { width: 200px; height: 200px; }
+            .base, .avanzato { flex-direction: row-reverse; text-align: right; }
+            .base h2, .avanzato h2 { justify-content: flex-end; }
+            .wset1 h3, .wset2 h3 { justify-content: flex-start; }
+            /* Inverte ordine bandiera per schede a destra */
+            .base .flag-round, .avanzato .flag-round { margin-left: 0; margin-right: 10px; }
+        }
+
+        .footer { background-color: rgba(0, 0, 0, 0.8); text-align: center; padding: 25px; font-size: 0.9em; margin-top: auto; }
+        
+        #cookie-banner {
+            position: fixed; bottom: 0; width: 100%; background: rgba(0,0,0,0.95);
+            padding: 20px; display: none; flex-direction: column; align-items: center;
+            z-index: 2000; border-top: 2px solid #e0ac4c;
+        }
+        .cookie-buttons button { background: #e0ac4c; border: none; padding: 10px 25px; cursor: pointer; border-radius: 5px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <header>
+            <button class="hamburger-menu" aria-label="Menu">
+                <span class="line"></span><span class="line"></span><span class="line"></span>
+            </button>
+            <div class="logo-container">
+                <a href="index.html"><img src="logonew.png" alt="Logo IBS" /></a>
+            </div>
+            <div class="nav-right">
+                <a href="https://www.instagram.com/italianbeerschool/?hl=en" target="_blank" class="ig-link">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </header>
+
+        <nav class="menu-pop-up">
+            <div class="close-menu">&times;</div>
+            <a href="index.html">HOME</a>
+            <a href="tutti-i-corsidibirra.html">CORSI DI BIRRA</a>
+            
+            <a href="wset-level-1-firenze.html" class="sub-menu">• WSET LEVEL 1 <img src="https://flagcdn.com/gb.svg" class="flag-rect" alt="English"></a>
+            <a href="wset-level-2-firenze.html" class="sub-menu">• WSET LEVEL 2 <img src="https://flagcdn.com/gb.svg" class="flag-rect" alt="English"></a>
+            <a href="corso-base-firenze.html" class="sub-menu">• CORSO BASE <img src="https://flagcdn.com/it.svg" class="flag-rect" alt="Italiano"></a>
+            <a href="corso-secondo-livello-birra-firenze.html" class="sub-menu">• CORSO AVANZATO <img src="https://flagcdn.com/it.svg" class="flag-rect" alt="Italiano"></a>
+            
+            <a href="losapeviche.html">LO SAPEVI CHE?</a>
+            <a href="quiz-di-birra.html">QUIZ</a>
+            <a href="degustazioni-passate.html">DEGUSTAZIONI PASSATE</a>
+            <a href="bio.html">CHI SONO</a>
+            <a href="contatti.html">CONTATTI</a>
+        </nav>
+
+        <main class="content">
+            <div class="courses-grid">
+                
+                <a href="wset-level-1-firenze.html" class="wset1">
+                    <div class="course-card">
+                        <img src="wset-logo-beer-course-level 1.webp" class="img-circle" alt="WSET 1">
+                        <div>
+                            <h3>WSET Level 1 <img src="https://flagcdn.com/gb.svg" class="flag-round" alt="English"></h3>
+                            <p>18 OCTOBER 2026</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="wset-level-2-firenze.html" class="wset2">
+                    <div class="course-card">
+                        <img src="wset-logo-beer-course-level 2.webp" class="img-circle" alt="WSET 2">
+                        <div>
+                            <h3>WSET Level 2 <img src="https://flagcdn.com/gb.svg" class="flag-round" alt="English"></h3>
+                            <p>14, 15, 22 NOVEMBRE 2026</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="corso-base-firenze.html" class="base">
+                    <div class="course-card">
+                        <img src="corso-birra-base-firenze.webp" class="img-circle border-gold" alt="Corso Base">
+                        <div>
+                            <h2><img src="https://flagcdn.com/it.svg" class="flag-round" alt="Italiano"> Corso Base</h2>
+                            <p>1, 8, 15 e 22 OTTOBRE 2026</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="corso-secondo-livello-birra-firenze.html" class="avanzato">
+                    <div class="course-card">
+                        <img src="corso-birra-livello2-firenze.webp" class="img-circle border-gold" alt="Corso Avanzato">
+                        <div>
+                            <h2><img src="https://flagcdn.com/it.svg" class="flag-round" alt="Italiano"> Corso Avanzato</h2>
+                            <p>GENNAIO 2027</p>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </main>
+
+        <footer class="footer">
+            2025 IBS ITALIAN BEER SCHOOL – P.IVA: IT07436420488 | <a href="privacy.html" style="color:#e0ac4c">Privacy</a>
+        </footer>
+    </div>
+
+    <div id="cookie-banner">
+        <p>Utilizziamo i cookie per migliorare la tua esperienza. <a href="privacy.html" style="color:#e0ac4c">Info</a></p>
+        <div class="cookie-buttons">
+            <button id="accept-cookies">Accetta</button>
+            <button id="reject-cookies">Rifiuta</button>
+        </div>
+    </div>
+
+    <script>
+        const hb = document.querySelector('.hamburger-menu'), menu = document.querySelector('.menu-pop-up'), close = document.querySelector('.close-menu');
+        function toggle() { menu.classList.toggle('open'); }
+        hb.onclick = toggle; close.onclick = toggle;
+
+        const banner = document.getElementById('cookie-banner');
+        if (!localStorage.getItem('ibs_cookie_consent')) banner.style.display = 'flex';
+        document.getElementById('accept-cookies').onclick = () => { localStorage.setItem('ibs_cookie_consent', 'accepted'); banner.style.display = 'none'; };
+        document.getElementById('reject-cookies').onclick = () => { localStorage.setItem('ibs_cookie_consent', 'rejected'); banner.style.display = 'none'; };
+    </script>
+</body>
+</html>
