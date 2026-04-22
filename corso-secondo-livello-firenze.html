@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Corso 2° Livello - Italian Beer School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap" rel="stylesheet" />
+    <style>
+        /* 1. RESET E BASE */
+        html, body {
+            margin: 0; padding: 0; height: 100%;
+            font-family: 'Quicksand', sans-serif;
+            background: url('sfondo-birra-scuola.webp') no-repeat center center fixed;
+            background-size: cover; color: #fff; overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; transition: opacity 0.3s; }
+        .overlay {
+            display: flex; flex-direction: column; min-height: 100vh;
+            background-color: rgba(0, 0, 0, 0.7); position: relative; z-index: 1;
+        }
+
+        /* 2. HEADER E NAV (Stile concordato) */
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            background-color: rgba(0, 0, 0, 0.85); padding: 25px 20px;
+            position: relative; z-index: 10; min-height: 80px;
+        }
+        .logo-container { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+        .logo-container img { height: 90px; display: block; }
+
+        .hamburger-menu {
+            background: none; border: none; cursor: pointer;
+            display: flex; flex-direction: column; gap: 6px; width: 30px; z-index: 15;
+        }
+        .hamburger-menu .line { width: 30px; height: 3px; background-color: #fff; border-radius: 5px; transition: all 0.3s ease; }
+        .hamburger-menu.open .line:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+        .hamburger-menu.open .line:nth-child(2) { opacity: 0; }
+        .hamburger-menu.open .line:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+        .menu-pop-up {
+            position: fixed; top: 0; left: -300px; width: 280px; height: 100%;
+            background-color: rgba(0, 0, 0, 0.95); padding-top: 100px;
+            transition: left 0.3s ease-in-out; z-index: 14; display: flex; flex-direction: column;
+        }
+        .menu-pop-up a { padding: 15px 25px; font-size: 1.2em; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .menu-pop-up.open { left: 0; }
+        .close-menu { position: absolute; top: 25px; right: 25px; font-size: 2.5em; cursor: pointer; }
+
+        /* 3. LAYOUT SUPERIORE (image_7.png style) */
+        .content { flex: 1; padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
+
+        .top-section {
+            display: flex; flex-direction: column-reverse; gap: 40px; align-items: center; margin-bottom: 50px;
+        }
+        
+        @media screen and (min-width: 900px) {
+            .top-section { flex-direction: row; text-align: left; align-items: flex-start; }
+        }
+
+        .text-column { flex: 1.2; text-align: left; }
+        h1 { color: #e0ac4c; font-size: 2.5em; text-transform: uppercase; margin-bottom: 20px; }
+        p.main-desc { font-size: 1.2em; line-height: 1.7; font-weight: 300; margin-bottom: 25px; }
+
+        .tech-info { font-size: 1.1em; line-height: 1.6; margin-top: 30px; }
+        .tech-info strong { color: #e0ac4c; }
+
+        /* Pulsante Acquista (immagine_8.png style) */
+        .btn-acquista {
+            display: inline-block; background-color: #1a73e8; color: #fff;
+            padding: 15px 60px; font-weight: bold; font-size: 1.2em;
+            border-radius: 8px; margin: 30px 0; transition: background 0.2s;
+        }
+        .btn-acquista:hover { background-color: #1557b0; }
+
+        .img-column { flex: 1; display: flex; justify-content: center; }
+        .main-course-img {
+            width: 100%; max-width: 550px; height: auto;
+            border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* 4. GRIGLIA 4 QUADRATI (image_8.png style) */
+        .serate-grid {
+            display: grid; grid-template-columns: 1fr; gap: 30px; margin-top: 60px;
+        }
+        @media screen and (min-width: 600px) { .serate-grid { grid-template-columns: 1fr 1fr; } }
+        @media screen and (min-width: 1000px) { .serate-grid { grid-template-columns: repeat(4, 1fr); } }
+
+        .serata-quad {
+            background: rgba(0, 0, 0, 0.4); border: 2px dashed rgba(224, 172, 76, 0.6);
+            border-radius: 25px; padding: 25px; text-align: left;
+            display: flex; flex-direction: column; height: 100%;
+        }
+        .serata-quad h3 { color: #e0ac4c; text-transform: uppercase; font-size: 1.3em; margin: 0 0 15px 0; }
+        .serata-quad ul { list-style: none; padding: 0; margin: 0; font-size: 0.95em; line-height: 1.5; font-weight: 300; color: #ddd; }
+        .serata-quad li { margin-bottom: 10px; }
+
+        /* 5. FOOTER & COOKIE */
+        .footer { background-color: rgba(0, 0, 0, 0.8); text-align: center; padding: 20px; font-size: 0.85em; margin-top: auto; }
+        .footer a { text-decoration: underline; }
+
+        #cookie-banner {
+            position: fixed; bottom: 0; width: 100%; background: rgba(0,0,0,0.95);
+            padding: 20px; display: none; flex-direction: column; align-items: center;
+            z-index: 2000; border-top: 2px solid #e0ac4c; text-align: center;
+        }
+        .cookie-buttons button { background: #e0ac4c; border: none; padding: 10px 25px; margin: 10px; cursor: pointer; border-radius: 5px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <header>
+            <button class="hamburger-menu" aria-label="Menu">
+                <span class="line"></span><span class="line"></span><span class="line"></span>
+            </button>
+            <div class="logo-container">
+                <a href="index.html"><img src="logonew.png" alt="Logo IBS" /></a>
+            </div>
+        </header>
+
+        <nav class="menu-pop-up">
+            <div class="close-menu">&times;</div>
+            <a href="index.html">HOME</a>
+            <a href="corsodibirra.html">CORSI DI BIRRA</a>
+            <a href="losapeviche.html">LO SAPEVI CHE?</a>
+            <a href="quizdibirrabirra.html">QUIZ</a>
+            <a href="degustazionipassate.html">DEGUSTAZIONI PASSATE</a>
+            <a href="bio.html">CHI SONO</a>
+            <a href="contatti.html">CONTATTI</a>
+        </nav>
+
+        <main class="content">
+            <div class="top-section">
+                <div class="text-column">
+                    <h1>Corso Birra – 2° Livello</h1>
+                   <p class="main-desc">
+                       Il secondo livello è un viaggio che attraversa i grandi Paesi birrari, analizza come la storia, le materie prime locali e le tradizioni abbiano plasmato gli stili che amiamo oggi.
+                       <br><br>
+                       Degusteremo insieme 4 birre a serata selezionate per rappresentare l'eccellenza brassicola.
+                   </p>
+                    <div class="tech-info">
+                        <p><strong>Quando:</strong> 5, 12, 19 e 26 novembre 2026</p>
+                        <p><strong>Orario:</strong> 20:30 – 23:00 circa</p>
+                        <p><strong>Dove:</strong> LUOGO DA DEFINIRE – Firenze</p>
+                        <p><strong>Costo:</strong> €120</p>
+                        <p><strong>Per info:</strong> italianbeerschool@gmail.com</p>
+                    </div>
+                    <a href="URL_STRIPE_QUI" class="btn-acquista">Acquista</a>
+                </div>
+                <div class="img-column">
+                    <img src="corso-birra-base-firenze.webp" class="main-course-img" alt="Corso Birra IBS">
+                </div>
+            </div>
+
+            <div class="serate-grid">
+                <div class="serata-quad">
+                    <h3>Prima Serata</h3>
+                    <ul>
+                        <li>Tradizione (Germania/Rep. Ceca).</li>
+                        <li>Focus bassa fermentazione.</li>
+                        <li>Anatomia stili tedeschi.</li>
+                    </ul>
+                </div>
+                <div class="serata-quad">
+                    <h3>Seconda Serata</h3>
+                    <ul>
+                        <li>Eleganza (Belgio).</li>
+                        <li>Analisi stili belgi.</li>
+                        <li>Importanza dei lieviti.</li>
+                        <li>Focus sulle mete del Belgio.</li>
+                    </ul>
+                </div>
+                <div class="serata-quad">
+                    <h3>Terza Serata</h3>
+                    <ul>
+                        <li>Modernità (Isole Brit./USA).</li>
+                        <li>Storia delle Ale.</li>
+                        <li>Evoluzione del luppolo.</li>
+                        <li>I grandi festival internazionali.</li>
+                    </ul>
+                </div>
+                <div class="serata-quad">
+                    <h3>Quarta Serata</h3>
+                    <ul>
+                        <li>Test Finale & Italia.</li>
+                        <li>Movimento artigianale italiano.</li>
+                        <li>Innovazioni e originalità del panorama italiano</li>
+                        <li>Rilascio attestati di 2° livello.</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            © 2025 IBS ITALIAN BEER SCHOOL – P.IVA: IT07436420488 | <a href="privacy.html">Privacy</a>
+        </footer>
+    </div>
+
+    <div id="cookie-banner">
+        <p>Utilizziamo i cookie per migliorare la tua esperienza. <a href="privacy.html" style="color:#e0ac4c">Info</a></p>
+        <div class="cookie-buttons">
+            <button id="accept-cookies">Accetta</button>
+            <button id="reject-cookies">Rifiuta</button>
+        </div>
+    </div>
+
+    <script>
+        const hb = document.querySelector('.hamburger-menu'), menu = document.querySelector('.menu-pop-up'), close = document.querySelector('.close-menu');
+        function toggle() { menu.classList.toggle('open'); hb.classList.toggle('open'); }
+        hb.onclick = toggle; close.onclick = toggle;
+
+        const banner = document.getElementById('cookie-banner');
+        if (!localStorage.getItem('ibs_cookie_consent')) banner.style.display = 'flex';
+        document.getElementById('accept-cookies').onclick = () => { localStorage.setItem('ibs_cookie_consent', 'accepted'); banner.style.display = 'none'; };
+        document.getElementById('reject-cookies').onclick = () => { localStorage.setItem('ibs_cookie_consent', 'rejected'); banner.style.display = 'none'; };
+    </script>
+</body>
+</html>
