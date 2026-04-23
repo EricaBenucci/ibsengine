@@ -21,7 +21,6 @@
             background-color: rgba(0, 0, 0, 0.6); position: relative; z-index: 1;
         }
 
-        /* HEADER (Uniformato a index.html) */
         header {
             display: flex; justify-content: space-between; align-items: center;
             background-color: rgba(0, 0, 0, 0.8); padding: 25px 20px;
@@ -44,7 +43,6 @@
             width: 30px; height: 3px; background-color: #fff; border-radius: 5px; transition: all 0.3s ease;
         }
 
-        /* MENU LATERALE (Uniformato a index.html) */
         .menu-pop-up {
             position: fixed; top: 0; left: -300px; width: 280px; height: 100%;
             background-color: rgba(0, 0, 0, 0.95); padding-top: 80px;
@@ -63,19 +61,40 @@
             margin-left: 5px; border-radius: 2px;
         }
 
-        /* LAYOUT BIO (Mantenuto originale) */
+        /* LAYOUT BIO */
         .bio-section {
-            display: flex; flex-wrap: wrap; padding: 60px 20px; gap: 40px;
+            display: flex; flex-wrap: wrap; padding: 60px 20px; gap: 50px;
             justify-content: center; align-items: flex-start;
             max-width: 1200px; margin: auto;
         }
         
-        .bio-image-container { flex: 0 0 400px; display: flex; justify-content: center; }
+        /* Colonna Sinistra: Immagine + Badge */
+        .bio-left-column {
+            flex: 0 0 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
         .bio-image-container img {
             width: 100%; height: auto; border-radius: 15px;
             box-shadow: 0 0 20px rgba(0,0,0,0.8); object-fit: cover;
         }
 
+        /* Blocco Qualifiche */
+        .bio-badges {
+            background-color: rgba(224, 172, 76, 0.1);
+            border-left: 3px solid #e0ac4c;
+            padding: 20px;
+            font-size: 0.95em;
+            line-height: 1.6;
+            border-radius: 0 15px 15px 0;
+        }
+
+        .badge-item { margin-bottom: 15px; }
+        .badge-item:last-child { margin-bottom: 0; }
+
+        /* Colonna Destra: Testo */
         .bio-text-container { flex: 1; min-width: 300px; line-height: 1.8; font-size: 1.15em; }
         .bio-text-container h1 { font-size: 2.8em; margin-bottom: 10px; color: #fff; }
         .bio-subtitle {
@@ -89,7 +108,9 @@
         @media screen and (max-width: 900px) {
             .logo-container img { height: 65px; }
             .bio-section { flex-direction: column; text-align: center; padding: 40px 15px; }
-            .bio-image-container { flex: 0 0 auto; max-width: 350px; margin-bottom: 20px; }
+            .bio-left-column { flex: 0 0 auto; max-width: 100%; width: 100%; align-items: center; }
+            .bio-image-container { max-width: 350px; }
+            .bio-badges { text-align: left; max-width: 500px; }
             .bio-text-container h1 { font-size: 2.2em; }
         }
     </style>
@@ -124,18 +145,29 @@
         </nav>
 
         <main class="bio-section">
-            <div class="bio-image-container">
-                <img src="erica.jpg" alt="Erica - Direttrice IBS" />
+            <div class="bio-left-column">
+                <div class="bio-image-container">
+                    <img src="erica.jpg" alt="Erica - Direttrice IBS" />
+                </div>
+                
+                <div class="bio-badges">
+                    <div class="badge-item">🍺 Giudice BJCP, WSET (Londra) Beer educator, Certified Cicerone ® (Chicago)</div>
+                    <div class="badge-item">🍷 Sommelier e docente FISAR, WSET Level 2 Wine</div>
+                    <div class="badge-item">🍸 General Certificate in Distilling, CIBD, Chartered Institute of Brewers and Distillers (Londra)<br>
+                    Degustatrice distillati ANAG, Associazione Nazionale Assaggiatori Grappa e Acquaviti</div>
+                    <div class="badge-item">🎓 Laurea in Lingue e letterature Straniere (tedesco, inglese, spagnolo)</div>
+                </div>
             </div>
 
             <div class="bio-text-container">
                 <h1>Erica</h1>
                 <div class="bio-subtitle">Il sogno con ITALIAN BEER SCHOOL è semplice:</div>
-                <p>elevare la cultura della birra in Italia! Trasformare la curiosità in conoscenza!</div>
                 
-                <p>La mia passione per la birra tedesca nasce negli anni ’90 in Germania durante l’università. Prosegue poi a Firenze con la scoperta del vino, diventando Sommelier nel 2007 (FISAR)</p>
+                <p>elevare la cultura della birra in Italia! Trasformare la curiosità in conoscenza!</p>
+                
+                <p>La mia passione per la birra tedesca nasce negli anni ’90 in Germania durante l’università. Prosegue poi a Firenze con la scoperta del vino, diventando Sommelier nel 2007 (FISAR).</p>
 
-                <p>Dal 2016 attiva come direttrice di corso nei corsi di sommelier e successivamente docente. 
+                <p>Dal 2016 attiva come direttrice di corso nei corsi di sommelier e successivamente docente.</p>
             
                 <p>Mi diverto a frequentare festival e a partecipare, in qualità di Giudice internazionale (BJCP), a competizioni in giro per l’Europa.</p>
 
