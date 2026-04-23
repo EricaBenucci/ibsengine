@@ -7,22 +7,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <style>
-        /* --- STILE BASE (Dalla tua Home) --- */
+        /* --- STILE BASE --- */
         html, body {
             margin: 0; padding: 0; height: 100%;
             font-family: 'Quicksand', sans-serif;
-            background: url('sfondobichiere.jpg') no-repeat center center fixed;
+            background: url('sfondo-birra-scuola.webp') no-repeat center center fixed;
             background-size: cover; color: #fff; overflow-x: hidden;
         }
-        a { text-decoration: none; color: inherit; transition: opacity 0.3s; }
-        a:hover { opacity: 0.9; }
-
         .overlay {
             display: flex; flex-direction: column; min-height: 100vh;
             background-color: rgba(0, 0, 0, 0.6); position: relative; z-index: 1;
         }
 
-        /* --- HEADER E MENU (Perfetti come in Home) --- */
+        /* --- HEADER E MENU (Dalla Home) --- */
         header {
             display: flex; justify-content: space-between; align-items: center;
             background-color: rgba(0, 0, 0, 0.8); padding: 25px 20px;
@@ -33,10 +30,9 @@
             transform: translate(-50%, -50%);
         }
         .logo-container img { height: 90px; display: block; }
-
         .nav-right { display: flex; align-items: center; gap: 20px; z-index: 15; }
         .ig-link { font-size: 1.5em; color: #fff; }
-
+        
         .hamburger-menu {
             background: none; border: none; cursor: pointer;
             display: flex; flex-direction: column; gap: 6px; width: 30px; z-index: 15;
@@ -50,7 +46,7 @@
             background-color: rgba(0, 0, 0, 0.95); padding-top: 80px;
             transition: left 0.3s ease-in-out; z-index: 20; display: flex; flex-direction: column;
         }
-        .menu-pop-up a { padding: 12px 25px; font-size: 1.1em; border-bottom: 1px solid rgba(255, 255, 255, 0.05); color: #fff; }
+        .menu-pop-up a { padding: 12px 25px; font-size: 1.1em; border-bottom: 1px solid rgba(255, 255, 255, 0.05); color: #fff; text-decoration: none; }
         .menu-pop-up a.sub-menu {
             padding-left: 45px; font-size: 0.95em; color: #e0ac4c; border-bottom: none; opacity: 0.8;
             display: flex; align-items: center; gap: 8px;
@@ -58,25 +54,19 @@
         .menu-pop-up.open { left: 0; }
         .close-menu { position: absolute; top: 25px; right: 25px; font-size: 2.5em; cursor: pointer; color: #fff; }
 
-        .flag-icon { width: 20px; height: auto; vertical-align: middle; border-radius: 2px; }
+        /* FIX BANDIERA NEL MENU: Questa classe impedisce alla bandiera di diventare gigante */
+        .flag-icon { width: 20px; height: auto; vertical-align: middle; border-radius: 2px; display: inline-block; }
 
-        /* --- GRIGLIA CURIOSITÀ --- */
+        /* --- GRIGLIA E CURIOSITÀ --- */
         .content { flex: 1; padding: 40px 20px; }
         .container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
+            gap: 40px; max-width: 1200px; margin: 0 auto;
         }
 
         /* --- EFFETTO FLIP CARD --- */
-        .flip-card {
-            width: 100%;
-            height: 220px;
-            perspective: 1000px;
-            cursor: pointer;
-        }
+        .flip-card { width: 100%; height: 220px; perspective: 1000px; cursor: pointer; }
         .flip-card-inner {
             position: relative; width: 100%; height: 100%;
             transition: transform 0.6s; transform-style: preserve-3d;
@@ -88,32 +78,27 @@
             backface-visibility: hidden; border-radius: 15px;
             display: flex; justify-content: center; align-items: center;
             padding: 20px; box-sizing: border-box; text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            /* Sfondo con immagine bicchiere-schiuma.webp */
+            background-image: url('bicchiere-schiuma.webp');
+            background-size: cover;
+            background-position: center;
+            color: #000; /* Testo nero per leggibilità sulla schiuma */
         }
-        .flip-card-front {
-            background: rgba(255, 255, 255, 0.9); color: #222;
-            font-weight: bold; font-size: 1.2em;
-        }
-        .flip-card-back {
-            background: #e0ac4c; color: #000;
-            transform: rotateY(180deg); font-size: 1em; line-height: 1.4;
-        }
+        
+        .flip-card-front { font-weight: bold; font-size: 1.2em; }
+        .flip-card-back { transform: rotateY(180deg); font-size: 1.05em; font-weight: 500; }
 
         /* --- FOOTER --- */
         .footer { background-color: rgba(0, 0, 0, 0.8); text-align: center; padding: 25px; font-size: 0.9em; margin-top: auto; }
 
         /* --- COOKIE BANNER --- */
-        .cookie-banner {
+        #cookieBanner {
             position: fixed; bottom: 0; left: 0; width: 100%;
             background: rgba(0, 0, 0, 0.95); color: #fff; padding: 15px;
-            display: none; justify-content: center; align-items: center;
-            gap: 20px; z-index: 1000; text-align: center; flex-direction: column;
+            display: none; justify-content: center; align-items: center; gap: 20px; z-index: 1000;
         }
-        @media (min-width: 768px) { .cookie-banner { flex-direction: row; } }
-        .cookie-banner button {
-            background: #e0ac4c; border: none; padding: 8px 20px;
-            font-weight: bold; cursor: pointer; border-radius: 5px;
-        }
+        #cookieBanner button { background: #e0ac4c; border: none; padding: 8px 20px; font-weight: bold; cursor: pointer; border-radius: 5px; }
 
         @media screen and (max-width: 800px) {
             .logo-container img { height: 65px; }
@@ -155,37 +140,37 @@
                 <div class="flip-card" onclick="this.classList.toggle('flipped')">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">Esiste la fobia del bicchiere di birra vuoto</div>
-                        <div class="flip-card-back">Si chiama "Cenosillicaphobia". Dal greco kenos (vuoto) + latino silicus (bicchiere). È la paura irrazionale di restare senza birra nel bicchiere!</div>
+                        <div class="flip-card-back">Si chiama "Cenosillicaphobia": la paura irrazionale di restare con il bicchiere vuoto. Meglio ordinarne un'altra!</div>
                     </div>
                 </div>
                 <div class="flip-card" onclick="this.classList.toggle('flipped')">
                     <div class="flip-card-inner">
-                        <div class="flip-card-front">La birra in giardino?</div>
-                        <div class="flip-card-back">I lieviti residui sono ottimi nutrienti per il terreno. Inoltre, una ciotolina di birra attira le lumache lontano dalle tue piante preziose.</div>
+                        <div class="flip-card-front">La birra può essere un buon fertilizzante</div>
+                        <div class="flip-card-back">I resti della produzione sono ricchi di nutrienti per il terreno. Alcuni giardinieri la usano per ravvivare le piante.</div>
                     </div>
                 </div>
                 <div class="flip-card" onclick="this.classList.toggle('flipped')">
                     <div class="flip-card-inner">
-                        <div class="flip-card-front">Il record mondiale di collezione</div>
-                        <div class="flip-card-back">Ron Werner (USA) ha collezionato oltre 25.866 bottiglie di birra diverse e non aperte. Un record certificato nel 2012!</div>
+                        <div class="flip-card-front">Il record mondiale per la collezione di birre</div>
+                        <div class="flip-card-back">Ron Werner possiede oltre 25.866 bottiglie diverse. Una collezione che richiede molto spazio e... pazienza!</div>
                     </div>
                 </div>
                 <div class="flip-card" onclick="this.classList.toggle('flipped')">
                     <div class="flip-card-inner">
-                        <div class="flip-card-front">Chi ne beve di più?</div>
-                        <div class="flip-card-back">La Repubblica Ceca detiene il primato mondiale con oltre 130 litri pro capite all'anno. La birra qui è cultura pura.</div>
+                        <div class="flip-card-front">Chi beve più birra al mondo?</div>
+                        <div class="flip-card-back">La Repubblica Ceca domina la classifica con oltre 140 litri pro capite all'anno. Una vera tradizione nazionale.</div>
                     </div>
                 </div>
                 <div class="flip-card" onclick="this.classList.toggle('flipped')">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">La birra come medicina</div>
-                        <div class="flip-card-back">Nel Medioevo era più sicura dell'acqua perché bollita (sterilizzata). Veniva usata come ricostituente e tonico per la salute.</div>
+                        <div class="flip-card-back">Nel Medioevo era considerata più sicura dell'acqua perché la bollitura uccideva i batteri. Veniva data anche ai bambini.</div>
                     </div>
                 </div>
                 <div class="flip-card" onclick="this.classList.toggle('flipped')">
                     <div class="flip-card-inner">
-                        <div class="flip-card-front">La grande inondazione</div>
-                        <div class="flip-card-back">A Londra nel 1814 si ruppe una cisterna: 1,4 milioni di litri di Porter invasero le strade. Fu il "London Beer Flood".</div>
+                        <div class="flip-card-front">Un'inondazione di birra?</div>
+                        <div class="flip-card-back">Nel 1814 a Londra si ruppe una cisterna: 1,4 milioni di litri di Porter invasero le strade. Fu il "London Beer Flood".</div>
                     </div>
                 </div>
             </div>
@@ -196,32 +181,23 @@
         </footer>
     </div>
 
-    <div class="cookie-banner" id="cookieBanner">
-        <p>Questo sito utilizza i cookie per migliorare l'esperienza. <a href="privacy.html" style="color:#e0ac4c; text-decoration:underline;">Info Privacy</a></p>
-        <button onclick="acceptCookies()">Accetta</button>
+    <div id="cookieBanner">
+        <p>Utilizziamo i cookie per migliorare la tua esperienza. <a href="privacy.html" style="color:#e0ac4c">Privacy Policy</a></p>
+        <button id="acceptBtn">Accetta</button>
     </div>
 
     <script>
-        // Logica Menu (Dalla tua Home)
+        // Logica Menu Home
         const hb = document.querySelector('.hamburger-menu'), 
               menu = document.querySelector('.menu-pop-up'), 
               close = document.querySelector('.close-menu');
-        
         function toggle() { menu.classList.toggle('open'); }
-        hb.onclick = toggle; 
-        close.onclick = toggle;
+        hb.onclick = toggle; close.onclick = toggle;
 
         // Logica Cookie
-        function acceptCookies() {
-            localStorage.setItem('cookiesAccepted', 'true');
-            document.getElementById('cookieBanner').style.display = 'none';
-        }
-
-        window.onload = () => {
-            if (!localStorage.getItem('cookiesAccepted')) {
-                document.getElementById('cookieBanner').style.display = 'flex';
-            }
-        };
+        const banner = document.getElementById('cookieBanner'), btn = document.getElementById('acceptBtn');
+        if (!localStorage.getItem('cookiesAccepted')) { banner.style.display = 'flex'; }
+        btn.onclick = () => { localStorage.setItem('cookiesAccepted', 'true'); banner.style.display = 'none'; };
     </script>
 </body>
 </html>
