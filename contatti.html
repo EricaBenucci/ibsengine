@@ -11,7 +11,7 @@
         html, body {
             margin: 0; padding: 0; height: 100%;
             font-family: 'Quicksand', sans-serif;
-            background: url('sfondo-birra-scuola.webp') no-repeat center center fixed;
+            background: url('sfondobichiere.jpg') no-repeat center center fixed;
             background-size: cover; color: #fff; overflow-x: hidden;
         }
         a { text-decoration: none; color: inherit; transition: opacity 0.3s; }
@@ -22,7 +22,7 @@
             background-color: rgba(0, 0, 0, 0.6); position: relative; z-index: 1;
         }
 
-        /* --- HEADER E MENU --- */
+        /* --- HEADER E MENU (Stile Moderno) --- */
         header {
             display: flex; justify-content: space-between; align-items: center;
             background-color: rgba(0, 0, 0, 0.8); padding: 25px 20px;
@@ -57,23 +57,37 @@
         .menu-pop-up.open { left: 0; }
         .close-menu { position: absolute; top: 25px; right: 25px; font-size: 2.5em; cursor: pointer; color: #fff; }
 
-        /* FIX ICONA BANDIERA - Impedisce l'effetto gigante */
-        .flag-icon {
-            width: 20px; height: auto; vertical-align: middle;
-            margin-left: 5px; border-radius: 2px; display: inline-block;
+        /* FIX BANDIERA MENU */
+        .flag-icon { width: 20px; height: auto; vertical-align: middle; margin-left: 5px; border-radius: 2px; display: inline-block; }
+
+        /* --- CONTENUTO PRINCIPALE (Il tuo stile originale) --- */
+        .page-content { padding: 40px 20px; max-width: 1200px; margin: auto; text-align: center; flex-grow: 1; }
+        .page-title { font-size: 3em; font-weight: bold; margin-bottom: 40px; color: #fff; }
+
+        .contact-info {
+            font-size: 1.8em; max-width: 800px; margin: 60px auto 30px;
+            line-height: 1.6; padding: 25px; background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 15px; border: 1px solid rgba(224, 172, 76, 0.3);
         }
 
-        /* --- CONTENUTO CONTATTI --- */
-        .content { flex: 1; display: flex; justify-content: center; align-items: center; padding: 40px 20px; }
-        .contact-card {
-            background-color: rgba(0, 0, 0, 0.75); padding: 40px; border-radius: 15px;
-            max-width: 500px; width: 100%; text-align: center;
-            border: 1px solid rgba(224, 172, 76, 0.4);
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        .contact-buttons-container {
+            max-width: 800px; margin: 20px auto 80px;
+            display: flex; flex-direction: column; align-items: center; gap: 20px;
         }
-        .contact-card h1 { color: #e0ac4c; margin-bottom: 30px; font-size: 2em; }
-        .contact-item { margin-bottom: 25px; font-size: 1.2em; display: flex; align-items: center; justify-content: center; gap: 15px; }
-        .contact-item i { color: #e0ac4c; font-size: 1.3em; width: 25px; }
+        .contact-button {
+            display: flex; align-items: center; justify-content: center;
+            width: 100%; max-width: 400px; padding: 18px 25px;
+            border-radius: 10px; font-size: 1.2em; font-weight: bold;
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+        }
+        .contact-button i { font-size: 1.5em; margin-right: 15px; }
+        .contact-button:hover { transform: scale(1.03); }
+
+        .email-button { background-color: #e0ac4c; color: #000; }
+        .instagram-button {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888, #9c27b0);
+            color: #fff; border: 1px solid #fff;
+        }
 
         /* --- FOOTER --- */
         .footer { background-color: rgba(0, 0, 0, 0.8); text-align: center; padding: 25px; font-size: 0.9em; margin-top: auto; }
@@ -82,19 +96,16 @@
         #cookieBanner {
             position: fixed; bottom: 0; left: 0; width: 100%;
             background: rgba(0, 0, 0, 0.95); color: #fff; padding: 15px;
-            display: none; justify-content: center; align-items: center; 
-            gap: 20px; z-index: 1000; border-top: 1px solid #e0ac4c;
+            display: none; justify-content: center; align-items: center; gap: 20px; z-index: 1000;
         }
-        #cookieBanner p { margin: 0; font-size: 0.9em; }
-        #cookieBanner button { 
-            background: #e0ac4c; border: none; padding: 8px 20px; 
-            font-weight: bold; cursor: pointer; border-radius: 5px; color: #000;
-        }
+        #cookieBanner button { background: #e0ac4c; border: none; padding: 8px 20px; font-weight: bold; cursor: pointer; border-radius: 5px; }
 
         @media screen and (max-width: 800px) {
             .logo-container img { height: 65px; }
-            #cookieBanner { flex-direction: column; text-align: center; gap: 10px; }
-            .contact-card { padding: 30px 20px; }
+            .page-title { font-size: 2.2em; }
+            .contact-info { font-size: 1.4em; }
+            .contact-button { font-size: 1.1em; width: 90%; }
+            #cookieBanner { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
@@ -127,24 +138,23 @@
             <a href="contatti.html">CONTATTI</a>
         </nav>
 
-        <main class="content">
-            <div class="contact-card">
-                <h1>Contatti</h1>
+        <main class="page-content">
+            <h1 class="page-title">Contatti</h1>
+            
+            <div class="contact-info">
+                Per qualsiasi informazione scrivete a:
+            </div>
+
+            <div class="contact-buttons-container">
+                <a href="mailto:italianbeerschool@gmail.com" class="contact-button email-button">
+                    <i class="fas fa-envelope"></i> 
+                    italianbeerschool@gmail.com
+                </a>
                 
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <a href="mailto:italianbeerschool@gmail.com">italianbeerschool@gmail.com</a>
-                </div>
-
-                <div class="contact-item">
-                    <i class="fab fa-instagram"></i>
-                    <a href="https://www.instagram.com/italianbeerschool/" target="_blank">@italianbeerschool</a>
-                </div>
-
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>Firenze, Italia</span>
-                </div>
+                <a href="https://www.instagram.com/italianbeerschool/" target="_blank" class="contact-button instagram-button">
+                    <i class="fab fa-instagram"></i> 
+                    Seguici su Instagram
+                </a>
             </div>
         </main>
 
@@ -154,7 +164,7 @@
     </div>
 
     <div id="cookieBanner">
-        <p>Utilizziamo i cookie per migliorare la tua esperienza. <a href="privacy.html" style="color:#e0ac4c; text-decoration: underline;">Leggi la Privacy Policy</a></p>
+        <p>Utilizziamo i cookie per migliorare la tua esperienza. <a href="privacy.html" style="color:#e0ac4c">Privacy Policy</a></p>
         <button id="acceptBtn">Accetta</button>
     </div>
 
@@ -163,23 +173,13 @@
         const hb = document.querySelector('.hamburger-menu'), 
               menu = document.querySelector('.menu-pop-up'), 
               close = document.querySelector('.close-menu');
-        
         function toggle() { menu.classList.toggle('open'); }
-        hb.onclick = toggle; 
-        close.onclick = toggle;
+        hb.onclick = toggle; close.onclick = toggle;
 
         // Logica Cookie
-        const banner = document.getElementById('cookieBanner');
-        const btn = document.getElementById('acceptBtn');
-
-        if (!localStorage.getItem('cookiesAccepted')) {
-            banner.style.display = 'flex';
-        }
-
-        btn.onclick = () => {
-            localStorage.setItem('cookiesAccepted', 'true');
-            banner.style.display = 'none';
-        };
+        const banner = document.getElementById('cookieBanner'), btn = document.getElementById('acceptBtn');
+        if (!localStorage.getItem('cookiesAccepted')) { banner.style.display = 'flex'; }
+        btn.onclick = () => { localStorage.setItem('cookiesAccepted', 'true'); banner.style.display = 'none'; };
     </script>
 </body>
 </html>
