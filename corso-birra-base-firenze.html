@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Corso di Birra - ITALIAN BEER SCHOOL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <style>
+        /* RESET E STILI BASE */
+        html, body {
+            margin: 0; padding: 0; height: 100%;
+            font-family: 'Quicksand', sans-serif;
+            background: url('sfondobichiere.jpg') no-repeat center center fixed;
+            background-size: cover; color: #fff; overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; transition: opacity 0.3s; }
+        
+        .overlay {
+            display: flex; flex-direction: column; min-height: 100vh;
+            background-color: rgba(0, 0, 0, 0.75); position: relative; z-index: 1;
+        }
+
+        /* HEADER - UNIFORMATO A WSET (Padding 15px, Altezza 70px) */
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            background-color: rgba(0, 0, 0, 0.85); padding: 15px 20px;
+            position: relative; z-index: 10; min-height: 70px;
+        }
+        .logo-container { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+        .logo-container img { height: 70px; display: block; }
+        .nav-right { z-index: 15; }
+        .ig-link { font-size: 1.5em; color: #fff; }
+
+        .hamburger-menu {
+            background: none; border: none; cursor: pointer;
+            display: flex; flex-direction: column; gap: 6px; width: 30px; z-index: 15;
+        }
+        .hamburger-menu .line { width: 30px; height: 3px; background-color: #fff; border-radius: 5px; }
+
+        /* MENU LATERALE */
+        .menu-pop-up {
+            position: fixed; top: 0; left: -300px; width: 280px; height: 100%;
+            background-color: rgba(0, 0, 0, 0.95); padding-top: 80px;
+            transition: left 0.3s ease-in-out; z-index: 14; display: flex; flex-direction: column;
+        }
+        .menu-pop-up.open { left: 0; }
+        .menu-pop-up a { padding: 12px 25px; font-size: 1.1em; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .menu-pop-up a.sub-menu { padding-left: 45px; font-size: 0.9em; color: #e0ac4c; border-bottom: none; display: flex; align-items: center; gap: 8px; }
+        .flag-rect { width: 20px; }
+
+        /* CONTENUTO */
+        .content { flex: 1; padding: 15px; max-width: 1200px; margin: 0 auto; }
+
+        .page-header-wrapper { margin-bottom: 15px; }
+        h1 { color: #e0ac4c; font-size: 1.8em; text-transform: uppercase; margin: 0; }
+
+        .main-container { display: flex; flex-direction: column; gap: 20px; }
+
+        /* COLONNA DESTRA (Immagine e Info) */
+        .img-column { order: 1; display: flex; flex-direction: column; align-items: center; }
+        .main-course-img { width: 100%; max-width: 380px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.5); }
+
+        .tech-info { 
+            margin-top: 15px; padding: 12px 18px; 
+            border-left: 4px solid #e0ac4c; background: rgba(0,0,0,0.4); 
+            border-radius: 0 10px 10px 0; width: 100%; max-width: 380px; 
+            box-sizing: border-box; font-size: 0.9em; text-align: left;
+        }
+        .tech-info p { margin: 5px 0; }
+        .tech-info strong { color: #e0ac4c; }
+
+        .stripe-container { width: 100%; max-width: 380px; margin-top: 10px; }
+
+        /* COLONNA SINISTRA (Testo) */
+        .text-column { order: 2; font-size: 1em; line-height: 1.6; font-weight: 300; color: #eee; }
+        
+        /* BOX DELLE SERATE COMPATTI (Per Above the Fold su PC) */
+        .boxes {
+            display: flex; flex-wrap: wrap; justify-content: flex-start;
+            gap: 12px; margin-top: 25px;
+        }
+        .box {
+            width: 220px; padding: 12px; background-color: rgba(255, 255, 255, 0.08);
+            border: 1px dashed rgba(255,255,255,0.4); border-radius: 15px 50px 15px 50px;
+        }
+        .box h2 { font-size: 0.9em; margin-bottom: 8px; color: #e0ac4c; text-transform: uppercase; }
+        .box ul { list-style-type: none; padding: 0; font-size: 0.85em; margin: 0; }
+        .box ul li { margin: 5px 0; position: relative; padding-left: 12px; line-height: 1.3; }
+        .box ul li::before { content: "•"; position: absolute; left: 0; color: #e0ac4c; }
+
+        /* PULSANTE SECONDARIO SOLO MOBILE */
+        .mobile-buy-bottom { display: none; margin: 30px 0; text-align: center; }
+
+        /* PC LAYOUT */
+        @media screen and (min-width: 900px) {
+            h1 { font-size: 2.5em; text-align: left; }
+            .content { padding-top: 10px; }
+            .main-container { flex-direction: row; align-items: flex-start; }
+            .text-column { flex: 1.3; order: 1; }
+            .img-column { flex: 1; order: 2; position: sticky; top: 15px; }
+        }
+
+        /* MOBILE LAYOUT */
+        @media screen and (max-width: 899px) {
+            .boxes { justify-content: center; }
+            .box { width: 45%; min-width: 140px; }
+            .mobile-buy-bottom { display: block; }
+        }
+
+        .footer { background: rgba(0, 0, 0, 0.85); text-align: center; padding: 15px; font-size: 0.8em; margin-top: auto; }
+    </style>
+    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+</head>
+<body>
+    <div class="overlay">
+        <header>
+            <button class="hamburger-menu" onclick="toggleMenu()" aria-label="Menu">
+                <span class="line"></span><span class="line"></span><span class="line"></span>
+            </button>
+            <div class="logo-container">
+                <a href="index.html"><img src="logonew.png" alt="Logo IBS" /></a>
+            </div>
+            <div class="nav-right">
+                <a href="https://www.instagram.com/italianbeerschool/" target="_blank" class="ig-link"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </header>
+
+        <nav class="menu-pop-up" id="mobileMenu">
+            <a href="index.html">HOME</a>
+            <a href="tutti-i-corsidibirra.html">CORSI DI BIRRA</a>
+            <a href="corso-base-firenze.html" class="sub-menu">• CORSO BASE <img src="https://flagcdn.com/it.svg" class="flag-rect"></a>
+            <a href="corso-secondo-livello-birra-firenze.html" class="sub-menu">• CORSO AVANZATO <img src="https://flagcdn.com/it.svg" class="flag-rect"></a>
+            <a href="losapeviche.html">LO SAPEVI CHE?</a>
+            <a href="quiz-di-birra.html">QUIZ</a>
+            <a href="degustazionipassate.html">DEGUSTAZIONI PASSATE</a>
+            <a href="bio.html">CHI SONO</a>
+            <a href="contatti.html">CONTATTI</a>
+        </nav>
+
+        <main class="content">
+            <div class="page-header-wrapper">
+                <h1>CORSO DI BIRRA – 2026</h1>
+            </div>
+
+            <div class="main-container">
+                <div class="img-column">
+                    <img src="corsohome.jpg" class="main-course-img" alt="Corso di Birra">
+                    
+                    <div class="tech-info">
+                        <p><strong>Quando:</strong> 1, 8, 15 e 22 ottobre 2026</p>
+                        <p><strong>Orario:</strong> 20:30 – 23.00 circa</p>
+                        <p><strong>Dove:</strong> LUOGO DA DEFINIRE – Firenze</p>
+                        <p><strong>Costo:</strong> €120</p>
+                    </div>
+
+                    <div class="stripe-container">
+                        <stripe-buy-button
+                            buy-button-id="buy_btn_1TCoXaDr58zog1ugqYpth2MZ"
+                            publishable-key="pk_live_51T9ryfDr58zog1uge0JD8PovKc0fGetzsGpFkt7TEKkrHavI0580YPj85wHf9sT1v4q0Ecx973slY7KRIlkxePon00mLxwI2tL"
+                        ></stripe-buy-button>
+                    </div>
+                </div>
+
+                <div class="text-column">
+                    <p>Quattro serate per scoprire il mondo della birra artigianale, tra tecnica, cultura e piacere della degustazione. Il corso è pensato per chi vuole approfondire le proprie conoscenze, imparare a degustare con consapevolezza e riconoscere le caratteristiche che rendono ogni birra unica.</p>
+                    
+                    <p>Inizieremo dalle basi della produzione per capire come, partendo da soli quattro ingredienti, nascano stili così diversi. Analizzeremo gli stili birrari di Germania, Belgio, Isole Britanniche, Italia e USA, esplorando le loro caratteristiche attraverso l’assaggio.</p>
+                    
+                    <p>Ogni serata prevede la degustazione guidata di 4 birre, materie prime da annusare e piccoli abbinamenti nella quarta serata.</p>
+                    
+                    <p><strong>Per info: italianbeerschool@gmail.com</strong></p>
+
+                    <div class="boxes">
+                        <div class="box">
+                            <h2>PRIMA SERATA</h2>
+                            <ul>
+                                <li>La produzione: la magia dei 4 ingredienti</li>
+                                <li>Processo produttivo e materie prime</li>
+                                <li>4 birre in degustazione</li>
+                            </ul>
+                        </div>
+                        <div class="box">
+                            <h2>SECONDA SERATA</h2>
+                            <ul>
+                                <li>Servizio e tecnica di degustazione</li>
+                                <li>Caratteristiche e analisi dei difetti</li>
+                                <li>4 birre in degustazione</li>
+                            </ul>
+                        </div>
+                        <div class="box">
+                            <h2>TERZA SERATA</h2>
+                            <ul>
+                                <li>Viaggio tra gli stili del mondo</li>
+                                <li>Belgio, Germania, UK, USA e Italia</li>
+                                <li>4 birre in degustazione</li>
+                            </ul>
+                        </div>
+                        <div class="box">
+                            <h2>QUARTA SERATA</h2>
+                            <ul>
+                                <li>La birra a tavola</li>
+                                <li>Abbinamenti e piccoli assaggi</li>
+                                <li>4 birre in degustazione</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mobile-buy-bottom">
+                        <stripe-buy-button
+                            buy-button-id="buy_btn_1TCoXaDr58zog1ugqYpth2MZ"
+                            publishable-key="pk_live_51T9ryfDr58zog1uge0JD8PovKc0fGetzsGpFkt7TEKkrHavI0580YPj85wHf9sT1v4q0Ecx973slY7KRIlkxePon00mLxwI2tL"
+                        ></stripe-buy-button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            © 2025 IBS ITALIAN BEER SCHOOL – P.IVA: IT07436420488 | <a href="privacy.html" style="color:#e0ac4c">Privacy</a>
+        </footer>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
