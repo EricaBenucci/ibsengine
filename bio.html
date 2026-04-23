@@ -3,179 +3,91 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chi Sono - Erica  - Italian Beer School</title>
+    <title>Chi Sono - Erica - Italian Beer School</title>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <style>
-        /* ---------------------- */
-        /* Stili Coerenti         */
-        /* ---------------------- */
         html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
+            margin: 0; padding: 0; height: 100%;
             font-family: 'Quicksand', sans-serif;
             background: url('sfondo-birra-scuola.webp') no-repeat center center fixed;
-            background-size: cover;
-            color: #fff;
+            background-size: cover; color: #fff; overflow-x: hidden;
         }
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+        a { text-decoration: none; color: inherit; transition: opacity 0.3s; }
+        a:hover { opacity: 0.9; }
+
         .overlay {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            background-color: rgba(0, 0, 0, 0.6);
-            position: relative;
-            z-index: 1;
+            display: flex; flex-direction: column; min-height: 100vh;
+            background-color: rgba(0, 0, 0, 0.6); position: relative; z-index: 1;
         }
 
-        /* HEADER */
+        /* HEADER (Uniformato a index.html) */
         header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 85px 20px;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 2;
+            display: flex; justify-content: space-between; align-items: center;
+            background-color: rgba(0, 0, 0, 0.8); padding: 25px 20px;
+            position: relative; z-index: 10; min-height: 80px;
         }
         .logo-container {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
+            position: absolute; left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
         }
-        .logo-container img {
-            height: 110px;
-        }
+        .logo-container img { height: 90px; display: block; }
+
+        .nav-right { display: flex; align-items: center; gap: 20px; z-index: 15; }
+        .ig-link { font-size: 1.5em; color: #fff; }
+
         .hamburger-menu {
-            background: none;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            width: 30px;
-            z-index: 5;
+            background: none; border: none; cursor: pointer;
+            display: flex; flex-direction: column; gap: 6px; width: 30px; z-index: 15;
         }
         .hamburger-menu .line {
-            width: 30px;
-            height: 3px;
-            background-color: #fff;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-        .hamburger-menu.open .line:nth-child(1) { transform: translateY(9px) rotate(45deg); }
-        .hamburger-menu.open .line:nth-child(2) { opacity: 0; }
-        .hamburger-menu.open .line:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
-        
-        .social-icons-header {
-            margin-left: auto; 
-            display: flex;
-            align-items: center;
-            position: relative; 
-            right: 20px; 
-        }
-        .social-icons-header a {
-            color: #fff;
-            font-size: 1.5em; 
+            width: 30px; height: 3px; background-color: #fff; border-radius: 5px; transition: all 0.3s ease;
         }
 
-        /* MENU LATERALE AGGIORNATO CON "CHI SONO" */
+        /* MENU LATERALE (Uniformato a index.html) */
         .menu-pop-up {
-            position: fixed;
-            top: 0;
-            left: -300px;
-            width: 280px;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.95);
-            padding-top: 80px;
-            transition: left 0.3s ease-in-out;
-            z-index: 4;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+            position: fixed; top: 0; left: -300px; width: 280px; height: 100%;
+            background-color: rgba(0, 0, 0, 0.95); padding-top: 80px;
+            transition: left 0.3s ease-in-out; z-index: 14; display: flex; flex-direction: column;
         }
-        .menu-pop-up a {
-            padding: 15px 20px;
-            display: block;
-            font-size: 1.2em;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        .menu-pop-up a { padding: 12px 25px; font-size: 1.1em; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .menu-pop-up a.sub-menu {
+            padding-left: 45px; font-size: 0.95em; color: #e0ac4c; border-bottom: none; opacity: 0.8;
+            display: flex; align-items: center; gap: 8px;
         }
         .menu-pop-up.open { left: 0; }
-        .close-menu {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            color: #fff;
-            font-size: 2em;
-            cursor: pointer;
+        .close-menu { position: absolute; top: 25px; right: 25px; font-size: 2.5em; cursor: pointer; }
+
+        .flag-icon {
+            width: 20px; height: auto; vertical-align: middle;
+            margin-left: 5px; border-radius: 2px;
         }
 
-        /* LAYOUT BIO */
+        /* LAYOUT BIO (Mantenuto originale) */
         .bio-section {
-            display: flex;
-            flex-wrap: wrap;
-            padding: 60px 20px;
-            gap: 40px;
-            justify-content: center;
-            align-items: flex-start;
-            max-width: 1200px;
-            margin: auto;
+            display: flex; flex-wrap: wrap; padding: 60px 20px; gap: 40px;
+            justify-content: center; align-items: flex-start;
+            max-width: 1200px; margin: auto;
         }
         
-        .bio-image-container {
-            flex: 0 0 400px; /* Larghezza fissa per la foto su PC */
-            display: flex;
-            justify-content: center;
-        }
-        
+        .bio-image-container { flex: 0 0 400px; display: flex; justify-content: center; }
         .bio-image-container img {
-            width: 100%;
-            height: auto;
-            border-radius: 15px; /* Angoli leggermente arrotondati */
-            box-shadow: 0 0 20px rgba(0,0,0,0.8);
-            object-fit: cover;
+            width: 100%; height: auto; border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.8); object-fit: cover;
         }
 
-        .bio-text-container {
-            flex: 1;
-            min-width: 300px;
-            line-height: 1.8;
-            font-size: 1.15em;
-        }
-        
-        .bio-text-container h1 {
-            font-size: 2.8em;
-            margin-bottom: 10px;
-            color: #fff;
-        }
-        
+        .bio-text-container { flex: 1; min-width: 300px; line-height: 1.8; font-size: 1.15em; }
+        .bio-text-container h1 { font-size: 2.8em; margin-bottom: 10px; color: #fff; }
         .bio-subtitle {
-            font-size: 1.4em;
-            color: #e0ac4c; /* Colore oro scuro per il titolo */
-            margin-bottom: 30px;
-            font-weight: bold;
+            font-size: 1.4em; color: #e0ac4c; margin-bottom: 30px; font-weight: bold;
         }
-
-        .bio-text-container p {
-            margin-bottom: 20px;
-        }
+        .bio-text-container p { margin-bottom: 20px; }
 
         /* FOOTER */
-        .footer {
-            background-color: rgba(0, 0, 0, 0.8);
-            text-align: center;
-            padding: 15px;
-            font-size: 0.9em;
-            margin-top: auto;
-        }
+        .footer { background-color: rgba(0, 0, 0, 0.8); text-align: center; padding: 25px; font-size: 0.9em; margin-top: auto; }
 
-        /* RESPONSIVE BIO */
         @media screen and (max-width: 900px) {
+            .logo-container img { height: 65px; }
             .bio-section { flex-direction: column; text-align: center; padding: 40px 15px; }
             .bio-image-container { flex: 0 0 auto; max-width: 350px; margin-bottom: 20px; }
             .bio-text-container h1 { font-size: 2.2em; }
@@ -186,31 +98,30 @@
     <div class="overlay">
         <header>
             <button class="hamburger-menu" aria-label="Menu">
-                <span class="line"></span>
-                <span class="line"></span>
-                <span class="line"></span>
+                <span class="line"></span><span class="line"></span><span class="line"></span>
             </button>
             <div class="logo-container">
-                <a href="index.html">
-                    <img src="logonew.png" alt="Logo" />
-                </a>
+                <a href="index.html"><img src="Logo-IBS-italian-beer-school-firenze.png" alt="Logo IBS" /></a>
             </div>
-            <div class="social-icons-header">
-                <a href="https://www.instagram.com/italianbeerschool/" target="_blank">
-                    <i class="fa-brands fa-instagram"></i>
+            <div class="nav-right">
+                <a href="https://www.instagram.com/italianbeerschool/?hl=en" target="_blank" class="ig-link">
+                    <i class="fab fa-instagram"></i>
                 </a>
             </div>
         </header>
 
-        <div class="menu-pop-up">
+        <nav class="menu-pop-up">
             <div class="close-menu">&times;</div>
             <a href="index.html">HOME</a>
-            <a href="bio.html">CHI SONO</a> <a href="prossimieventi.html">PROSSIMI EVENTI</a>
-            <a href="losapeviche.html">LO SAPEVI CHE?</a>
-            <a href="corsodibirra.html">CORSO DI BIRRA</a>
-            <a href="degustazionipassate.html">DEGUSTAZIONI PASSATE</a>
+            <a href="tutti-i-corsidibirra.html">CORSI DI BIRRA</a>
+            <a href="corso-base-firenze.html" class="sub-menu">• CORSO BASE <img src="https://flagcdn.com/it.svg" class="flag-icon" alt="IT"></a>
+            <a href="corso-secondo-livello-birra-firenze.html" class="sub-menu">• CORSO AVANZATO <img src="https://flagcdn.com/it.svg" class="flag-icon" alt="IT"></a>
+            <a href="curiosita-birra.html">LO SAPEVI CHE?</a>
+            <a href="quizdibirra.html">QUIZ</a>
+            <a href="degustazioni-passate.html">DEGUSTAZIONI PASSATE</a>
+            <a href="bio.html">CHI SONO</a>
             <a href="contatti.html">CONTATTI</a>
-        </div>
+        </nav>
 
         <main class="bio-section">
             <div class="bio-image-container">
@@ -218,10 +129,9 @@
             </div>
 
             <div class="bio-text-container">
-                <h1>Erica </h1>
+                <h1>Erica</h1>
                 <div class="bio-subtitle">Il sogno con ITALIAN BEER SCHOOL è semplice: elevare la cultura della birra in Italia! Trasformare la curiosità in conoscenza e la degustazione in consapevolezza!</div>
                 
-
                 <p>Il mio percorso inizia negli anni ’90 in Germania, dove durante l’università nasce la mia passione per la birra tedesca. Prosegue poi a Firenze con la scoperta del vino, diventando Sommelier nel 2005 (FISAR) e ottenendo la certificazione WSET nel 2009.</p>
 
                 <p>Dal 2016 unisco le mie competenze lavorando come direttrice di corso e, successivamente, come docente nei corsi per sommelier. Ad oggi sono <strong>Giudice BJCP</strong> e <strong>Certified Cicerone®</strong>. Sono inoltre abilitata come docente <strong>WSET</strong> (Wine & Spirit Education Trust) e Tutor per corsi online, accogliendo studenti da tutto il mondo.</p>
@@ -230,24 +140,19 @@
             </div>
         </main>
 
-        <div class="footer">
-            2025 IBS ITALIAN BEER SCHOOL – P.IVA: IT07436420488 | <a href="privacy.html">Privacy</a>
-        </div>
+        <footer class="footer">
+            2025 IBS ITALIAN BEER SCHOOL – P.IVA: IT07436420488 | <a href="privacy.html" style="color:#e0ac4c">Privacy</a>
+        </footer>
     </div>
 
     <script>
-        // Menu Logic (Invariata)
-        const hamburgerBtn = document.querySelector('.hamburger-menu');
-        const menuPopUp = document.querySelector('.menu-pop-up');
-        const closeMenuBtn = document.querySelector('.close-menu');
-
-        function toggleMenu() {
-            menuPopUp.classList.toggle('open');
-            hamburgerBtn.classList.toggle('open');
-        }
-
-        hamburgerBtn.addEventListener('click', toggleMenu);
-        closeMenuBtn.addEventListener('click', toggleMenu);
+        const hb = document.querySelector('.hamburger-menu'), 
+              menu = document.querySelector('.menu-pop-up'), 
+              close = document.querySelector('.close-menu');
+        
+        function toggle() { menu.classList.toggle('open'); }
+        hb.onclick = toggle; 
+        close.onclick = toggle;
     </script>
 </body>
 </html>
