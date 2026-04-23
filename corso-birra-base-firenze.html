@@ -21,7 +21,7 @@
             background-color: rgba(0, 0, 0, 0.75); position: relative; z-index: 1;
         }
 
-        /* HEADER - UNIFORMATO A WSET (Padding 15px, Altezza 70px) */
+        /* HEADER */
         header {
             display: flex; justify-content: space-between; align-items: center;
             background-color: rgba(0, 0, 0, 0.85); padding: 15px 20px;
@@ -71,22 +71,11 @@
         .tech-info strong { color: #e0ac4c; }
 
         .stripe-container { width: 100%; max-width: 380px; margin-top: 10px; }
-        
-        /* STILE LINK SECONDO LIVELLO */
-        .second-level-link {
-            display: inline-block;
-            margin-top: 15px;
-            color: #e0ac4c;
-            text-decoration: underline;
-            font-weight: bold;
-            font-size: 0.95em;
-            text-align: center;
-        }
 
         /* COLONNA SINISTRA (Testo) */
         .text-column { order: 2; font-size: 1em; line-height: 1.6; font-weight: 300; color: #eee; }
         
-        /* BOX DELLE SERATE COMPATTI (Per Above the Fold su PC) */
+        /* BOX DELLE SERATE */
         .boxes {
             display: flex; flex-wrap: wrap; justify-content: flex-start;
             gap: 12px; margin-top: 25px;
@@ -99,6 +88,18 @@
         .box ul { list-style-type: none; padding: 0; font-size: 0.85em; margin: 0; }
         .box ul li { margin: 5px 0; position: relative; padding-left: 12px; line-height: 1.3; }
         .box ul li::before { content: "•"; position: absolute; left: 0; color: #e0ac4c; }
+
+        /* STILE LINK SECONDO LIVELLO AGGIORNATO */
+        .second-level-container { margin-top: 25px; text-align: left; }
+        .second-level-link {
+            display: inline-block;
+            color: #e0ac4c;
+            text-decoration: underline;
+            font-weight: bold;
+            font-size: 1.1em; /* Font più grande */
+            transition: transform 0.3s;
+        }
+        .second-level-link:hover { transform: scale(1.02); opacity: 0.8; }
 
         /* PULSANTE SECONDARIO SOLO MOBILE */
         .mobile-buy-bottom { display: none; margin: 30px 0; text-align: center; }
@@ -117,6 +118,7 @@
             .boxes { justify-content: center; }
             .box { width: 45%; min-width: 140px; }
             .mobile-buy-bottom { display: block; }
+            .second-level-container { text-align: center; }
         }
 
         .footer { background: rgba(0, 0, 0, 0.85); text-align: center; padding: 15px; font-size: 0.8em; margin-top: auto; }
@@ -171,7 +173,6 @@
                             publishable-key="pk_live_51T9ryfDr58zog1uge0JD8PovKc0fGetzsGpFkt7TEKkrHavI0580YPj85wHf9sT1v4q0Ecx973slY7KRIlkxePon00mLxwI2tL"
                         ></stripe-buy-button>
                     </div>
-                    <a href="corso-secondo-livello-birra-firenze.html" class="second-level-link">Scopri il Corso di Secondo Livello</a>
                 </div>
 
                 <div class="text-column">
@@ -218,13 +219,15 @@
                         </div>
                     </div>
 
+                    <div class="second-level-container">
+                        <a href="corso-secondo-livello-birra-firenze.html" class="second-level-link">Vai al Corso di Secondo Livello</a>
+                    </div>
+
                     <div class="mobile-buy-bottom">
                         <stripe-buy-button
                             buy-button-id="buy_btn_1TCoXaDr58zog1ugqYpth2MZ"
                             publishable-key="pk_live_51T9ryfDr58zog1uge0JD8PovKc0fGetzsGpFkt7TEKkrHavI0580YPj85wHf9sT1v4q0Ecx973slY7KRIlkxePon00mLxwI2tL"
                         ></stripe-buy-button>
-                        <br>
-                        <a href="corso-secondo-livello-birra-firenze.html" class="second-level-link">Scopri il Corso di Secondo Livello</a>
                     </div>
                 </div>
             </div>
