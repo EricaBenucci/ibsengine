@@ -64,43 +64,41 @@
         .menu-pop-up.open { left: 0; }
         .close-menu { position: absolute; top: 25px; right: 25px; font-size: 2.5em; cursor: pointer; }
 
-        /* Icone Bandiere per PC/Mobile */
+        /* Icone Bandiere */
         .flag-rect { width: 20px; height: auto; border-radius: 2px; vertical-align: middle; }
         .flag-round { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; vertical-align: middle; margin-left: 10px; border: 1px solid rgba(255,255,255,0.2); }
 
-        .content { flex: 1; padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
+        .content { flex: 1; padding: 40px 20px; max-width: 1000px; margin: 0 auto; display: flex; align-items: center; }
 
-        .courses-grid { display: flex; flex-direction: column; gap: 20px; }
+        .courses-grid { display: flex; flex-direction: column; gap: 30px; width: 100%; }
 
         .course-card {
             display: flex; flex-direction: column; align-items: center;
-            background: rgba(45, 25, 10, 0.8); padding: 25px;
-            border-radius: 20px; text-align: center; gap: 15px;
+            background: rgba(45, 25, 10, 0.8); padding: 30px;
+            border-radius: 20px; text-align: center; gap: 20px;
             border: 1px solid rgba(224, 172, 76, 0.2);
+            transition: transform 0.3s ease;
         }
+        .course-card:hover { transform: scale(1.02); background: rgba(60, 35, 15, 0.9); }
 
         .img-circle { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
         .border-gold { border: 3px solid rgba(224, 172, 76, 0.5); }
 
-        .course-card h2, .course-card h3 { 
-            margin: 0; font-size: 1.5em; color: #e0ac4c; text-transform: uppercase; 
-            display: flex; align-items: center; justify-content: center;
+        .course-card h2 { 
+            margin: 0; font-size: 1.6em; color: #e0ac4c; text-transform: uppercase; 
+            display: flex; align-items: center; justify-content: center; gap: 10px;
         }
-        .course-card p { margin: 5px 0; font-size: 1.1em; font-weight: bold; }
+        .course-card p { margin: 5px 0; font-size: 1.2em; font-weight: bold; letter-spacing: 1px; }
 
-        @media screen and (min-width: 900px) {
-            .courses-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-            .course-card { flex-direction: row; text-align: left; background: rgba(0, 0, 0, 0.4); }
-            .wset1 { grid-column: 1; grid-row: 1; }
-            .wset2 { grid-column: 1; grid-row: 2; }
-            .base  { grid-column: 2; grid-row: 1; }
-            .avanzato { grid-column: 2; grid-row: 2; }
+        /* Desktop Adjustment */
+        @media screen and (min-width: 800px) {
+            .course-card { flex-direction: row; text-align: left; }
+            .course-card h2 { justify-content: flex-start; }
             .img-circle { width: 200px; height: 200px; }
-            .base, .avanzato { flex-direction: row-reverse; text-align: right; }
-            .base h2, .avanzato h2 { justify-content: flex-end; }
-            .wset1 h3, .wset2 h3 { justify-content: flex-start; }
-            /* Inverte ordine bandiera per schede a destra */
-            .base .flag-round, .avanzato .flag-round { margin-left: 0; margin-right: 10px; }
+            /* Alternanza visiva opzionale per i corsi */
+            .avanzato .course-card { flex-direction: row-reverse; text-align: right; }
+            .avanzato h2 { justify-content: flex-end; }
+            .avanzato .flag-round { margin-left: 0; margin-right: 10px; }
         }
 
         .footer { background-color: rgba(0, 0, 0, 0.8); text-align: center; padding: 25px; font-size: 0.9em; margin-top: auto; }
@@ -108,8 +106,9 @@
         #cookie-banner {
             position: fixed; bottom: 0; width: 100%; background: rgba(0,0,0,0.95);
             padding: 20px; display: none; flex-direction: column; align-items: center;
-            z-index: 2000; border-top: 2px solid #e0ac4c;
+            z-index: 2000; border-top: 2px solid #e0ac4c; box-sizing: border-box;
         }
+        .cookie-buttons { display: flex; gap: 10px; margin-top: 10px; }
         .cookie-buttons button { background: #e0ac4c; border: none; padding: 10px 25px; cursor: pointer; border-radius: 5px; font-weight: bold; }
     </style>
 </head>
@@ -146,31 +145,11 @@
         <main class="content">
             <div class="courses-grid">
                 
-                <a href="wset-level-1-firenze.html" class="wset1">
-                    <div class="course-card">
-                        <img src="wset-logo-beer-course-level 1.webp" class="img-circle" alt="WSET 1">
-                        <div>
-                            <h3>WSET Level 1 <img src="https://flagcdn.com/gb.svg" class="flag-round" alt="English"></h3>
-                            <p>18 OCTOBER 2026</p>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="wset-level-2-firenze.html" class="wset2">
-                    <div class="course-card">
-                        <img src="wset-logo-beer-course-level 2.webp" class="img-circle" alt="WSET 2">
-                        <div>
-                            <h3>WSET Level 2 <img src="https://flagcdn.com/gb.svg" class="flag-round" alt="English"></h3>
-                            <p>14, 15, 22 NOVEMBRE 2026</p>
-                        </div>
-                    </div>
-                </a>
-
                 <a href="corso-birra-base-firenze.html" class="base">
                     <div class="course-card">
                         <img src="corso-birra-base-firenze.webp" class="img-circle border-gold" alt="Corso Base">
                         <div>
-                            <h2><img src="https://flagcdn.com/it.svg" class="flag-round" alt="Italiano"> Corso Base</h2>
+                            <h2>Corso Base <img src="https://flagcdn.com/it.svg" class="flag-round" alt="Italiano"></h2>
                             <p>1, 8, 15 e 22 OTTOBRE 2026</p>
                         </div>
                     </div>
@@ -180,7 +159,7 @@
                     <div class="course-card">
                         <img src="corso-birra-livello2-firenze.webp" class="img-circle border-gold" alt="Corso Avanzato">
                         <div>
-                            <h2><img src="https://flagcdn.com/it.svg" class="flag-round" alt="Italiano"> Corso Avanzato</h2>
+                            <h2>Corso Avanzato <img src="https://flagcdn.com/it.svg" class="flag-round" alt="Italiano"></h2>
                             <p>GENNAIO 2027</p>
                         </div>
                     </div>
@@ -204,7 +183,10 @@
 
     <script>
         const hb = document.querySelector('.hamburger-menu'), menu = document.querySelector('.menu-pop-up'), close = document.querySelector('.close-menu');
-        function toggle() { menu.classList.toggle('open'); }
+        function toggle() { 
+            menu.classList.toggle('open'); 
+            hb.classList.toggle('open');
+        }
         hb.onclick = toggle; close.onclick = toggle;
 
         const banner = document.getElementById('cookie-banner');
