@@ -105,14 +105,9 @@
             text-align: center;
         }
         
-        /* CORREZIONE COLORE NOME ERICA */
-        .bio-text-container h1 { 
-            font-size: 2.5em; 
-            margin-bottom: 10px; 
-            color: #e0ac4c; /* Giallo identico al Corso Base */
-            text-transform: uppercase;
-        }
-
+        /* CAMBIATO SOLO IL COLORE QUI SOTTO */
+        .bio-text-container h1 { font-size: 2.5em; margin-bottom: 10px; color: #e0ac4c; }
+        
         .bio-subtitle {
             font-size: 1.3em; color: #e0ac4c; margin-bottom: 30px; font-weight: bold;
         }
@@ -189,10 +184,10 @@
                 <span class="line"></span><span class="line"></span><span class="line"></span>
             </button>
             <div class="logo-container">
-                <a href="index.html"><img src="logonew.png" alt="Logo IBS" /></a>
+                <a href="index.html"><img src="Logo-IBS-italian-beer-school-firenze.png" alt="Logo IBS ITALIAN BEER SCHOOL" /></a>
             </div>
             <div class="nav-right">
-                <a href="https://www.instagram.com/italianbeerschool/" target="_blank" class="ig-link">
+                <a href="https://www.instagram.com/italianbeerschool/?hl=en" target="_blank" class="ig-link">
                     <i class="fab fa-instagram"></i>
                 </a>
             </div>
@@ -204,9 +199,9 @@
             <a href="tutti-i-corsidibirra.html">CORSI DI BIRRA</a>
             <a href="corso-base-firenze.html" class="sub-menu">• CORSO BASE <img src="https://flagcdn.com/it.svg" class="flag-icon" alt="IT"></a>
             <a href="corso-secondo-livello-birra-firenze.html" class="sub-menu">• CORSO AVANZATO <img src="https://flagcdn.com/it.svg" class="flag-icon" alt="IT"></a>
-            <a href="losapeviche.html">LO SAPEVI CHE?</a>
-            <a href="quiz-di-birra.html">QUIZ</a>
-            <a href="degustazionipassate.html">DEGUSTAZIONI PASSATE</a>
+            <a href="curiosita-birra.html">LO SAPEVI CHE?</a>
+            <a href="quizdibirra.html">QUIZ</a>
+            <a href="degustazioni-passate.html">DEGUSTAZIONI PASSATE</a>
             <a href="bio.html">CHI SONO</a>
             <a href="contatti.html">CONTATTI</a>
         </nav>
@@ -232,4 +227,43 @@
                         🍸 Degustatrice distillati ANAG
                     </div>
                     <div class="badge-item">
-                        🎓 Laurea in Lingue e letterature Straniere (tedesco, inglese
+                        🎓 Laurea in Lingue e letterature Straniere (tedesco, inglese, spagnolo)
+                    </div>
+                </div>
+            </div>
+
+            <div class="bio-text-container">
+                <h1>Erica</h1>
+                <div class="bio-subtitle">Trasformare la curiosità in conoscenza!🍺</div>
+                
+                <p>La mia passione per la birra tedesca nasce negli anni ’90 in Germania durante l’università. Proseguo con la scoperta del vino a Firenze, diventando Sommelier FISAR nel 2007.</p>
+
+                <p>🍷 Dal 2016 gestisco i corsi per sommelier come direttrice e successivamente partecipo come docente.</p>
+            
+                <p>🍺 Negli ultimi anni frequento festival e partecipo in qualità di Giudice internazionale (BJCP) a competizioni in giro per l’Europa.</p>
+
+                <p>La Italian Beer School è uno spazio dedicato a corsi di <strong>formazione</strong> e <strong>serate di degustazione</strong> concepite come esperienze sensoriali. Alla salute! 🍻🧡</p>
+                
+                <div class="bio-buttons">
+                    <a href="tutti-i-corsidibirra.html" class="btn-yellow">Scopri i corsi</a>
+                    <a href="degustazione-birra-estate-mare-firenze.html" class="btn-yellow">Prossimi eventi</a>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            2025 IBS ITALIAN BEER SCHOOL – P.IVA: IT07436420488 | <a href="privacy.html" style="color:#e0ac4c">Privacy</a>
+        </footer>
+    </div>
+
+    <script>
+        const hb = document.querySelector('.hamburger-menu'), 
+              menu = document.querySelector('.menu-pop-up'), 
+              close = document.querySelector('.close-menu');
+        
+        function toggle() { menu.classList.toggle('open'); }
+        hb.onclick = toggle; 
+        close.onclick = toggle;
+    </script>
+</body>
+</html>
