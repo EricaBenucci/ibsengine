@@ -61,16 +61,20 @@
             margin-left: 5px; border-radius: 2px;
         }
 
-        /* LAYOUT BIO */
+        /* LAYOUT BIO - MOBILE FIRST */
         .bio-section {
-            display: flex; flex-wrap: wrap; padding: 60px 20px; gap: 50px;
-            justify-content: center; align-items: flex-start;
-            max-width: 1200px; margin: auto;
+            display: flex; 
+            flex-direction: column; /* Mobile first: tutto in colonna */
+            padding: 40px 20px; 
+            gap: 30px;
+            max-width: 1200px; 
+            margin: auto;
+            align-items: center;
         }
         
-        /* Colonna Sinistra: Immagine + Badge */
         .bio-left-column {
-            flex: 0 0 400px;
+            width: 100%;
+            max-width: 400px;
             display: flex;
             flex-direction: column;
             gap: 20px;
@@ -81,7 +85,6 @@
             box-shadow: 0 0 20px rgba(0,0,0,0.8); object-fit: cover;
         }
 
-        /* Blocco Qualifiche */
         .bio-badges {
             background-color: rgba(224, 172, 76, 0.1);
             border-left: 3px solid #e0ac4c;
@@ -89,29 +92,49 @@
             font-size: 0.95em;
             line-height: 1.6;
             border-radius: 0 15px 15px 0;
+            text-align: left;
         }
 
         .badge-item { margin-bottom: 15px; }
         .badge-item:last-child { margin-bottom: 0; }
 
-        /* Colonna Destra: Testo */
-        .bio-text-container { flex: 1; min-width: 300px; line-height: 1.8; font-size: 1.15em; }
-        .bio-text-container h1 { font-size: 2.8em; margin-bottom: 10px; color: #fff; }
+        .bio-text-container { 
+            width: 100%; 
+            line-height: 1.8; 
+            font-size: 1.15em; 
+            text-align: center; /* Testo centrato su mobile */
+        }
+        
+        .bio-text-container h1 { font-size: 2.5em; margin-bottom: 10px; color: #fff; }
         .bio-subtitle {
-            font-size: 1.4em; color: #e0ac4c; margin-bottom: 30px; font-weight: bold;
+            font-size: 1.3em; color: #e0ac4c; margin-bottom: 30px; font-weight: bold;
         }
         .bio-text-container p { margin-bottom: 20px; }
+
+        /* VERSION PC */
+        @media screen and (min-width: 901px) {
+            .bio-section {
+                flex-direction: row; /* In riga su PC */
+                align-items: flex-start;
+                text-align: left;
+                padding: 60px 20px;
+                gap: 60px;
+            }
+            .bio-left-column {
+                flex: 0 0 400px; /* Larghezza fissa per foto+competenze */
+            }
+            .bio-text-container {
+                flex: 1;
+                text-align: left; /* Testo a sinistra su PC */
+            }
+            .bio-text-container h1 { font-size: 3.5em; }
+        }
 
         /* FOOTER */
         .footer { background-color: rgba(0, 0, 0, 0.8); text-align: center; padding: 25px; font-size: 0.9em; margin-top: auto; }
 
         @media screen and (max-width: 900px) {
             .logo-container img { height: 65px; }
-            .bio-section { flex-direction: column; text-align: center; padding: 40px 15px; }
-            .bio-left-column { flex: 0 0 auto; max-width: 100%; width: 100%; align-items: center; }
-            .bio-image-container { max-width: 350px; }
-            .bio-badges { text-align: left; max-width: 500px; }
-            .bio-text-container h1 { font-size: 2.2em; }
         }
     </style>
 </head>
@@ -151,14 +174,22 @@
                 </div>
                 
                 <div class="bio-badges">
-                    <div class="badge-item">🍺 Giudice BJCP<br>
-                    <div>🍺 WSET (Londra) Beer educator</div>
-                    <div>🍺 Certified Cicerone ® (Chicago)</p>
-                    <div class="badge-item">🍷 Sommelier e docente FISAR</br>
-                    <div>🍷 WSET Level 2 Wine</p>
-                    <div class="badge-item">🍸 General Certificate in Distilling, CIBD (Londra)<br>
-                    <div>🍸 Degustatrice distillati ANAG, Associazione Nazionale Assaggiatori Grappa e Acquaviti</p>
-                    <div class="badge-item">🎓 Laurea in Lingue e letterature Straniere (tedesco, inglese, spagnolo)</div>
+                    <div class="badge-item">
+                        🍺 Giudice BJCP<br>
+                        🍺 WSET (Londra) Beer educator<br>
+                        🍺 Certified Cicerone ® (Chicago)
+                    </div>
+                    <div class="badge-item">
+                        🍷 Sommelier e docente FISAR<br>
+                        🍷 WSET Level 2 Wine
+                    </div>
+                    <div class="badge-item">
+                        🍸 General Certificate in Distilling, IBD (Londra)<br>
+                        🍸 Degustatrice distillati ANAG
+                    </div>
+                    <div class="badge-item">
+                        🎓 Laurea in Lingue e letterature Straniere (tedesco, inglese, spagnolo)
+                    </div>
                 </div>
             </div>
 
@@ -170,9 +201,9 @@
                 
                 <p>La mia passione per la birra tedesca nasce negli anni ’90 in Germania durante l’università. Proseguo con la scoperta del vino a Firenze, diventando Sommelier FISAR nel 2007.</p>
 
-                <p>🍷Dal 2016 gestisco i corsi per sommelier come direttrice e successivamente partecipo come docente.</p>
+                <p>🍷 Dal 2016 gestisco i corsi per sommelier come direttrice e successivamente partecipo come docente.</p>
             
-                <p>🍺Negli ultimi anni frequento festival e partecipo in qualità di Giudice internazionale (BJCP) a competizioni in giro per l’Europa.</p>
+                <p>🍺 Negli ultimi anni frequento festival e partecipo in qualità di Giudice internazionale (BJCP) a competizioni in giro per l’Europa.</p>
 
                 <p>La Italian Beer School è uno spazio dedicato a corsi di <strong>formazione</strong> e <strong>serate di degustazione</strong> concepite come esperienze sensoriali, momenti piacevoli alla scoperta della cultura birraria. Alla salute! 🍻🧡</p>
             </div>
