@@ -64,7 +64,7 @@
         /* LAYOUT BIO - MOBILE FIRST */
         .bio-section {
             display: flex; 
-            flex-direction: column; /* Mobile first: tutto in colonna */
+            flex-direction: column; 
             padding: 40px 20px; 
             gap: 30px;
             max-width: 1200px; 
@@ -102,7 +102,7 @@
             width: 100%; 
             line-height: 1.8; 
             font-size: 1.15em; 
-            text-align: center; /* Testo centrato su mobile */
+            text-align: center;
         }
         
         .bio-text-container h1 { font-size: 2.5em; margin-bottom: 10px; color: #fff; }
@@ -111,23 +111,60 @@
         }
         .bio-text-container p { margin-bottom: 20px; }
 
+        /* PULSANTI GIALLI */
+        .bio-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+            width: 100%;
+        }
+
+        .btn-yellow {
+            background-color: #e0ac4c;
+            color: #000;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            text-align: center;
+            transition: transform 0.2s, background-color 0.2s;
+            display: block;
+        }
+
+        .btn-yellow:hover {
+            background-color: #f1c40f;
+            transform: scale(1.02);
+            opacity: 1;
+        }
+
         /* VERSION PC */
         @media screen and (min-width: 901px) {
             .bio-section {
-                flex-direction: row; /* In riga su PC */
+                flex-direction: row; 
                 align-items: flex-start;
                 text-align: left;
                 padding: 60px 20px;
                 gap: 60px;
             }
             .bio-left-column {
-                flex: 0 0 400px; /* Larghezza fissa per foto+competenze */
+                flex: 0 0 400px;
             }
             .bio-text-container {
                 flex: 1;
-                text-align: left; /* Testo a sinistra su PC */
+                text-align: left;
             }
             .bio-text-container h1 { font-size: 3.5em; }
+            
+            .bio-buttons {
+                flex-direction: row;
+                justify-content: flex-start;
+            }
+            .btn-yellow {
+                flex: 1;
+                max-width: 250px;
+            }
         }
 
         /* FOOTER */
@@ -195,9 +232,7 @@
 
             <div class="bio-text-container">
                 <h1>Erica</h1>
-                <div class="bio-subtitle">Il sogno con ITALIAN BEER SCHOOL è semplice:</div>
-                
-                <p><strong>Trasformare la curiosità in conoscenza!🍺</strong></p>
+                <div class="bio-subtitle">Trasformare la curiosità in conoscenza!🍺</div>
                 
                 <p>La mia passione per la birra tedesca nasce negli anni ’90 in Germania durante l’università. Proseguo con la scoperta del vino a Firenze, diventando Sommelier FISAR nel 2007.</p>
 
@@ -205,7 +240,12 @@
             
                 <p>🍺 Negli ultimi anni frequento festival e partecipo in qualità di Giudice internazionale (BJCP) a competizioni in giro per l’Europa.</p>
 
-                <p>La Italian Beer School è uno spazio dedicato a corsi di <strong>formazione</strong> e <strong>serate di degustazione</strong> concepite come esperienze sensoriali, momenti piacevoli alla scoperta della cultura birraria. Alla salute! 🍻🧡</p>
+                <p>La Italian Beer School è uno spazio dedicato a corsi di <strong>formazione</strong> e <strong>serate di degustazione</strong> concepite come esperienze sensoriali. Alla salute! 🍻🧡</p>
+                
+                <div class="bio-buttons">
+                    <a href="tutti-i-corsidibirra.html" class="btn-yellow">Scopri i corsi</a>
+                    <a href="degustazione-birra-estate-mare-firenze.html" class="btn-yellow">Prossimi eventi</a>
+                </div>
             </div>
         </main>
 
