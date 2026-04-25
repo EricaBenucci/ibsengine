@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Degustazione Birre Trappiste - Italian Beer School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+        /* ---------------------- */
+        /* Base pagina e sfondo   */
+        /* ---------------------- */
+        html, body {
+            margin: 0; padding: 0; height: 100%;
+            font-family: 'Quicksand', sans-serif;
+            background: url('sfondo-birra-scuola.webp') no-repeat center center fixed;
+            background-size: cover; color: #fff; overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; transition: opacity 0.3s; }
+        a:hover { opacity: 0.9; }
+
+        .overlay {
+            display: flex; flex-direction: column; min-height: 100vh;
+            background-color: rgba(0, 0, 0, 0.6); position: relative; z-index: 1;
+        }
+
+        /* ---------------------- */
+        /* Header / Navbar        */
+        /* ---------------------- */
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            background-color: rgba(0, 0, 0, 0.8); padding: 25px 20px;
+            position: relative; z-index: 10; min-height: 80px;
+        }
+        .logo-container {
+            position: absolute; left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .logo-container img { height: 90px; display: block; }
+
+        .nav-right { display: flex; align-items: center; gap: 20px; z-index: 15; }
+        .ig-link { font-size: 1.5em; color: #fff; }
+
+        .hamburger-menu {
+            background: none; border: none; cursor: pointer;
+            display: flex; flex-direction: column; gap: 6px; width: 30px; z-index: 15;
+        }
+        .hamburger-menu .line {
+            width: 30px; height: 3px; background-color: #fff; border-radius: 5px; transition: 0.3s;
+        }
+
+        /* Menu Laterale */
+        .menu-pop-up {
+            position: fixed; top: 0; left: -300px; width: 280px; height: 100%;
+            background-color: rgba(0, 0, 0, 0.95); padding-top: 80px;
+            transition: left 0.3s ease-in-out; z-index: 14; display: flex; flex-direction: column;
+        }
+        .menu-pop-up a {
+            padding: 12px 25px; font-size: 1.1em;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex; align-items: center; gap: 10px;
+        }
+        .flag-icon { width: 20px; height: auto; border-radius: 2px; }
+        .menu-pop-up.open { left: 0; }
+        .close-menu { position: absolute; top: 25px; right: 25px; font-size: 2.5em; cursor: pointer; }
+
+        /* ---------------------- */
+        /* Contenuto Evento       */
+        /* ---------------------- */
+        .content {
+            padding: 60px 20px;
+            max-width: 1100px;
+            margin: auto;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        h1 { color: #e0ac4c; font-size: 2.5em; margin-bottom: 20px; text-transform: uppercase; }
+        .event-intro { font-size: 1.2em; line-height: 1.6; color: #eee; margin-bottom: 50px; max-width: 800px; margin-left: auto; margin-right: auto; }
+
+        /* Gallery SEO Optimized */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .photo-gallery img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+        .photo-gallery img:hover { transform: scale(1.03); }
+
+        /* ---------------------- */
+        /* Footer & Cookies       */
+        /* ---------------------- */
+        .footer {
+            background-color: rgba(0, 0, 0, 0.8); text-align: center;
+            padding: 25px; font-size: 0.9em; margin-top: auto;
+        }
+        .footer a { color: #e0ac4c; text-decoration: none; }
+
+        #cookie-banner {
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            background-color: rgba(0, 0, 0, 0.9); padding: 20px;
+            text-align: center; z-index: 1000; display: none;
+            flex-direction: column; align-items: center; gap: 10px;
+        }
+        .cookie-buttons button {
+            padding: 10px 20px; border: none; border-radius: 5px;
+            font-weight: bold; cursor: pointer; margin: 5px;
+        }
+        #accept-cookies { background-color: #e0ac4c; color: #000; }
+
+        /* Responsive */
+        @media screen and (max-width: 800px) {
+            h1 { font-size: 1.8em; }
+            .logo-container img { height: 65px; }
+            .photo-gallery { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <header>
+            <button class="hamburger-menu" aria-label="Menu">
+                <span class="line"></span><span class="line"></span><span class="line"></span>
+            </button>
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="Logo-IBS-italian-beer-school-firenze.png" alt="Logo ITALIAN BEER SCHOOL" />
+                </a>
+            </div>
+            <div class="nav-right">
+                <a href="https://www.instagram.com/italianbeerschool/" target="_blank" class="ig-link">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </header>
+
+        <nav class="menu-pop-up">
+            <div class="close-menu">&times;</div>
+            <a href="index.html">HOME</a>
+            <a href="tutti-i-corsidibirra.html">CORSI DI BIRRA</a>
+            <a href="corso-base-firenze.html">• CORSO BASE <img src="https://flagcdn.com/it.svg" class="flag-icon" alt="IT"></a>
+            <a href="corso-secondo-livello-birra-firenze.html">• CORSO AVANZATO <img src="https://flagcdn.com/it.svg" class="flag-icon" alt="IT"></a>
+            <a href="curiosita-birra.html">LO SAPEVI CHE?</a>
+            <a href="quizdibirra.html">QUIZ</a>
+            <a href="degustazioni-passate.html">DEGUSTAZIONI PASSATE</a>
+            <a href="bio.html">CHI SONO</a>
+            <a href="contatti.html">CONTATTI</a>
+        </nav>
+
+        <main class="content">
+            <h1>Degustazione Birre Trappiste</h1>
+            <div class="event-intro">
+                <p>Gennaio 2026, Firenze.</p>
+                <p>Un viaggio nel cuore della tradizione birraria dei monaci trappisti: storie di birre con origini antiche dalla qualità costante ed eccelsa.</p>
+            </div>
+
+            <div class="photo-gallery">
+                <img src="degustazione-birre-trappiste-firenze-bottiglie.webp" alt="Selezione di bottiglie di birra trappista belga durante la degustazione a Firenze">
+                <img src="bicchiere-birra-trappista-schiuma-perfetta.webp" alt="Dettaglio versata di una birra trappista con schiuma compatta e persistente">
+                <img src="erica-direttrice-ibs-spiegazione-birra.webp" alt="Erica Benucci mentre spiega le caratteristiche organolettiche delle birre d'abbazia">
+                <img src="corsisti-degustazione-birra-trappista-firenze.webp" alt="Partecipanti alla masterclass sulle birre dei monaci trappisti presso Italian Beer School">
+                <img src="abbinamento-birra-trappista-formaggi.webp" alt="Tagliere di formaggi stagionati in abbinamento a una birra trappista scura">
+                <img src="logo-ibs-evento-birra-firenze.webp" alt="Atmosfera della serata Degustazioni Passate Italian Beer School Firenze">
+            </div>
+        </main>
+
+        <footer class="footer">
+            2025 IBS ITALIAN BEER SCHOOL – P.IVA: IT07436420488 | <a href="privacy.html">Privacy</a>
+        </footer>
+    </div>
+
+    <div id="cookie-banner">
+        <div class="cookie-content">
+            <p>Usiamo i cookie per migliorare la tua esperienza. <a href="privacy.html" style="color:#e0ac4c">Info</a></p>
+            <div class="cookie-buttons">
+                <button id="accept-cookies">Accetta</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Menu Logic
+        const hb = document.querySelector('.hamburger-menu'), menu = document.querySelector('.menu-pop-up'), close = document.querySelector('.close-menu');
+        function toggle() { menu.classList.toggle('open'); hb.classList.toggle('open'); }
+        hb.onclick = toggle; close.onclick = toggle;
+
+        // Cookie Logic
+        if (!document.cookie.includes('cookie_consent')) {
+            document.getElementById('cookie-banner').style.display = 'flex';
+        }
+        document.getElementById('accept-cookies').onclick = () => {
+            document.cookie = "cookie_consent=all;max-age=31536000;path=/";
+            document.getElementById('cookie-banner').style.display = 'none';
+        };
+    </script>
+</body>
+</html>
