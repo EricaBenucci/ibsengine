@@ -58,17 +58,18 @@
         .menu-pop-up.open { left: 0; }
         .close-menu { position: absolute; top: 25px; right: 25px; font-size: 2.5em; cursor: pointer; }
 
-        /* Stile per le icone delle bandiere */
         .flag-icon {
-            width: 20px;
-            height: auto;
-            vertical-align: middle;
-            margin-left: 5px;
-            border-radius: 2px;
+            width: 20px; height: auto; vertical-align: middle; margin-left: 5px; border-radius: 2px;
         }
 
-        .content { flex: 1; display: flex; justify-content: center; align-items: center; padding: 40px 20px; }
+        .content { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px 20px; }
         
+        /* Titolo H1 Invisibile per la SEO */
+        .seo-title {
+            position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; 
+            overflow: hidden; clip: rect(0,0,0,0); border: 0;
+        }
+
         .event-grid {
             display: flex; flex-wrap: wrap; gap: 60px;
             justify-content: center; align-items: flex-start;
@@ -83,10 +84,12 @@
         }
         .event-box a:hover img { transform: scale(1.05); }
 
-        .event-title {
+        /* Aggiornato da .event-title a h2.event-title per mantenere lo stile */
+        h2.event-title {
             font-size: 1.8em; font-weight: bold; color: #fff;
-            margin-top: 25px; line-height: 1.2;
+            margin-top: 25px; margin-bottom: 0; line-height: 1.2;
             display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap;
+            font-family: 'Quicksand', sans-serif;
         }
         .event-date { font-size: 1.4em; color: #e0ac4c; margin-top: 10px; }
 
@@ -94,7 +97,7 @@
 
         @media screen and (max-width: 800px) {
             .logo-container img { height: 65px; }
-            .event-title { font-size: 1.5em; }
+            h2.event-title { font-size: 1.5em; }
             .event-date { font-size: 1.2em; }
         }
     </style>
@@ -106,7 +109,7 @@
                 <span class="line"></span><span class="line"></span><span class="line"></span>
             </button>
             <div class="logo-container">
-                <a href="index.html"><img src="Logo-IBS-italian-beer-school-firenze.png" alt="Logo IBS" /></a>
+                <a href="index.html"><img src="Logo-IBS-italian-beer-school-firenze.png" alt="Logo IBS Italian Beer School Firenze" /></a>
             </div>
             <div class="nav-right">
                 <a href="https://www.instagram.com/italianbeerschool/?hl=en" target="_blank" class="ig-link">
@@ -129,22 +132,23 @@
         </nav>
 
         <main class="content">
+            <!-- H1 Strategico per i motori di ricerca -->
+            <h1 class="seo-title">Italian Beer School: Corsi di Degustazione Birra a Firenze</h1>
+
             <div class="event-grid">
                 
                 <div class="event-box">
                     <a href="degustazione-birra-estate-mare-firenze.html"> 
-                        <img src="degustazione-birra-estate-mare-firenze.webp" alt="Degustazione Estate" />
-                        <div class="event-title">Birre d'A-Mare:<br>un'estate effervescente!</div>
+                        <img src="degustazione-birra-estate-mare-firenze.webp" alt="Degustazione birra artigianale estate Firenze" />
+                        <h2 class="event-title">Birre d'A-Mare:<br>un'estate effervescente!</h2>
                         <div class="event-date">10 giugno 2026, Firenze</div>
                     </a>
                 </div>
 
                 <div class="event-box">
                     <a href="tutti-i-corsidibirra.html">
-                        <img src="corso-birra-base-firenze.webp" alt="Corsi di Birra" />
-                        <div class="event-title">
-                            CORSI DI BIRRA 
-                        </div>
+                        <img src="corso-birra-base-firenze.webp" alt="Corsi di birra per amatori e professionisti Firenze" />
+                        <h2 class="event-title">CORSI DI BIRRA</h2>
                         <div class="event-date">Firenze</div>
                     </a>
                 </div>
@@ -153,7 +157,7 @@
         </main>
 
         <footer class="footer">
-            2025 IBS ITALIAN BEER SCHOOL – P.IVA: IT07436420488 | <a href="privacy.html" style="color:#e0ac4c">Privacy</a>
+            2026 IBS ITALIAN BEER SCHOOL – P.IVA: IT07436420488 | <a href="privacy.html" style="color:#e0ac4c">Privacy</a>
         </footer>
     </div>
 
