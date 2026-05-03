@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tutti i Corsi - Italian Beer School</title>
-     <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- Meta Description Ottimizzata -->
+    <meta name="description" content="Scopri tutti i corsi di birra artigianale della Italian Beer School a Firenze. Dal corso base per amatori alle masterclass avanzate e certificazioni internazionali. In italiano e inglese.">
+    
+    <link rel="icon" type="image/png" href="favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <style>
@@ -69,7 +73,22 @@
         .flag-rect { width: 20px; height: auto; border-radius: 2px; vertical-align: middle; }
         .flag-round { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; vertical-align: middle; margin-left: 10px; border: 1px solid rgba(255,255,255,0.2); }
 
-        .content { flex: 1; padding: 40px 20px; max-width: 1000px; margin: 0 auto; display: flex; align-items: center; }
+        /* Contenuto */
+        .content { flex: 1; padding: 40px 20px; max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+
+        /* Titolo H1 Invisibile per la SEO */
+        .seo-title {
+            position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; 
+            overflow: hidden; clip: rect(0,0,0,0); border: 0;
+        }
+
+        /* Testo introduttivo */
+        .courses-intro {
+            text-align: center; margin-bottom: 40px; line-height: 1.6;
+            background: rgba(0,0,0,0.4); padding: 20px; border-radius: 15px;
+            border: 1px solid rgba(224, 172, 76, 0.2); max-width: 850px;
+        }
+        .highlight-yellow { color: #e0ac4c; font-weight: bold; }
 
         .courses-grid { display: flex; flex-direction: column; gap: 30px; width: 100%; }
 
@@ -85,7 +104,6 @@
         .img-circle { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
         .border-gold { border: 3px solid rgba(224, 172, 76, 0.5); }
 
-        /* Container per titolo e data centrati */
         .text-container {
             display: flex;
             flex-direction: column;
@@ -106,7 +124,6 @@
         @media screen and (min-width: 800px) {
             .course-card { flex-direction: row; text-align: center; }
             .img-circle { width: 200px; height: 200px; }
-            /* Manteniamo il layout a colonna per il testo anche su desktop per centrare tutto rispetto all'immagine */
             .text-container { align-items: center; }
         }
 
@@ -128,7 +145,7 @@
                 <span class="line"></span><span class="line"></span><span class="line"></span>
             </button>
             <div class="logo-container">
-                <a href="index.html"><img src="logonew.png" alt="Logo IBS" /></a>
+                <a href="index.html"><img src="logonew.png" alt="Logo IBS Italian Beer School" /></a>
             </div>
             <div class="nav-right">
                 <a href="https://www.instagram.com/italianbeerschool/?hl=en" target="_blank" class="ig-link">
@@ -152,11 +169,19 @@
         </nav>
 
         <main class="content">
+            <!-- H1 Invisibile per SEO -->
+            <h1 class="seo-title">Corsi di Birra Artigianale a Firenze e Online</h1>
+
+            <!-- Testo Introduttivo -->
+            <div class="courses-intro">
+                <p>Esplora l'offerta formativa della <span class="highlight-yellow">Italian Beer School</span>. Proponiamo percorsi didattici completi per ogni livello, dalle prime basi della degustazione fino agli approfondimenti tecnici per professionisti e appassionati evoluti.</p>
+            </div>
+
             <div class="courses-grid">
                 
                 <a href="corso-birra-base-firenze.html" class="base">
                     <div class="course-card">
-                        <img src="corso-birra-base-firenze.webp" class="img-circle border-gold" alt="Corso Base">
+                        <img src="corso-birra-base-firenze.webp" class="img-circle border-gold" alt="Corso Birra Base Firenze">
                         <div class="text-container">
                             <h2>Corso Base <img src="https://flagcdn.com/it.svg" class="flag-round" alt="Italiano"></h2>
                             <p>1, 8, 15 e 22 OTTOBRE 2026</p>
@@ -166,7 +191,7 @@
 
                 <a href="corso-secondo-livello-birra-firenze.html" class="avanzato">
                     <div class="course-card">
-                        <img src="corso-birra-livello2-firenze.webp" class="img-circle border-gold" alt="Corso Avanzato">
+                        <img src="corso-birra-livello2-firenze.webp" class="img-circle border-gold" alt="Corso Birra Avanzato Firenze">
                         <div class="text-container">
                             <h2>Corso Avanzato <img src="https://flagcdn.com/it.svg" class="flag-round" alt="Italiano"></h2>
                             <p>GENNAIO 2027</p>
@@ -178,7 +203,7 @@
         </main>
 
         <footer class="footer">
-            2025 IBS ITALIAN BEER SCHOOL – P.IVA: IT07436420488 | <a href="privacy.html" style="color:#e0ac4c">Privacy</a>
+            2026 IBS ITALIAN BEER SCHOOL – P.IVA: IT07436420488 | <a href="privacy.html" style="color:#e0ac4c">Privacy</a>
         </footer>
     </div>
 
