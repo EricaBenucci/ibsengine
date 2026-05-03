@@ -5,6 +5,10 @@
     <meta name="google-site-verification" content="FFhcd98mR3QTa7Taxvf0Dti0ztHZHrU676BqkiBrtSk" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home - Italian Beer School</title>
+    
+    <!-- META DESCRIPTION AGGIUNTA QUI -->
+    <meta name="description" content="Scuola di birra a Firenze e online. Serate di degustazione, corsi base, avanzati, masterclass, certificazioni internazionali. In italiano e inglese. Scopri le date.">
+    
     <link rel="icon" type="image/png" href="favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
@@ -51,16 +55,8 @@
             transition: left 0.3s ease-in-out; z-index: 14; display: flex; flex-direction: column;
         }
         .menu-pop-up a { padding: 12px 25px; font-size: 1.1em; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
-        .menu-pop-up a.sub-menu {
-            padding-left: 45px; font-size: 0.95em; color: #e0ac4c; border-bottom: none; opacity: 0.8;
-            display: flex; align-items: center; gap: 8px;
-        }
         .menu-pop-up.open { left: 0; }
         .close-menu { position: absolute; top: 25px; right: 25px; font-size: 2.5em; cursor: pointer; }
-
-        .flag-icon {
-            width: 20px; height: auto; vertical-align: middle; margin-left: 5px; border-radius: 2px;
-        }
 
         .content { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px 20px; }
         
@@ -68,6 +64,13 @@
         .seo-title {
             position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; 
             overflow: hidden; clip: rect(0,0,0,0); border: 0;
+        }
+
+        /* Stile per il nuovo testo descrittivo */
+        .intro-text {
+            max-width: 850px; text-align: center; margin: 0 auto 50px auto; 
+            line-height: 1.6; font-size: 1.15em; background: rgba(0,0,0,0.4); 
+            padding: 20px; border-radius: 15px; border: 1px solid rgba(224, 172, 76, 0.3);
         }
 
         .event-grid {
@@ -84,12 +87,10 @@
         }
         .event-box a:hover img { transform: scale(1.05); }
 
-        /* Aggiornato da .event-title a h2.event-title per mantenere lo stile */
         h2.event-title {
             font-size: 1.8em; font-weight: bold; color: #fff;
-            margin-top: 25px; margin-bottom: 0; line-height: 1.2;
+            margin-top: 25px; line-height: 1.2;
             display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap;
-            font-family: 'Quicksand', sans-serif;
         }
         .event-date { font-size: 1.4em; color: #e0ac4c; margin-top: 10px; }
 
@@ -98,7 +99,7 @@
         @media screen and (max-width: 800px) {
             .logo-container img { height: 65px; }
             h2.event-title { font-size: 1.5em; }
-            .event-date { font-size: 1.2em; }
+            .intro-text { font-size: 1em; padding: 15px; }
         }
     </style>
 </head>
@@ -122,8 +123,6 @@
             <div class="close-menu">&times;</div>
             <a href="index.html">HOME</a>
             <a href="tutti-i-corsidibirra.html">CORSI DI BIRRA</a>
-            <a href="corso-base-firenze.html" class="sub-menu">• CORSO BASE <img src="https://flagcdn.com/it.svg" class="flag-icon" alt="IT"></a>
-            <a href="corso-secondo-livello-birra-firenze.html" class="sub-menu">• CORSO AVANZATO <img src="https://flagcdn.com/it.svg" class="flag-icon" alt="IT"></a>
             <a href="curiosita-birra.html">LO SAPEVI CHE?</a>
             <a href="quiz-di-birra.html">QUIZ</a>
             <a href="degustazioni-passate.html">DEGUSTAZIONI PASSATE</a>
@@ -132,14 +131,19 @@
         </nav>
 
         <main class="content">
-            <!-- H1 Strategico per i motori di ricerca -->
             <h1 class="seo-title">Italian Beer School: Corsi di Degustazione Birra a Firenze</h1>
+
+            <!-- TESTO INTRODUTTIVO AGGIUNTO QUI -->
+            <div class="intro-text">
+                <p><strong>Benvenuti alla Italian Beer School</strong>: programmazione costante a Firenze e online. Serate di degustazione, corsi base, avanzati, masterclass e certificazioni internazionali in italiano e inglese.</p>
+                <p>Che tu voglia iniziare dalle basi o approfondire le tue conoscenze, i nostri corsi sono pensati per darti una prospettiva completa: dalla storia degli stili alla produzione, fino alla degustazione e all'abbinamento della birra artigianale. Unisciti a noi per incontrare altri appassionati come te!</p>
+            </div>
 
             <div class="event-grid">
                 
                 <div class="event-box">
                     <a href="degustazione-birra-estate-mare-firenze.html"> 
-                        <img src="degustazione-birra-estate-mare-firenze.webp" alt="Degustazione birra artigianale estate Firenze" />
+                        <img src="degustazione-birra-estate-mare-firenze.webp" alt="Degustazione birra artigianale Firenze estate" />
                         <h2 class="event-title">Birre d'A-Mare:<br>un'estate effervescente!</h2>
                         <div class="event-date">10 giugno 2026, Firenze</div>
                     </a>
@@ -147,7 +151,7 @@
 
                 <div class="event-box">
                     <a href="tutti-i-corsidibirra.html">
-                        <img src="corso-birra-base-firenze.webp" alt="Corsi di birra per amatori e professionisti Firenze" />
+                        <img src="corso-birra-base-firenze.webp" alt="Corsi professionali birra Firenze" />
                         <h2 class="event-title">CORSI DI BIRRA</h2>
                         <div class="event-date">Firenze</div>
                     </a>
