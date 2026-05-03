@@ -58,23 +58,31 @@
         .menu-pop-up.open { left: 0; }
         .close-menu { position: absolute; top: 25px; right: 25px; font-size: 2.5em; cursor: pointer; }
 
-        .content { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px 20px; }
+        .content { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px 20px; }
         
-        /* Titolo H1 Invisibile per la SEO */
         .seo-title {
             position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; 
             overflow: hidden; clip: rect(0,0,0,0); border: 0;
         }
 
-        /* Stile per il nuovo testo descrittivo */
-        .intro-text {
-            max-width: 850px; text-align: center; margin: 0 auto 50px auto; 
-            line-height: 1.6; font-size: 1.15em; background: rgba(0,0,0,0.4); 
-            padding: 20px; border-radius: 15px; border: 1px solid rgba(224, 172, 76, 0.3);
+        /* Stile Testo in Alto - Più compatto */
+        .intro-text-top {
+            max-width: 850px; text-align: center; margin: 0 auto 30px auto; 
+            line-height: 1.4; font-size: 1.1em; background: rgba(0,0,0,0.4); 
+            padding: 15px 25px; border-radius: 15px; border: 1px solid rgba(224, 172, 76, 0.2);
         }
 
+        /* Stile Testo in Basso - Più discreto */
+        .intro-text-bottom {
+            max-width: 850px; text-align: center; margin: 40px auto 20px auto; 
+            line-height: 1.6; font-size: 1.05em; color: rgba(255, 255, 255, 0.9);
+            padding: 0 20px;
+        }
+
+        .highlight-yellow { color: #e0ac4c; font-weight: bold; }
+
         .event-grid {
-            display: flex; flex-wrap: wrap; gap: 60px;
+            display: flex; flex-wrap: wrap; gap: 40px;
             justify-content: center; align-items: flex-start;
             max-width: 1200px; margin: auto;
         }
@@ -99,7 +107,7 @@
         @media screen and (max-width: 800px) {
             .logo-container img { height: 65px; }
             h2.event-title { font-size: 1.5em; }
-            .intro-text { font-size: 1em; padding: 15px; }
+            .intro-text-top { font-size: 1em; padding: 15px; }
         }
     </style>
 </head>
@@ -133,10 +141,9 @@
         <main class="content">
             <h1 class="seo-title">Italian Beer School: Corsi di Degustazione Birra a Firenze</h1>
 
-            <!-- TESTO INTRODUTTIVO AGGIUNTO QUI -->
-            <div class="intro-text">
-                <p><strong>Benvenuti alla Italian Beer School</strong>: programmazione costante a Firenze e online. Serate di degustazione, corsi base, avanzati, masterclass e certificazioni internazionali in italiano e inglese.</p>
-                <p>Che tu voglia iniziare dalle basi o approfondire le tue conoscenze, i nostri corsi sono pensati per darti una prospettiva completa: dalla storia degli stili alla produzione, fino alla degustazione e all'abbinamento della birra artigianale. Unisciti a noi per incontrare altri appassionati come te!</p>
+            <!-- PARTE ALTA DEL TESTO -->
+            <div class="intro-text-top">
+                <p>Benvenuti alla <span class="highlight-yellow">Italian Beer School</span>: programmazione costante a Firenze e online. Serate di degustazione, corsi base, avanzati, masterclass e certificazioni internazionali in italiano e inglese.</p>
             </div>
 
             <div class="event-grid">
@@ -157,6 +164,11 @@
                     </a>
                 </div>
 
+            </div>
+
+            <!-- PARTE BASSA DEL TESTO -->
+            <div class="intro-text-bottom">
+                <p>Che tu voglia iniziare dalle basi o approfondire le tue conoscenze, i nostri corsi sono pensati per darti una prospettiva completa: dalla storia degli stili alla produzione, fino alla degustazione e all'abbinamento della birra artigianale. Unisciti a noi per incontrare altri appassionati come te!</p>
             </div>
         </main>
 
