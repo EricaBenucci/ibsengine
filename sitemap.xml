@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Pagina Principale -->
+  <url>
+    <loc>https://www.italianbeerschool.it/index.html</loc>
+    <priority>1.00</priority>
+  </url>
+
+  <!-- Pagine Principali del Menu -->
+  <url>
+    <loc>https://www.italianbeerschool.it/tutti-i-corsidibirra.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://www.italianbeerschool.it/bio.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.italianbeerschool.it/contatti.html</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Corsi Attivi -->
+  <url>
+    <loc>https://www.italianbeerschool.it/corso-birra-base-firenze.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://www.italianbeerschool.it/corso-secondo-livello-birra-firenze.html</loc>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Sezioni Coinvolgimento e Curiosità -->
+  <url>
+    <loc>https://www.italianbeerschool.it/curiosita-birra.html</loc>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://www.italianbeerschool.it/quiz-di-birra.html</loc>
+    <priority>0.70</priority>
+  </url>
+
+  <!-- Archivio Degustazioni -->
+  <url>
+    <loc>https://www.italianbeerschool.it/degustazioni-passate.html</loc>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://www.italianbeerschool.it/degustazione-passata-birre-natale-firenze-2025.html</loc>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://www.italianbeerschool.it/degustazione-passata-birre-trappiste-firenze-2026.html</loc>
+    <priority>0.50</priority>
+  </url>
+</urlset>
