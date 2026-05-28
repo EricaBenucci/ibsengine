@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z1LYHFBGN"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z1LYHFBGN"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -14,7 +13,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tutti i Corsi - Italian Beer School</title>
     
-    <!-- Meta Description Ottimizzata -->
     <meta name="description" content="Scopri tutti i corsi di birra artigianale della Italian Beer School a Firenze. Dal corso base per amatori alle masterclass avanzate.">
     
     <link rel="icon" type="image/png" href="favicon.png">
@@ -63,16 +61,17 @@
             transition: left 0.3s ease-in-out; z-index: 14; display: flex; flex-direction: column;
         }
         .menu-pop-up a { padding: 12px 25px; font-size: 1.1em; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
-        .menu-pop-up a.sub-menu { padding-left: 45px; font-size: 0.95em; color: #e0ac4c; border-bottom: none; display: flex; align-items: center; gap: 8px; }
+        .menu-pop-up a.sub-menu { padding-left: 45px; font-size: 0.95em; color: #e0ac4c; border-bottom: none; display: flex; align-items: center; gap: 8px; opacity: 0.8; }
         
         .menu-pop-up.open { left: 0; }
+        .close-menu { position: absolute; top: 25px; right: 25px; font-size: 2.5em; cursor: pointer; }
 
         /* Icone Bandiere */
-        .flag-rect { width: 20px; height: auto; }
-        .flag-round { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; vertical-align: middle; margin-left: 10px; }
+        .flag-rect { width: 20px; height: auto; border-radius: 2px; vertical-align: middle; }
+        .flag-round { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; vertical-align: middle; margin-left: 10px; border: 1px solid rgba(255,255,255,0.2); }
 
         /* Contenuto */
-        .content { flex: 1; padding: 20px; max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+        .content { flex: 1; padding: 40px 20px; max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
 
         /* Box Minimo per SEO */
         .seo-box {
@@ -84,27 +83,45 @@
             font-size: 0.9em;
             border: 1px solid rgba(224, 172, 76, 0.3);
             max-width: 600px;
+            width: 100%;
+            box-sizing: border-box;
         }
         .seo-box span { color: #e0ac4c; font-weight: bold; }
 
-        .courses-grid { display: flex; flex-direction: column; gap: 30px; width: 100%; }
+        .courses-grid { display: flex; flex-direction: column; gap: 20px; width: 100%; }
 
         .course-card {
             display: flex; flex-direction: column; align-items: center;
-            background: rgba(45, 25, 10, 0.8); padding: 30px;
-            border-radius: 20px; text-align: center; gap: 20px;
+            background: rgba(45, 25, 10, 0.8); padding: 25px;
+            border-radius: 20px; text-align: center; gap: 15px;
             border: 1px solid rgba(224, 172, 76, 0.2);
             transition: transform 0.3s ease;
+            box-sizing: border-box;
         }
         .course-card:hover { transform: scale(1.02); }
 
-        .img-circle { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 3px solid rgba(224, 172, 76, 0.5); }
+        .img-circle { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+        .border-gold { border: 3px solid rgba(224, 172, 76, 0.5); }
 
-        .course-card h2 { margin: 0; font-size: 1.6em; color: #e0ac4c; text-transform: uppercase; display: flex; align-items: center; justify-content: center; }
-        .course-card p { margin: 5px 0; font-size: 1.2em; font-weight: bold; }
+        .course-card h2, .course-card h3 { 
+            margin: 0; font-size: 1.5em; color: #e0ac4c; text-transform: uppercase; 
+            display: flex; align-items: center; justify-content: center;
+        }
+        .course-card p { margin: 5px 0; font-size: 1.1em; font-weight: bold; }
 
-        @media screen and (min-width: 800px) {
-            .course-card { flex-direction: row; text-align: left; }
+        /* Regole Responsive per la visualizzazione dei 4 corsi su Desktop */
+        @media screen and (min-width: 900px) {
+            .courses-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+            .course-card { flex-direction: row; text-align: left; background: rgba(0, 0, 0, 0.4); }
+            .wset1 { grid-column: 1; grid-row: 1; }
+            .wset2 { grid-column: 1; grid-row: 2; }
+            .base  { grid-column: 2; grid-row: 1; }
+            .avanzato { grid-column: 2; grid-row: 2; }
+            .img-circle { width: 200px; height: 200px; }
+            .base .course-card, .avanzato .course-card { flex-direction: row-reverse; text-align: right; }
+            .base h2, .avanzato h2 { justify-content: flex-end; }
+            .wset1 h3, .wset2 h3 { justify-content: flex-start; }
+            .base .flag-round, .avanzato .flag-round { margin-left: 0; margin-right: 10px; }
         }
 
         .footer { background-color: rgba(0, 0, 0, 0.8); text-align: center; padding: 20px; font-size: 0.8em; margin-top: auto; }
@@ -127,10 +144,15 @@
         </header>
 
         <nav class="menu-pop-up" id="mobileMenu">
+            <div class="close-menu" onclick="toggleMenu()">&times;</div>
             <a href="index.html">HOME</a>
             <a href="tutti-i-corsidibirra.html">CORSI DI BIRRA</a>
-            <a href="corso-birra-base-firenze.html" class="sub-menu">• CORSO BASE <img src="https://flagcdn.com/it.svg" class="flag-rect"></a>
-            <a href="corso-secondo-livello-birra-firenze.html" class="sub-menu">• CORSO AVANZATO <img src="https://flagcdn.com/it.svg" class="flag-rect"></a>
+            
+            <a href="wset-level-1-firenze.html" class="sub-menu">• WSET LEVEL 1 <img src="https://flagcdn.com/gb.svg" class="flag-rect" alt="English"></a>
+            <a href="wset-level-2-firenze.html" class="sub-menu">• WSET LEVEL 2 <img src="https://flagcdn.com/gb.svg" class="flag-rect" alt="English"></a>
+            <a href="corso-birra-base-firenze.html" class="sub-menu">• CORSO BASE <img src="https://flagcdn.com/it.svg" class="flag-rect" alt="Italiano"></a>
+            <a href="corso-secondo-livello-birra-firenze.html" class="sub-menu">• CORSO AVANZATO <img src="https://flagcdn.com/it.svg" class="flag-rect" alt="Italiano"></a>
+            
             <a href="curiosita-birra.html">LO SAPEVI CHE?</a>
             <a href="quiz-di-birra.html">QUIZ</a>
             <a href="degustazioni-passate.html">DEGUSTAZIONI PASSATE</a>
@@ -139,28 +161,47 @@
         </nav>
 
         <main class="content">
-            <!-- Box Minimo SEO -->
             <div class="seo-box">
                 Esplora l'offerta formativa della <span>Italian Beer School</span>. Percorsi didattici per ogni livello!
             </div>
 
             <div class="courses-grid">
                 
-                <a href="corso-birra-base-firenze.html">
+                <a href="wset-level-1-firenze.html" class="wset1">
                     <div class="course-card">
-                        <img src="corso-birra-base-firenze.webp" class="img-circle" alt="Corso Birra Base">
+                        <img src="wset-logo-beer-course-level 1.webp" class="img-circle" alt="WSET 1">
                         <div style="flex:1">
-                            <h2>CORSO BASE <img src="https://flagcdn.com/it.svg" class="flag-round"></h2>
+                            <h3>WSET Level 1 <img src="https://flagcdn.com/gb.svg" class="flag-round" alt="English"></h3>
+                            <p>18 OCTOBER 2026</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="wset-level-2-firenze.html" class="wset2">
+                    <div class="course-card">
+                        <img src="wset-logo-beer-course-level 2.webp" class="img-circle" alt="WSET 2">
+                        <div style="flex:1">
+                            <h3>WSET Level 2 <img src="https://flagcdn.com/gb.svg" class="flag-round" alt="English"></h3>
+                            <p>14, 15, 22 NOVEMBRE 2026</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="corso-birra-base-firenze.html" class="base">
+                    <div class="course-card">
+                        <img src="corso-birra-base-firenze.webp" class="img-circle border-gold" alt="Corso Birra Base">
+                        <div style="flex:1">
+                            <h2><img src="https://flagcdn.com/it.svg" class="flag-round" alt="Italiano"> Corso Base</h2>
                             <p>1, 8, 15 e 22 OTTOBRE 2026</p>
                         </div>
                     </div>
                 </a>
 
-                <a href="corso-secondo-livello-birra-firenze.html">
+                <a href="corso-secondo-livello-birra-firenze.html" class="avanzato">
                     <div class="course-card">
-                        <img src="corso-birra-livello2-firenze.webp" class="img-circle" alt="Corso Birra Avanzato">
+                        <img src="corso-birra-livello2-firenze.webp" class="img-circle border-gold" alt="Corso Birra Avanzato">
                         <div style="flex:1">
-                            <h2>CORSO AVANZATO <img src="https://flagcdn.com/it.svg" class="flag-round"></h2>
+                            <h2><img src="https://flagcdn.com/it.svg" class="flag-round" alt="Italiano"> Corso Avanzato</h2>
                             <p>GENNAIO 2027</p>
                         </div>
                     </div>
