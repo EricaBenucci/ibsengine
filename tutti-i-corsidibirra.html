@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z1LYHFBGN"></script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z1LYHFBGN"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -105,15 +106,14 @@
         .img-circle { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
         .border-gold { border: 3px solid rgba(224, 172, 76, 0.5); }
 
-        /* Specifico per il Logo WSET: Ingrandito e normalizzato per tutti i riquadri */
+        /* NUOVA STRUTTURA LOGO WSET: Ingrandito direttamente in larghezza nativa per bypassare i blocchi */
         .img-wset { 
-            width: 180px; 
-            height: auto; 
-            object-fit: contain; 
+            width: 260px;             /* Dimensione reale massimizzata per mobile */
+            height: 180px;            /* Altezza fissa pari alle immagini tonde per perfetto bilanciamento */
+            object-fit: contain;      /* Mantiene le proporzioni perfette dell'ovale */
             flex-shrink: 0; 
             box-sizing: border-box; 
-            transform: scale(1.5);
-            margin-left: 20px;
+            margin: 0;                /* Centratura fluida nativa */
         }
 
         .course-card h2, .course-card h3 { 
@@ -141,11 +141,11 @@
             
             .img-circle { width: 200px; height: 200px; }
             
-            /* Applica lo scale corretto a entrambi i loghi WSET della griglia */
+            /* Su PC portiamo la larghezza a 280px per pareggiare visivamente l'impatto dei cerchi dorati */
             .img-wset { 
-                width: 180px; 
-                transform: scale(1.6); 
-                margin-left: 35px; 
+                width: 280px; 
+                height: 200px; 
+                margin-left: 15px; 
             }
             
             .base .course-card, .avanzato .course-card { flex-direction: row-reverse; text-align: right; }
@@ -197,6 +197,7 @@
 
             <div class="courses-grid">
                 
+                <!-- WSET LEVEL 1 -->
                 <a href="wset-level-1-firenze.html" class="wset1">
                     <div class="course-card">
                         <img src="logo-wset-course_english-beer.svg" class="img-wset" alt="WSET 1">
@@ -207,6 +208,7 @@
                     </div>
                 </a>
 
+                <!-- WSET LEVEL 2 -->
                 <a href="wset-level-2-firenze.html" class="wset2">
                     <div class="course-card">
                         <img src="logo-wset-course_english-beer.svg" class="img-wset" alt="WSET 2">
@@ -217,6 +219,7 @@
                     </div>
                 </a>
 
+                <!-- CORSO BASE -->
                 <a href="corso-birra-base-firenze.html" class="base">
                     <div class="course-card">
                         <img src="corso-birra-base-firenze.webp" class="img-circle border-gold" alt="Corso Birra Base">
@@ -227,6 +230,7 @@
                     </div>
                 </a>
 
+                <!-- CORSO AVANZATO -->
                 <a href="corso-secondo-livello-birra-firenze.html" class="avanzato">
                     <div class="course-card">
                         <img src="corso-birra-livello2-firenze.webp" class="img-circle border-gold" alt="Corso Birra Avanzato">
