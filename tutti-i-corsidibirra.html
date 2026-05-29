@@ -105,8 +105,8 @@
         .img-circle { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
         .border-gold { border: 3px solid rgba(224, 172, 76, 0.5); }
 
-        /* Specifico per il Logo WSET: forma naturale protetta e centrata */
-        .img-wset { width: 180px; height: auto; object-fit: contain; flex-shrink: 0; box-sizing: border-box; padding: 10px; }
+        /* Specifico per il Logo WSET: Più grande e d'impatto */
+        .img-wset { width: 260px; height: auto; object-fit: contain; flex-shrink: 0; box-sizing: border-box; padding: 2px; }
 
         .course-card h2, .course-card h3 { 
             margin: 0; font-size: 1.5em; color: #e0ac4c; text-transform: uppercase; 
@@ -118,7 +118,6 @@
         @media screen and (min-width: 900px) {
             .courses-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
             
-            /* Forziamo la stessa altezza minima e allineamento perfetto su tutti i blocchi */
             .course-card { 
                 flex-direction: row; 
                 text-align: left; 
@@ -133,7 +132,7 @@
             .avanzato { grid-column: 2; grid-row: 2; }
             
             .img-circle { width: 200px; height: 200px; }
-            .img-wset { width: 200px; height: auto; }
+            .img-wset { width: 280px; } /* Dimensione ottimizzata per il desktop */
             
             .base .course-card, .avanzato .course-card { flex-direction: row-reverse; text-align: right; }
             .base h2, .avanzato h2 { justify-content: flex-end; }
