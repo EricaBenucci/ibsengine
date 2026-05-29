@@ -69,9 +69,22 @@
         .tech-info p { margin: 8px 0; }
         .tech-info strong { color: #e0ac4c; }
 
-        /* PULSANTE COLORE WINE SCHOOL ITALIA (#8b1a2b - Bordeaux istituzionale) */
-        .btn-acquista { display: block; background-color: #8b1a2b; color: #fff; padding: 14px; font-weight: bold; font-size: 1em; border-radius: 6px; margin-top: 15px; text-align: center; width: 100%; max-width: 440px; box-sizing: border-box; transition: 0.3s; }
-        .btn-acquista:hover { background-color: #6a1321; transform: translateY(-2px); }
+        /* PULSANTE DISABILITATO ED AGGIORNATO (Trasformato in blocco di solo testo) */
+        .btn-acquista { 
+            display: block; 
+            background-color: #8b1a2b; 
+            color: #fff; 
+            padding: 14px; 
+            font-weight: bold; 
+            font-size: 1em; 
+            border-radius: 6px; 
+            margin-top: 15px; 
+            text-align: center; 
+            width: 100%; 
+            max-width: 440px; 
+            box-sizing: border-box; 
+            cursor: default; /* Rimuove l'effetto manina mantenendo la freccia normale */
+        }
 
         /* TESTO */
         .text-column { order: 2; font-size: 1em; line-height: 1.6; font-weight: 300; color: #eee; }
@@ -143,12 +156,13 @@
                 <div class="img-column">
                     <img src="corso-wset-level-1-firenze-course.webp" class="main-course-img" alt="WSET Level 1 Beer">
                     <div class="tech-info">
-                        <p><strong>Date:</strong> 18 October 2026</p>
+                        <p><strong>Date:</strong> TO BE CONFIRMED 2026</p>
                         <p><strong>Time:</strong> 09:30 – 17:30</p>
                         <p><strong>Location:</strong> Florence, Italy</p>
                         <p><strong>Price:</strong> €270</p>
                     </div>
-                    <a href="https://wineschoolitalia.com" target="_blank" class="btn-acquista">PRENOTA SU WINE SCHOOL ITALIA</a>
+                    <!-- MODIFICATO: Rimossa l'ancora <a> per eliminare il link e cambiato il testo -->
+                    <div class="btn-acquista">info: erica @ wineschoolitalia.com</div>
                 </div>
 
                 <div class="text-column">
