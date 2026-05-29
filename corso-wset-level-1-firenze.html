@@ -51,8 +51,11 @@
         /* CONTENUTO */
         .content { flex: 1; padding: 20px; max-width: 1200px; margin: 0 auto; }
 
-        /* AREA TITOLO */
-        .page-header-wrapper { display: flex; flex-direction: column; align-items: center; margin-bottom: 30px; text-align: center; }
+        /* AREA TITOLO CON LOGO WSET */
+        .page-header-wrapper { display: flex; flex-direction: column; align-items: center; margin-bottom: 30px; text-align: center; gap: 15px; }
+        .header-title-container { display: flex; flex-direction: column; align-items: center; gap: 15px; }
+        .wset-main-logo { height: 80px; width: auto; display: block; }
+
         .title-row { display: flex; flex-direction: column; align-items: center; gap: 5px; }
         h1 { color: #e0ac4c; font-size: 2.2em; text-transform: uppercase; margin: 0; line-height: 1; }
         .subtitle-row { color: #e0ac4c; font-size: 1.3em; font-weight: 400; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 5px; }
@@ -96,7 +99,9 @@
 
         /* PC LAYOUT */
         @media screen and (min-width: 900px) {
-            .page-header-wrapper { flex-direction: row; justify-content: center; gap: 25px; align-items: baseline; margin-bottom: 40px; }
+            .page-header-wrapper { flex-direction: row; justify-content: center; gap: 35px; align-items: center; margin-bottom: 40px; }
+            .header-title-container { flex-direction: row; align-items: center; gap: 20px; }
+            .wset-main-logo { height: 95px; }
             .title-row { align-items: flex-start; }
             h1 { font-size: 3em; }
             .subtitle-row { justify-content: flex-start; font-size: 1.5em; }
@@ -140,10 +145,14 @@
 
         <main class="content">
             <div class="page-header-wrapper">
-                <div class="title-row">
-                    <h1>WSET Level 1</h1>
-                    <div class="subtitle-row">
-                        Award in Beer <img src="https://flagcdn.com/gb.svg" class="flag-round" alt="UK">
+                <!-- Contenitore strutturato per affiancare Logo e Scritte su PC -->
+                <div class="header-title-container">
+                    <img src="wset-logo.webp" class="wset-main-logo" alt="WSET Logo">
+                    <div class="title-row">
+                        <h1>WSET Level 1</h1>
+                        <div class="subtitle-row">
+                            Award in Beer <img src="https://flagcdn.com/gb.svg" class="flag-round" alt="UK">
+                        </div>
                     </div>
                 </div>
                 <div class="collab-inline">
@@ -161,7 +170,6 @@
                         <p><strong>Location:</strong> Florence, Italy</p>
                         <p><strong>Price:</strong> €270</p>
                     </div>
-                    <!-- MODIFICATO: Rimossa l'ancora <a> per eliminare il link e cambiato il testo -->
                     <div class="btn-acquista">info: erica @ wineschoolitalia.com</div>
                 </div>
 
