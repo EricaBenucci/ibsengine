@@ -98,6 +98,7 @@
             border: 1px solid rgba(224, 172, 76, 0.2);
             transition: transform 0.3s ease;
             box-sizing: border-box;
+            overflow: hidden; /* Impedisce a qualsiasi elemento di uscire dal raggio dei bordi arrotondati */
         }
         .course-card:hover { transform: scale(1.02); }
 
@@ -105,8 +106,16 @@
         .img-circle { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
         .border-gold { border: 3px solid rgba(224, 172, 76, 0.5); }
 
-        /* Specifico per il Logo WSET: Più grande e d'impatto */
-        .img-wset { width: 260px; height: auto; object-fit: contain; flex-shrink: 0; box-sizing: border-box; padding: 2px; }
+        /* Specifico per il Logo WSET: Ingrandito tramite scala per abbattere la trasparenza nativa */
+        .img-wset { 
+            width: 180px; 
+            height: auto; 
+            object-fit: contain; 
+            flex-shrink: 0; 
+            box-sizing: border-box; 
+            transform: scale(1.5); /* Aumenta la dimensione dell'ovale sfruttando lo sfondo trasparente */
+            margin-left: 20px;     /* Distanzia l'ovale ingrandito dal bordo sinistro */
+        }
 
         .course-card h2, .course-card h3 { 
             margin: 0; font-size: 1.5em; color: #e0ac4c; text-transform: uppercase; 
@@ -132,7 +141,13 @@
             .avanzato { grid-column: 2; grid-row: 2; }
             
             .img-circle { width: 200px; height: 200px; }
-            .img-wset { width: 280px; } /* Dimensione ottimizzata per il desktop */
+            
+            /* Ottimizzazione scala su Desktop per riempire visivamente il box come le foto tonde */
+            .img-wset { 
+                width: 180px; 
+                transform: scale(1.6); 
+                margin-left: 35px; 
+            }
             
             .base .course-card, .avanzato .course-card { flex-direction: row-reverse; text-align: right; }
             .base h2, .avanzato h2 { justify-content: flex-end; }
