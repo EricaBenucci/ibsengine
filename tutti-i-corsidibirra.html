@@ -105,8 +105,8 @@
         .img-circle { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
         .border-gold { border: 3px solid rgba(224, 172, 76, 0.5); }
 
-        /* Specifico per il Logo WSET: Mantiene la sua forma ellittica naturale senza tagliarlo */
-        .img-wset { width: 180px; height: auto; object-fit: contain; flex-shrink: 0; }
+        /* Specifico per il Logo WSET: forma naturale protetta e centrata */
+        .img-wset { width: 180px; height: auto; object-fit: contain; flex-shrink: 0; box-sizing: border-box; padding: 10px; }
 
         .course-card h2, .course-card h3 { 
             margin: 0; font-size: 1.5em; color: #e0ac4c; text-transform: uppercase; 
@@ -117,13 +117,24 @@
         /* Regole Responsive per la visualizzazione dei 4 corsi su Desktop */
         @media screen and (min-width: 900px) {
             .courses-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-            .course-card { flex-direction: row; text-align: left; background: rgba(0, 0, 0, 0.4); }
+            
+            /* Forziamo la stessa altezza minima e allineamento perfetto su tutti i blocchi */
+            .course-card { 
+                flex-direction: row; 
+                text-align: left; 
+                background: rgba(0, 0, 0, 0.4); 
+                min-height: 250px; 
+                align-items: center;
+            }
+            
             .wset1 { grid-column: 1; grid-row: 1; }
             .wset2 { grid-column: 1; grid-row: 2; }
             .base  { grid-column: 2; grid-row: 1; }
             .avanzato { grid-column: 2; grid-row: 2; }
+            
             .img-circle { width: 200px; height: 200px; }
             .img-wset { width: 200px; height: auto; }
+            
             .base .course-card, .avanzato .course-card { flex-direction: row-reverse; text-align: right; }
             .base h2, .avanzato h2 { justify-content: flex-end; }
             .wset1 h3, .wset2 h3 { justify-content: flex-start; }
@@ -173,7 +184,7 @@
 
             <div class="courses-grid">
                 
-                <!-- WSET LEVEL 1 - Modificato in .img-wset per mostrare l'ovale intatto -->
+                <!-- WSET LEVEL 1 -->
                 <a href="wset-level-1-firenze.html" class="wset1">
                     <div class="course-card">
                         <img src="logo-wset-course_english-beer.svg" class="img-wset" alt="WSET 1">
@@ -184,7 +195,7 @@
                     </div>
                 </a>
 
-                <!-- WSET LEVEL 2 - Modificato in .img-wset per mostrare l'ovale intatto -->
+                <!-- WSET LEVEL 2 -->
                 <a href="wset-level-2-firenze.html" class="wset2">
                     <div class="course-card">
                         <img src="logo-wset-course_english-beer.svg" class="img-wset" alt="WSET 2">
@@ -195,6 +206,7 @@
                     </div>
                 </a>
 
+                <!-- CORSO BASE -->
                 <a href="corso-birra-base-firenze.html" class="base">
                     <div class="course-card">
                         <img src="corso-birra-base-firenze.webp" class="img-circle border-gold" alt="Corso Birra Base">
@@ -205,6 +217,7 @@
                     </div>
                 </a>
 
+                <!-- CORSO AVANZATO -->
                 <a href="corso-secondo-livello-birra-firenze.html" class="avanzato">
                     <div class="course-card">
                         <img src="corso-birra-livello2-firenze.webp" class="img-circle border-gold" alt="Corso Birra Avanzato">
