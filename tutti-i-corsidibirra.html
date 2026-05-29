@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z1LYHFBGN"></script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z1LYHFBGN"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -100,8 +101,12 @@
         }
         .course-card:hover { transform: scale(1.02); }
 
+        /* Stile Immagini per Corsi Italiani (Tonde) */
         .img-circle { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
         .border-gold { border: 3px solid rgba(224, 172, 76, 0.5); }
+
+        /* Specifico per il Logo WSET: Mantiene la sua forma ellittica naturale senza tagliarlo */
+        .img-wset { width: 180px; height: auto; object-fit: contain; flex-shrink: 0; }
 
         .course-card h2, .course-card h3 { 
             margin: 0; font-size: 1.5em; color: #e0ac4c; text-transform: uppercase; 
@@ -118,6 +123,7 @@
             .base  { grid-column: 2; grid-row: 1; }
             .avanzato { grid-column: 2; grid-row: 2; }
             .img-circle { width: 200px; height: 200px; }
+            .img-wset { width: 200px; height: auto; }
             .base .course-card, .avanzato .course-card { flex-direction: row-reverse; text-align: right; }
             .base h2, .avanzato h2 { justify-content: flex-end; }
             .wset1 h3, .wset2 h3 { justify-content: flex-start; }
@@ -167,9 +173,10 @@
 
             <div class="courses-grid">
                 
+                <!-- WSET LEVEL 1 - Modificato in .img-wset per mostrare l'ovale intatto -->
                 <a href="wset-level-1-firenze.html" class="wset1">
                     <div class="course-card">
-                        <img src="logo-wset-course_english-beer.svg" class="img-circle" alt="WSET 1">
+                        <img src="logo-wset-course_english-beer.svg" class="img-wset" alt="WSET 1">
                         <div style="flex:1">
                             <h3>WSET Level 1 <img src="https://flagcdn.com/gb.svg" class="flag-round" alt="English"></h3>
                             <p>18 OCTOBER 2026</p>
@@ -177,9 +184,10 @@
                     </div>
                 </a>
 
+                <!-- WSET LEVEL 2 - Modificato in .img-wset per mostrare l'ovale intatto -->
                 <a href="wset-level-2-firenze.html" class="wset2">
                     <div class="course-card">
-                        <img src="logo-wset-course_english-beer.svg" class="img-circle" alt="WSET 2">
+                        <img src="logo-wset-course_english-beer.svg" class="img-wset" alt="WSET 2">
                         <div style="flex:1">
                             <h3>WSET Level 2 <img src="https://flagcdn.com/gb.svg" class="flag-round" alt="English"></h3>
                             <p>14, 15, 22 NOVEMBRE 2026</p>
