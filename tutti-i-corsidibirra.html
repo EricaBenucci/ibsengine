@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z1LYHFBGN"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z1LYHFBGN"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -98,7 +97,7 @@
             border: 1px solid rgba(224, 172, 76, 0.2);
             transition: transform 0.3s ease;
             box-sizing: border-box;
-            overflow: hidden; /* Impedisce a qualsiasi elemento di uscire dal raggio dei bordi arrotondati */
+            overflow: hidden;
         }
         .course-card:hover { transform: scale(1.02); }
 
@@ -106,15 +105,15 @@
         .img-circle { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
         .border-gold { border: 3px solid rgba(224, 172, 76, 0.5); }
 
-        /* Specifico per il Logo WSET: Ingrandito tramite scala per abbattere la trasparenza nativa */
+        /* Specifico per il Logo WSET: Ingrandito e normalizzato per tutti i riquadri */
         .img-wset { 
-            width: 300px; 
+            width: 180px; 
             height: auto; 
             object-fit: contain; 
             flex-shrink: 0; 
             box-sizing: border-box; 
-            transform: scale(3); /* Aumenta la dimensione dell'ovale sfruttando lo sfondo trasparente */
-            margin-left: 50px;     /* Distanzia l'ovale ingrandito dal bordo sinistro */
+            transform: scale(1.5);
+            margin-left: 20px;
         }
 
         .course-card h2, .course-card h3 { 
@@ -142,7 +141,7 @@
             
             .img-circle { width: 200px; height: 200px; }
             
-            /* Ottimizzazione scala su Desktop per riempire visivamente il box come le foto tonde */
+            /* Applica lo scale corretto a entrambi i loghi WSET della griglia */
             .img-wset { 
                 width: 180px; 
                 transform: scale(1.6); 
@@ -198,7 +197,6 @@
 
             <div class="courses-grid">
                 
-                <!-- WSET LEVEL 1 -->
                 <a href="wset-level-1-firenze.html" class="wset1">
                     <div class="course-card">
                         <img src="logo-wset-course_english-beer.svg" class="img-wset" alt="WSET 1">
@@ -209,7 +207,6 @@
                     </div>
                 </a>
 
-                <!-- WSET LEVEL 2 -->
                 <a href="wset-level-2-firenze.html" class="wset2">
                     <div class="course-card">
                         <img src="logo-wset-course_english-beer.svg" class="img-wset" alt="WSET 2">
@@ -220,7 +217,6 @@
                     </div>
                 </a>
 
-                <!-- CORSO BASE -->
                 <a href="corso-birra-base-firenze.html" class="base">
                     <div class="course-card">
                         <img src="corso-birra-base-firenze.webp" class="img-circle border-gold" alt="Corso Birra Base">
@@ -231,7 +227,6 @@
                     </div>
                 </a>
 
-                <!-- CORSO AVANZATO -->
                 <a href="corso-secondo-livello-birra-firenze.html" class="avanzato">
                     <div class="course-card">
                         <img src="corso-birra-livello2-firenze.webp" class="img-circle border-gold" alt="Corso Birra Avanzato">
