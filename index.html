@@ -35,10 +35,10 @@
             background-color: rgba(0, 0, 0, 0.6); position: relative; z-index: 1;
         }
 
-        /* --- HEADER STRUTTURATO A 3 COLONNE RIGIDE (CENTRATURA PERFETTA) --- */
+        /* --- STRUTTURA HEADER MOBILE-FIRST --- */
         header {
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
             background-color: rgba(0, 0, 0, 0.8);
             padding: 10px 15px;
@@ -48,24 +48,30 @@
             box-sizing: border-box;
         }
         
-        /* Colonna Sinistra: contiene sia l'hamburger che il badge Novità */
-        .header-left-col {
+        .hamburger-container {
+            width: 40px;
             display: flex;
-            align-items: center;
-            gap: 10px;
             justify-content: flex-start;
+            z-index: 15;
         }
-
         .hamburger-menu {
             background: none; border: none; cursor: pointer;
             display: flex; flex-direction: column; gap: 6px; width: 30px;
-            flex-shrink: 0;
         }
         .hamburger-menu .line {
             width: 30px; height: 3px; background-color: #fff; border-radius: 5px; transition: all 0.3s ease;
         }
 
-        /* Blocco Novità WSET bilanciato tra limite sinistro e logo */
+        /* GRUPPO CENTRALE: Avvicina WSET e Logo IBS tenendoli centrati */
+        .header-center-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px; /* Spazio controllato tra WSET e Logo */
+            flex: 1;
+        }
+
+        /* Blocco Novità WSET */
         .wset-news-badge {
             display: flex;
             align-items: center;
@@ -93,19 +99,14 @@
             white-space: nowrap;
         }
 
-        /* Colonna Centrale: Logo principale matematicamente centrato */
-        .header-center-col {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
         .logo-container img { height: 55px; display: block; }
 
-        /* Colonna Destra: Icona Instagram */
-        .header-right-col {
-            display: flex;
+        .nav-right { 
+            width: 40px;
+            display: flex; 
             justify-content: flex-end;
-            align-items: center;
+            align-items: center; 
+            z-index: 15;
         }
         .ig-link { font-size: 1.3em; color: #fff; }
 
@@ -167,47 +168,46 @@
 
         .footer { background-color: rgba(0, 0, 0, 0.8); text-align: center; padding: 25px; font-size: 0.9em; margin-top: auto; }
 
-        /* Media Query per Desktop e schermi più ampi */
+        /* Media Query Desktop */
         @media screen and (min-width: 801px) {
             header { padding: 20px 40px; }
-            .header-left-col { gap: 30px; }
+            .header-center-group { gap: 35px; } /* Più respiro su desktop */
             .logo-container img { height: 90px; }
             .wset-mini-logo { height: 42px; }
             .wset-news-text { font-size: 1.1em; gap: 8px; letter-spacing: 1px; }
             .wset-news-badge { gap: 12px; }
             .ig-link { font-size: 1.5em; }
+            .hamburger-container, .nav-right { width: 60px; }
         }
     </style>
 </head>
 <body>
     <div class="overlay">
         <header>
-            <!-- COLONNA SINISTRA: Menu Hamburger + Blocco Novità perfettamente vicini ed equilibrati -->
-            <div class="header-left-col">
+            <!-- CONTENITORE SINISTRO: Hamburger Menu -->
+            <div class="hamburger-container">
                 <button class="hamburger-menu" id="hamburgerBtn" aria-label="Menu">
                     <span class="line"></span><span class="line"></span><span class="line"></span>
                 </button>
-                
+            </div>
+            
+            <!-- CONTENITORE CENTRALE COMPATTO: WSET affiancato al Logo IBS -->
+            <div class="header-center-group">
                 <a href="tutti-i-corsidibirra.html" class="wset-news-badge">
                     <img src="logo-wset-course_english-beer.svg" class="wset-mini-logo" alt="WSET Logo">
                     <span class="wset-news-text">NOVITÀ <i class="fas fa-arrow-left"></i></span>
                 </a>
-            </div>
 
-            <!-- COLONNA CENTRALE: Logo IBS fisso al centro perfetto dello schermo -->
-            <div class="header-center-col">
                 <div class="logo-container">
                     <a href="index.html"><img src="Logo-IBS-italian-beer-school-firenze.png" alt="Logo IBS Italian Beer School Firenze" /></a>
                 </div>
             </div>
 
-            <!-- COLONNA DESTRA: Icona Instagram fissa al bordo destro -->
-            <div class="header-right-col">
-                <div class="nav-right">
-                    <a href="https://www.instagram.com/italianbeerschool/?hl=en" target="_blank" class="ig-link">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                </div>
+            <!-- CONTENITORE DESTRO: Instagram -->
+            <div class="nav-right">
+                <a href="https://www.instagram.com/italianbeerschool/?hl=en" target="_blank" class="ig-link">
+                    <i class="fab fa-instagram"></i>
+                </a>
             </div>
         </header>
 
