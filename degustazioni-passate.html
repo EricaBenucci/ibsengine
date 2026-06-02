@@ -175,6 +175,17 @@
             flex-grow: 1;
         }
 
+        /* Titolo della Pagina principale in Giallo/Oro IBS */
+        .content h1 {
+            color: #e0ac4c;
+            font-size: 2.2em;
+            text-transform: uppercase;
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
         .archive-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -282,6 +293,7 @@
         
         @media screen and (max-width: 800px) {
             .logo-container img { height: 65px; }
+            .content h1 { font-size: 1.6em; margin-bottom: 25px; }
         }
         
         /* Gestione schermi piccoli per prevenire overlap */
@@ -337,6 +349,8 @@
         </nav>
 
         <div class="content">
+            <h1>DEGUSTAZIONI PASSATE</h1>
+
             <div class="archive-grid">
 
                 <div class="event-card">
