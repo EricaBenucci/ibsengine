@@ -143,7 +143,7 @@
         /* Contenuto Evento       */
         /* ---------------------- */
         .content {
-            padding: 60px 20px;
+            padding: 20px 20px 60px 20px; /* Ridotto il padding top da 60px a 20px per ridurre lo spazio in alto */
             max-width: 1100px;
             margin: auto;
             flex-grow: 1;
@@ -152,6 +152,34 @@
         }
 
         h1 { color: #e0ac4c; font-size: 2.5em; margin-bottom: 20px; text-transform: uppercase; }
+        
+        /* Stile dei pulsanti di ritorno inseriti sotto il titolo */
+        .back-buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+        }
+        .btn-back {
+            font-family: 'Quicksand', sans-serif;
+            color: #e0ac4c;
+            border: 1px solid rgba(224, 172, 76, 0.4);
+            padding: 8px 16px;
+            font-size: 0.85em;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            border-radius: 5px;
+            background-color: rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+        .btn-back:hover {
+            background-color: #e0ac4c;
+            color: #000;
+            opacity: 1;
+            border-color: #e0ac4c;
+        }
+
         .event-intro { font-size: 1.2em; line-height: 1.6; color: #eee; margin-bottom: 50px; max-width: 800px; margin-left: auto; margin-right: auto; }
 
         /* Gallery SEO Optimized */
@@ -258,6 +286,12 @@
 
         <main class="content">
             <h1>Degustazione Birre Trappiste</h1>
+            
+            <div class="back-buttons-container">
+                <a href="tutti-i-corsidibirra.html" class="btn-back"><i class="fas fa-chevron-left"></i> TORNA AI CORSI DI BIRRA</a>
+                <a href="degustazioni-passate.html" class="btn-back"><i class="fas fa-chevron-left"></i> TORNA AGLI EVENTI PASSATI</a>
+            </div>
+
             <div class="event-intro">
                 <p>Gennaio 2026, Firenze.</p>
                 <p>Un viaggio nel cuore della traditione birraria dei monaci trappisti: abbiamo parlato di storie di birre con origini antiche dalla qualità costante ed eccelsa. Abbiamo assaggiato birre iconiche e introvabili tra cui la mitica Westvleteren 12, abbinate a prodotti dei monaci trappisti</p>
