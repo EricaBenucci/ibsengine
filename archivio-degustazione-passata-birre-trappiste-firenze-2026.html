@@ -155,53 +155,34 @@
 
         .event-intro { font-size: 1.2em; line-height: 1.6; color: #eee; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto; }
 
-        /* Nuovo Stile dei pulsanti di navigazione intermedi (Stile Lineare dell'immagine) */
-        .navigation-row-container {
+        /* Stile dei pulsanti di navigazione sotto il testo */
+        .nav-buttons-container {
             display: flex;
             justify-content: center;
-            align-items: center;
-            gap: 40px;
+            gap: 20px;
             margin-bottom: 40px;
             flex-wrap: wrap;
         }
         
-        .btn-inline-back {
+        .btn-navigation {
             font-family: 'Quicksand', sans-serif;
             color: #e0ac4c;
             border: 1px solid #e0ac4c;
-            padding: 6px 14px;
-            font-size: 0.85em;
+            padding: 8px 16px;
+            font-size: 0.9em;
             font-weight: bold;
             letter-spacing: 0.5px;
             background-color: transparent;
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
         }
         
-        .btn-inline-back:hover {
+        .btn-navigation:hover {
             background-color: #e0ac4c;
             color: #000;
             opacity: 1;
-        }
-
-        .btn-inline-next {
-            font-family: 'Quicksand', sans-serif;
-            color: #e0ac4c;
-            font-size: 1.1em;
-            font-weight: bold;
-            letter-spacing: 1px;
-            background-color: transparent;
-            border: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-        }
-        
-        .btn-inline-next:hover {
-            opacity: 0.8;
         }
 
         /* Gallery SEO Optimized */
@@ -257,7 +238,6 @@
             h1 { font-size: 1.8em; }
             .logo-container img { height: 65px; }
             .photo-gallery { grid-template-columns: 1fr; }
-            .navigation-row-container { gap: 20px; }
         }
 
         @media screen and (max-width: 430px) {
@@ -315,10 +295,9 @@
                 <p>Un viaggio nel cuore della traditione birraria dei monaci trappisti: abbiamo parlato di storie di birre con origini antiche dalla qualità costante ed eccelsa. Abbiamo assaggiato birre iconiche e introvabili tra cui la mitica Westvleteren 12, abbinate a prodotti dei monaci trappisti</p>
             </div>
 
-            <!-- NUOVA POSIZIONE PULSANTI: TRA IL TESTO E LE FOTO (Come da immagine allegata) -->
-            <div class="navigation-row-container">
-                <a href="degustazioni-passate.html" class="btn-inline-back">&lt; TORNA AGLI EVENTI PASSATI</a>
-                <a href="index.html" class="btn-inline-next">PROSSIMI EVENTI &gt;</a>
+            <div class="nav-buttons-container">
+                <a href="degustazioni-passate.html" class="btn-navigation"><i class="fas fa-chevron-left"></i> TORNA AGLI EVENTI PASSATI</a>
+                <a href="index.html" class="btn-navigation">PROSSIMI EVENTI <i class="fas fa-chevron-right"></i></a>
             </div>
 
             <div class="photo-gallery">
