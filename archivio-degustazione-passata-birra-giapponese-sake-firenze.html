@@ -154,6 +154,37 @@
         h1 { color: #e0ac4c; font-size: 2.5em; margin-bottom: 20px; text-transform: uppercase; }
         .event-intro { font-size: 1.2em; line-height: 1.6; color: #eee; margin-bottom: 50px; max-width: 800px; margin-left: auto; margin-right: auto; }
 
+        /* Stile dei pulsanti di navigazione */
+        .nav-buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px; 
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .btn-navigation {
+            font-family: 'Quicksand', sans-serif;
+            color: #e0ac4c;
+            border: 1px solid #e0ac4c;
+            padding: 8px 16px;
+            font-size: 0.9em;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            background-color: transparent;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-navigation:hover {
+            background-color: #e0ac4c;
+            color: #000;
+            opacity: 1;
+        }
+
         /* Gallery SEO Optimized & Mobile Friendly */
         .photo-gallery {
             display: grid;
@@ -164,7 +195,7 @@
 
         .photo-gallery img {
             width: 100%;
-            aspect-ratio: 16/9; /* Proporzione corretta 16:9 anti-taglio */
+            aspect-ratio: 16/9;
             object-fit: cover;
             border-radius: 10px;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -268,13 +299,11 @@
                 <img src="foto-archivio-dettaglio-cucina-giapponese-oko-abbinamento-birra-artigianale.webp" alt="Dettaglio dei piatti della cucina giapponese abbinati alla birra artigianale">
                 <img src="foto-archivio-birre-giapponesi-giappone-introvabile-artigianali-profumate.webp" alt="Selezione di birre artigianali giapponesi introvabili e profumate">
             </div>
-        </main>
 
-        <div class="nav-buttons-container">
+            <div class="nav-buttons-container">
                 <a href="degustazioni-passate.html" class="btn-navigation"><i class="fas fa-chevron-left"></i> TORNA AGLI EVENTI PASSATI</a>
                 <a href="index.html" class="btn-navigation">PROSSIMI EVENTI <i class="fas fa-chevron-right"></i></a>
             </div>
-
         </main>
         
         <footer class="footer">
