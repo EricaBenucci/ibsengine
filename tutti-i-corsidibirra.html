@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z1LYHFBGN"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z1LYHFBGN"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -67,14 +66,11 @@
         .menu-pop-up.open { left: 0; }
         .close-menu { position: absolute; top: 25px; right: 25px; font-size: 2.5em; cursor: pointer; }
 
-        /* Icone Bandiere */
         .flag-rect { width: 20px; height: auto; border-radius: 2px; vertical-align: middle; }
         .flag-round { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; vertical-align: middle; margin-left: 10px; border: 1px solid rgba(255,255,255,0.2); }
 
-        /* Contenuto */
         .content { flex: 1; padding: 40px 20px; max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
 
-        /* Box Minimo per SEO */
         .seo-box {
             background: rgba(0, 0, 0, 0.5);
             padding: 10px 20px;
@@ -94,7 +90,7 @@
         .course-card {
             display: flex; flex-direction: column; align-items: center;
             background: rgba(45, 25, 10, 0.8); padding: 25px;
-            border-radius: 20px; text-align: center; gap: 15px;
+            border-radius: 20px; text-align: center; gap: 10px;
             border: 1px solid rgba(224, 172, 76, 0.2);
             transition: transform 0.3s ease;
             box-sizing: border-box;
@@ -102,18 +98,22 @@
         }
         .course-card:hover { transform: scale(1.02); }
 
-        /* Stile Immagini per Corsi Italiani (Tonde) */
+        /* Stile Coming Soon */
+        .coming-soon { 
+            color: #2b59c3; 
+            font-weight: bold; 
+            font-size: 0.9em; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            margin-bottom: 5px; 
+        }
+
         .img-circle { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
         .border-gold { border: 3px solid rgba(224, 172, 76, 0.5); }
 
-        /* NUOVA STRUTTURA LOGO WSET: Ingrandito direttamente in larghezza nativa per bypassare i blocchi */
         .img-wset { 
-            width: 260px;             /* Dimensione reale massimizzata per mobile */
-            height: 180px;            /* Altezza fissa pari alle immagini tonde per perfetto bilanciamento */
-            object-fit: contain;      /* Mantiene le proporzioni perfette dell'ovale */
-            flex-shrink: 0; 
-            box-sizing: border-box; 
-            margin: 0;                /* Centratura fluida nativa */
+            width: 260px; height: 180px; 
+            object-fit: contain; flex-shrink: 0; margin: 0;
         }
 
         .course-card h2, .course-card h3 { 
@@ -122,32 +122,18 @@
         }
         .course-card p { margin: 5px 0; font-size: 1.1em; font-weight: bold; }
 
-        /* Regole Responsive per la visualizzazione dei 4 corsi su Desktop */
         @media screen and (min-width: 900px) {
             .courses-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-            
             .course-card { 
-                flex-direction: row; 
-                text-align: left; 
-                background: rgba(0, 0, 0, 0.4); 
-                min-height: 250px; 
-                align-items: center;
+                flex-direction: row; text-align: left; background: rgba(0, 0, 0, 0.4); 
+                min-height: 250px; align-items: center;
             }
-            
             .wset1 { grid-column: 1; grid-row: 1; }
             .wset2 { grid-column: 1; grid-row: 2; }
             .base  { grid-column: 2; grid-row: 1; }
             .avanzato { grid-column: 2; grid-row: 2; }
-            
             .img-circle { width: 200px; height: 200px; }
-            
-            /* Su PC portiamo la larghezza a 280px per pareggiare visivamente l'impatto dei cerchi dorati */
-            .img-wset { 
-                width: 280px; 
-                height: 200px; 
-                margin-left: 15px; 
-            }
-            
+            .img-wset { width: 280px; height: 200px; margin-left: 15px; }
             .base .course-card, .avanzato .course-card { flex-direction: row-reverse; text-align: right; }
             .base h2, .avanzato h2 { justify-content: flex-end; }
             .wset1 h3, .wset2 h3 { justify-content: flex-start; }
@@ -177,12 +163,10 @@
             <div class="close-menu" onclick="toggleMenu()">&times;</div>
             <a href="index.html">HOME</a>
             <a href="tutti-i-corsidibirra.html">CORSI DI BIRRA</a>
-            
             <a href="corso-wset-level-1-firenze.html" class="sub-menu">• WSET LEVEL 1 <img src="https://flagcdn.com/gb.svg" class="flag-rect" alt="English"></a>
             <a href="corso-wset-level-2-firenze.html" class="sub-menu">• WSET LEVEL 2 <img src="https://flagcdn.com/gb.svg" class="flag-rect" alt="English"></a>
             <a href="corso-birra-base-firenze.html" class="sub-menu">• CORSO BASE <img src="https://flagcdn.com/it.svg" class="flag-rect" alt="Italiano"></a>
             <a href="corso-secondo-livello-birra-firenze.html" class="sub-menu">• CORSO AVANZATO <img src="https://flagcdn.com/it.svg" class="flag-rect" alt="Italiano"></a>
-            
             <a href="curiosita-birra.html">LO SAPEVI CHE?</a>
             <a href="quiz-di-birra.html">QUIZ</a>
             <a href="degustazioni-passate.html">DEGUSTAZIONI PASSATE</a>
@@ -197,44 +181,44 @@
 
             <div class="courses-grid">
                 
-                <!-- WSET LEVEL 1 -->
                 <a href="corso-wset-level-1-firenze.html" class="wset1">
                     <div class="course-card">
                         <img src="logo-wset-course_english-beer.svg" class="img-wset" alt="WSET 1">
                         <div style="flex:1">
+                            <div class="coming-soon">Coming soon!</div>
                             <h3>WSET Level 1 <img src="https://flagcdn.com/gb.svg" class="flag-round" alt="English"></h3>
                             <p>FLORENCE, OCTOBER 2026</p>
                         </div>
                     </div>
                 </a>
 
-                <!-- WSET LEVEL 2 -->
                 <a href="corso-wset-level-2-firenze.html" class="wset2">
                     <div class="course-card">
                         <img src="logo-wset-course_english-beer.svg" class="img-wset" alt="WSET 2">
                         <div style="flex:1">
+                            <div class="coming-soon">Coming soon!</div>
                             <h3>WSET Level 2 <img src="https://flagcdn.com/gb.svg" class="flag-round" alt="English"></h3>
                             <p>FLORENCE, TO BE CONFIRMED</p>
                         </div>
                     </div>
                 </a>
 
-                <!-- CORSO BASE -->
                 <a href="corso-birra-base-firenze.html" class="base">
                     <div class="course-card">
                         <img src="corso-birra-base-firenze.webp" class="img-circle border-gold" alt="Corso Birra Base">
                         <div style="flex:1">
+                            <div class="coming-soon">Coming soon!</div>
                             <h2><img src="https://flagcdn.com/it.svg" class="flag-round" alt="Italiano"> Corso Base</h2>
                             <p>1, 8, 15 e 22 OTTOBRE 2026</p>
                         </div>
                     </div>
                 </a>
 
-                <!-- CORSO AVANZATO -->
                 <a href="corso-secondo-livello-birra-firenze.html" class="avanzato">
                     <div class="course-card">
                         <img src="corso-birra-livello2-firenze.webp" class="img-circle border-gold" alt="Corso Birra Avanzato">
                         <div style="flex:1">
+                            <div class="coming-soon">Coming soon!</div>
                             <h2><img src="https://flagcdn.com/it.svg" class="flag-round" alt="Italiano"> Corso Avanzato</h2>
                             <p>GENNAIO 2027</p>
                         </div>
