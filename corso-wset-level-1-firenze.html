@@ -61,7 +61,6 @@
         .subtitle-row { color: #e0ac4c; font-size: 1.3em; font-weight: 400; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 5px; }
         .flag-round { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; border: 1px solid #fff; }
         .collab-inline { font-size: 0.85em; color: #bbb; display: flex; align-items: center; gap: 8px; margin-top: 10px; }
-        .collab-inline img { height: 25px; width: auto; }
 
         /* LAYOUT MAIN */
         .main-container { display: flex; flex-direction: column; gap: 25px; }
@@ -72,7 +71,7 @@
         .tech-info p { margin: 8px 0; }
         .tech-info strong { color: #e0ac4c; }
 
-        /* PULSANTE DISABILITATO ED AGGIORNATO (Trasformato in blocco di solo testo) */
+        /* PULSANTE DISABILITATO ED AGGIORNATO */
         .btn-acquista { 
             display: block; 
             background-color: #8b1a2b; 
@@ -86,7 +85,7 @@
             width: 100%; 
             max-width: 440px; 
             box-sizing: border-box; 
-            cursor: default; /* Rimuove l'effetto manina mantenendo la freccia normale */
+            cursor: default;
         }
 
         /* TESTO */
@@ -145,7 +144,6 @@
 
         <main class="content">
             <div class="page-header-wrapper">
-                <!-- Contenitore strutturato per affiancare Logo e Scritte su PC -->
                 <div class="header-title-container">
                     <img src="logo-wset-course_english-beer.svg" class="wset-main-logo" alt="WSET Logo">
                     <div class="title-row">
@@ -155,6 +153,8 @@
                         </div>
                     </div>
                 </div>
+                <div class="collab-inline">
+                    <span>In collaboration with Wine School Italia</span>
                 </div>
             </div>
 
@@ -171,7 +171,8 @@
                 </div>
 
                 <div class="text-column">
-                    <p>COURSE PROVIDED BY WINE SCHOOL ITALIA.</p>The WSET Level 1 Award in Beer provides a great introduction to the world of beer. Learning through sight, smell and taste, you'll become familiar with a range of beer styles and how they are made.</p>
+                    <p>COURSE PROVIDED BY WINE SCHOOL ITALIA.</p>
+                    <p>The WSET Level 1 Award in Beer provides a great introduction to the world of beer. Learning through sight, smell and taste, you'll become familiar with a range of beer styles and how they are made.</p>
                     <p>If you work with beer, you’ll be able to answer customer queries with confidence. If you’re learning for fun, you’ll feel inspired to explore new styles and know how to get the most out of every glass.</p>
                     <h3>What's covered?</h3>
                     <ul>
