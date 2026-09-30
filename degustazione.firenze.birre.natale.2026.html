@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Birre di Natale - Scuola di Birra</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet" />
+    <style>
+        /* Stili di base */
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Quicksand', sans-serif;
+            background: url('sfondobichiere.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            height: 100%;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        a:visited {
+            color: inherit;
+            text-decoration: none;
+        }
+        .overlay {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: rgba(0, 0, 0, 0.6);
+            position: relative;
+            z-index: 1;
+        }
+        /* HEADER / NAVBAR */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 85px 20px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+        .logo-container {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0;
+            border-radius: 0;
+            background-color: transparent;
+        }
+        .logo-container img {
+            height: 110px;
+        }
+        .hamburger-menu {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            width: 30px;
+            height: 30px;
+        }
+        .hamburger-menu .line {
+            width: 30px;
+            height: 3px;
+            background-color: #fff;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .hamburger-menu.open .line:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+        .hamburger-menu.open .line:nth-child(2) { opacity: 0; }
+        .hamburger-menu.open .line:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+        
+        /* Pop-up Menu Laterale */
+        .menu-pop-up {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 280px;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            color: #fff;
+            padding-top: 80px;
+            transition: left 0.3s ease-in-out;
+            z-index: 4;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .menu-pop-up a {
+            padding: 15px 20px;
+            display: block;
+            font-size: 1.2em;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .menu-pop-up a:hover { background-color: rgba(255, 255, 255, 0.1); }
+        .menu-pop-up.open { left: 0; }
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #fff;
+            font-size: 2em;
+            cursor: pointer;
+        }
+        /* ---------------------- */
+        /* Contenuto Pagina       */
+        /* ---------------------- */
+        .page-content {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+            flex-grow: 1;
+        }
+        .page-title {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .page-subtitle {
+            font-size: 1.5em;
+            margin-top: -10px;
+            margin-bottom: 20px;
+        }
+        .event-info {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .event-quote {
+            font-style: italic;
+            margin: 20px 0;
+            font-size: 1.2em;
+        }
+        .section-heading {
+            font-size: 2em;
+            font-weight: bold;
+            margin-top: 40px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+        .program-list {
+            text-align: left;
+            margin: 0 auto;
+            max-width: 500px;
+            list-style-type: none;
+            padding: 0;
+        }
+        .program-list li {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        .price-box {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            display: inline-block;
+            text-align: center;
+        }
+        .price-heading {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .price-list {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+        .price-list li {
+            font-size: 1.2em;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .price-list .discount {
+            font-size: 1em;
+            font-weight: normal;
+        }
+        .event-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            margin: 20px 0;
+        }
+       .buy-button {
+            display: inline-block;
+            background-color: #e0ac4c;
+            color: #000;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+        .buy-button:hover {
+            background-color: #c4913e;
+        }
+        /* FOOTER */
+        .footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9em;
+            margin-top: 40px;
+        }
+        .footer a {
+            color: #fff;
+            text-decoration: underline;
+        }
+        /* ---------------------- */
+        /* Responsive rules       */
+        /* ---------------------- */
+        @media screen and (max-width: 1200px) {
+            .page-title { font-size: 2.5em; }
+            .page-subtitle { font-size: 1.2em; }
+            .logo-container img { height: 90px; }
+        }
+        @media screen and (max-width: 800px) {
+            header { padding: 30px 10px; }
+            .logo-container img { height: 65px; }
+            .page-title { font-size: 2em; }
+            .page-subtitle { font-size: 1em; }
+            .program-list { max-width: 90%; }
+        }
+        @media screen and (max-width: 500px) {
+            .page-content { padding: 10px; }
+            .event-image { width: 90%; }
+            .logo-container img { height: 55px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <header>
+            <button class="hamburger-menu" aria-label="Menu">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </button>
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="logonew.png" alt="Logo ITALIAN BEER SCHOOL" />
+                </a>
+            </div>
+            <div style="width: 35px;"></div>
+        </header>
+
+        <div class="menu-pop-up">
+            <div class="close-menu">&times;</div>
+            <a href="index.html">HOME</a>
+            <a href="prossimieventi.html">PROSSIMI EVENTI</a>
+            <a href="losapeviche.html">LO SAPEVI CHE?</a>
+            <a href="corsodibirra.html">CORSO DI BIRRA</a>
+            <a href="degustazionipassate.html">DEGUSTAZIONI PASSATE</a>
+            <a href="contatti.html">CONTATTI</a>
+        </div>
+
+        <main class="page-content">
+            <h1 class="page-title">BIRRE DI NATALE</h1>
+            <div class="event-quote page-subtitle">
+                "La birra è poesia liquida e a Natale diventa magia."
+            </div>
+            <h2 class="page-subtitle">Venerdì 17 Novembre 2026, ore 20:30 - 23:00 </h2>
+            <img src="birrenatale.jpg" alt="Birre di Natale" class="event-image" />
+            <div class="event-info">
+                📍 Luogo da confermare – Firenze  
+            </div>
+            <div class="event-info">
+                Lasciati avvolgere dall’atmosfera natalizia con una serata unica dedicata alle BIRRE DI NATALE.
+                Un viaggio sensoriale tra aromi natalizi e birre iconiche
+            </div>
+            <h3 class="section-heading">✨ Programma della serata🎄 </h3>
+            <ul class="program-list">
+                <li>🍺 Degustazione guidata di cinque birre natalizie e invernali</li>
+                <li>🥨🧀 assaggi salati in abbinamento </li>
+                <li>🍰 assaggi di dolci natalizi in abbinamento</li>
+                <li>🎁⭐ Quiz con sorteggio finale: in palio una birra speciale!⭐</li>
+            </ul>
+            <div class="price-box">
+                <div class="price-heading">Quota di partecipazione</div>
+                <ul class="price-list">
+                    <li>€35,00</li>
+                    <li>
+                    </li>
+                </ul>
+                <a href="https://www.eventbrite.it/e/birre-di-natale-tickets-1858598481089?aff=oddtdtcreator" 
+                    class="buy-button" 
+                    target="_blank">
+                    ACQUISTA ORA IL TUO BIGLIETTO!
+                </a>
+            </div>
+        </main>
+
+        <div class="footer">
+            2026 ITALIAN BEER SCHOOL – Tutti i diritti riservati P.IVA: IT07436420488 | <a href="privacy.html">Privacy</a>
+        </div>
+    </div>
+    <script>
+        const hamburgerBtn = document.querySelector('.hamburger-menu');
+        const menuPopUp = document.querySelector('.menu-pop-up');
+        const closeMenuBtn = document.querySelector('.close-menu');
+
+        function toggleMenu() {
+            menuPopUp.classList.toggle('open');
+            hamburgerBtn.classList.toggle('open');
+        }
+
+        // Event listener per il pulsante del menu hamburger
+        hamburgerBtn.addEventListener('click', toggleMenu);
+        // Event listener per il pulsante di chiusura del menu
+        closeMenuBtn.addEventListener('click', toggleMenu);
+        
+        // Rimosso l'event listener per il pulsante 'addToCartBtn' che non è più un pulsante
+    </script>
+</body>
+</html>
