@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z1LYHFBGN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-1Z1LYHFBGN');
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Biglietti Regalo Corso ed Eventi Birra - IBS Italian Beer School</title>
+    
+    <!-- Meta Description Ottimizzata -->
+    <meta name="description" content="Scarica i biglietti di auguri e voucher regalo in PDF per i corsi di degustazione birra ed eventi della Italian Beer School di Firenze.">
+    
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <style>
+        /* RESET E STILI BASE */
+        html, body {
+            margin: 0; padding: 0; height: 100%;
+            font-family: 'Quicksand', sans-serif;
+            background: url('sfondo-birra-scuola.webp') no-repeat center center fixed;
+            background-size: cover; color: #fff; overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; transition: opacity 0.3s; }
+        a:hover { opacity: 0.9; }
+        
+        .overlay {
+            display: flex; flex-direction: column; min-height: 100vh;
+            background-color: rgba(0, 0, 0, 0.75); position: relative; z-index: 1;
+        }
+
+        /* HEADER */
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            background-color: rgba(0, 0, 0, 0.85); padding: 15px 20px;
+            position: relative; z-index: 10; min-height: 70px;
+        }
+        .logo-container { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+        .logo-container img { height: 70px; display: block; }
+        .nav-right { z-index: 15; }
+        .ig-link { font-size: 1.5em; color: #fff; }
+
+        .hamburger-menu {
+            background: none; border: none; cursor: pointer;
+            display: flex; flex-direction: column; gap: 6px; width: 30px; z-index: 15;
+        }
+        .hamburger-menu .line { width: 30px; height: 3px; background-color: #fff; border-radius: 5px; }
+
+        /* MENU LATERALE */
+        .menu-pop-up {
+            position: fixed; top: 0; left: -300px; width: 280px; height: 100%;
+            background-color: rgba(0, 0, 0, 0.95); padding-top: 80px;
+            transition: left 0.3s ease-in-out; z-index: 14; display: flex; flex-direction: column;
+        }
+        .menu-pop-up.open { left: 0; }
+        .menu-pop-up a { padding: 12px 25px; font-size: 1.1em; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .menu-pop-up a.sub-menu { padding-left: 45px; font-size: 0.9em; color: #e0ac4c; border-bottom: none; display: flex; align-items: center; gap: 8px; }
+        .flag-rect { width: 20px; }
+
+        /* CONTENUTO */
+        .content { flex: 1; padding: 20px; max-width: 1100px; margin: 0 auto; width: 100%; box-sizing: border-box; }
+
+        .page-header-wrapper { text-align: center; margin-bottom: 30px; }
+        h1 { color: #e0ac4c; font-size: 2em; text-transform: uppercase; margin: 0 0 10px 0; }
+        .page-intro { font-size: 1.1em; line-height: 1.5; color: #eee; max-width: 800px; margin: 0 auto; }
+
+        /* GRIGLIA BIGLIETTI (Coppie di 2 su PC / 1 colonna su Mobile) */
+        .tickets-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .ticket-card {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(224, 172, 76, 0.3);
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .ticket-card:hover {
+            transform: translateY(-5px);
+            border-color: #e0ac4c;
+        }
+
+        .ticket-img-wrapper {
+            width: 100%;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .ticket-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        .ticket-card:hover .ticket-img {
+            transform: scale(1.03);
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: #e0ac4c;
+            color: #000;
+            font-weight: bold;
+            padding: 12px 20px;
+            border-radius: 6px;
+            margin-top: auto;
+            width: 80%;
+            transition: background-color 0.3s;
+        }
+        .download-btn:hover {
+            background-color: #f5c469;
+        }
+
+        /* MEDIA QUERIES PER TABLET E DESKTOP (2 per riga) */
+        @media screen and (min-width: 768px) {
+            .tickets-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 35px;
+            }
+            h1 { font-size: 2.4em; }
+        }
+
+        .footer { background: rgba(0, 0, 0, 0.85); text-align: center; padding: 15px; font-size: 0.8em; margin-top: auto; }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <header>
+            <button class="hamburger-menu" onclick="toggleMenu()" aria-label="Menu">
+                <span class="line"></span><span class="line"></span><span class="line"></span>
+            </button>
+            <div class="logo-container">
+                <a href="index.html"><img src="Logo-IBS-italian-beer-school-firenze.png" alt="Logo IBS" /></a>
+            </div>
+            <div class="nav-right">
+                <a href="https://www.instagram.com/italianbeerschool/" target="_blank" class="ig-link"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </header>
+
+        <nav class="menu-pop-up" id="mobileMenu">
+            <a href="index.html">HOME</a>
+            <a href="tutti-i-corsidibirra.html">CORSI DI BIRRA</a>
+            <a href="corso-wset-level-1-firenze.html" class="sub-menu">• WSET LEVEL 1 <img src="https://flagcdn.com/gb.svg" class="flag-rect"></a>
+            <a href="corso-wset-level-2-firenze.html" class="sub-menu">• WSET LEVEL 2 <img src="https://flagcdn.com/gb.svg" class="flag-rect"></a>
+            <a href="corso-birra-base-firenze.html" class="sub-menu">• CORSO BASE <img src="https://flagcdn.com/it.svg" class="flag-rect"></a>
+            <a href="corso-secondo-livello-birra-firenze.html" class="sub-menu">• CORSO AVANZATO <img src="https://flagcdn.com/it.svg" class="flag-rect"></a>
+            <a href="curiosita-birra.html">LO SAPEVI CHE?</a>
+            <a href="quiz-di-birra.html">QUIZ</a>
+            <a href="degustazioni-passate.html">DEGUSTAZIONI PASSATE</a>
+            <a href="bio.html">CHI SONO</a>
+            <a href="contatti.html">CONTATTI</a>
+        </nav>
+
+        <main class="content">
+            <div class="page-header-wrapper">
+                <h1>BIGLIETTI REGALO</h1>
+                <p class="page-intro">Hai regalato un corso o una serata di degustazione? Scarica e stampa il biglietto di auguri in formato PDF da consegnare a chi desideri!</p>
+            </div>
+
+            <div class="tickets-grid">
+                <!-- SCHEDA 1: Surfista -->
+                <div class="ticket-card">
+                    <div class="ticket-img-wrapper">
+                        <a href="surfista.biglietto.auguri.compleanno.scuola.birra.ibs.pdf" target="_blank">
+                            <img src="surfista.biglietto.auguri.compleanno.scuola.birra.ibs.webp" alt="Biglietto Auguri Surfista IBS" class="ticket-img" onerror="this.src='surfista.biglietto.auguri.compleanno.scuola.birra.ibs.png'; this.onerror=null;">
+                        </a>
+                    </div>
+                    <a href="surfista.biglietto.auguri.compleanno.scuola.birra.ibs.pdf" download class="download-btn">
+                        <i class="fa-solid fa-file-pdf"></i> SCARICA PDF
+                    </a>
+                </div>
+
+                <!-- SCHEDA 2: Laureato -->
+                <div class="ticket-card">
+                    <div class="ticket-img-wrapper">
+                        <a href="laureato.biglietto.auguri.compleanno.scuola.birra.ibs.pdf" target="_blank">
+                            <img src="laureato.biglietto.auguri.compleanno.scuola.birra.ibs.webp" alt="Biglietto Auguri Laureato IBS" class="ticket-img" onerror="this.src='laureato.biglietto.auguri.compleanno.scuola.birra.ibs.png'; this.onerror=null;">
+                        </a>
+                    </div>
+                    <a href="laureato.biglietto.auguri.compleanno.scuola.birra.ibs.pdf" download class="download-btn">
+                        <i class="fa-solid fa-file-pdf"></i> SCARICA PDF
+                    </a>
+                </div>
+
+                <!-- SCHEDA 3: Calici -->
+                <div class="ticket-card">
+                    <div class="ticket-img-wrapper">
+                        <a href="calici.biglietto.auguri.compleanno.scuola.birra.ibs.pdf" target="_blank">
+                            <img src="calici.biglietto.auguri.compleanno.scuola.birra.ibs.webp" alt="Biglietto Auguri Calici IBS" class="ticket-img" onerror="this.src='calici.biglietto.auguri.compleanno.scuola.birra.ibs.png'; this.onerror=null;">
+                        </a>
+                    </div>
+                    <a href="calici.biglietto.auguri.compleanno.scuola.birra.ibs.pdf" download class="download-btn">
+                        <i class="fa-solid fa-file-pdf"></i> SCARICA PDF
+                    </a>
+                </div>
+
+                <!-- SCHEDA 4: Informazioni -->
+                <div class="ticket-card">
+                    <div class="ticket-img-wrapper">
+                        <a href="informazioni.biglietto.auguri.compleanno.scuola.birra.ibs.pdf" target="_blank">
+                            <img src="informazioni.biglietto.auguri.compleanno.scuola.birra.ibs.webp" alt="Biglietto Informazioni IBS" class="ticket-img" onerror="this.src='informazioni.biglietto.auguri.compleanno.scuola.birra.ibs.png'; this.onerror=null;">
+                        </a>
+                    </div>
+                    <a href="informazioni.biglietto.auguri.compleanno.scuola.birra.ibs.pdf" download class="download-btn">
+                        <i class="fa-solid fa-file-pdf"></i> SCARICA PDF
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            © 2026 IBS ITALIAN BEER SCHOOL – P.IVA: IT07436420488 | <a href="privacy.html" style="color:#e0ac4c">Privacy</a>
+        </footer>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
