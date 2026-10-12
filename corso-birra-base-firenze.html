@@ -116,6 +116,29 @@
         }
         .second-level-link:hover { transform: scale(1.02); opacity: 0.8; }
 
+        /* PULSANTE BIGLIETTI REGALO */
+        .gift-button-container {
+            margin-top: 15px;
+            text-align: left;
+        }
+        .gift-btn {
+            display: inline-block;
+            background-color: #e0ac4c;
+            color: #000;
+            font-size: 0.9em;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .gift-btn:hover {
+            background-color: #f5c469;
+            transform: scale(1.02);
+            opacity: 1;
+        }
+
         /* PULSANTE SECONDARIO SOLO MOBILE */
         .mobile-buy-bottom { display: none; margin: 30px 0; text-align: center; }
 
@@ -134,6 +157,7 @@
             .box { width: 45%; min-width: 140px; }
             .mobile-buy-bottom { display: block; }
             .second-level-container { text-align: center; }
+            .gift-button-container { text-align: center; }
         }
 
         .footer { background: rgba(0, 0, 0, 0.85); text-align: center; padding: 15px; font-size: 0.8em; margin-top: auto; }
@@ -242,6 +266,12 @@
                     <div class="second-level-container">
                         <!-- H3: Titolo di terzo livello per argomenti correlati -->
                         <h3>Interessato a un livello superiore? <a href="corso-secondo-livello-birra-firenze.html" class="second-level-link">Vai al Corso Avanzato</a></h3>
+                    </div>
+
+                    <div class="gift-button-container">
+                        <a href="biglietti.regalo.corso.evento.birra.html" class="gift-btn">
+                            <i class="fa-solid fa-gift"></i> Scarica Biglietto Regalo
+                        </a>
                     </div>
 
                     <div class="mobile-buy-bottom">
