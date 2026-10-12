@@ -71,7 +71,7 @@
         h1 { color: #e0ac4c; font-size: 2em; text-transform: uppercase; margin: 0 0 10px 0; }
         .page-intro { font-size: 1.1em; line-height: 1.5; color: #eee; max-width: 800px; margin: 0 auto; }
 
-        /* GRIGLIA BIGLIETTI (Coppie di 2 su PC / 1 colonna su Mobile) */
+        /* GRIGLIA BIGLIETTI (2 colonne su PC / 1 colonna su Mobile) */
         .tickets-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -80,15 +80,15 @@
         }
 
         .ticket-card {
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(224, 172, 76, 0.3);
+            background: rgba(0, 0, 0, 0.65);
+            border: 1px solid rgba(224, 172, 76, 0.4);
             border-radius: 12px;
-            padding: 15px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.5);
             transition: transform 0.3s ease, border-color 0.3s ease;
         }
         .ticket-card:hover {
@@ -96,22 +96,32 @@
             border-color: #e0ac4c;
         }
 
+        /* BOX GRAFICO PER ANTEPRIMA CON ICONA */
         .ticket-img-wrapper {
             width: 100%;
-            overflow: hidden;
+            height: 180px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             border-radius: 8px;
             margin-bottom: 15px;
+            background: rgba(224, 172, 76, 0.08);
+            border: 1px dashed rgba(224, 172, 76, 0.4);
+            gap: 12px;
         }
 
-        .ticket-img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 8px;
-            transition: transform 0.3s ease;
+        .ticket-icon {
+            font-size: 3.5em;
+            color: #e0ac4c;
         }
-        .ticket-card:hover .ticket-img {
-            transform: scale(1.03);
+
+        .ticket-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .download-btn {
@@ -125,7 +135,8 @@
             padding: 12px 20px;
             border-radius: 6px;
             margin-top: auto;
-            width: 80%;
+            width: 100%;
+            box-sizing: border-box;
             transition: background-color 0.3s;
         }
         .download-btn:hover {
@@ -181,49 +192,53 @@
             <div class="tickets-grid">
                 <!-- SCHEDA 1: Surfista -->
                 <div class="ticket-card">
-                    <div class="ticket-img-wrapper">
-                        <a href="surfista.biglietto.auguri.compleanno.scuola.birra.ibs.pdf" target="_blank">
-                            <img src="surfista.biglietto.auguri.compleanno.scuola.birra.ibs.pdf" alt="Biglietto Auguri Surfista IBS" class="ticket-img" onerror="this.src='surfista.biglietto.auguri.compleanno.scuola.birra.ibs.png'; this.onerror=null;">
-                        </a>
-                    </div>
+                    <a href="surfista.biglietto.auguri.compleanno.scuola.birra.ibs.pdf" target="_blank" style="width:100%;">
+                        <div class="ticket-img-wrapper">
+                            <i class="fa-solid fa-gift ticket-icon"></i>
+                            <span class="ticket-title">Biglietto Surfista</span>
+                        </div>
+                    </a>
                     <a href="surfista.biglietto.auguri.compleanno.scuola.birra.ibs.pdf" download class="download-btn">
-                        <i class="fa-solid fa-file-pdf"></i> SCARICA PDF
+                        <i class="fa-solid fa-file-pdf"></i> SCARICA PDF SURFISTA
                     </a>
                 </div>
 
                 <!-- SCHEDA 2: Laureato -->
                 <div class="ticket-card">
-                    <div class="ticket-img-wrapper">
-                        <a href="laureato.biglietto.auguri.compleanno.scuola.birra.ibs.pdf" target="_blank">
-                            <img src="laureato.biglietto.auguri.compleanno.scuola.birra.ibs.pdf" alt="Biglietto Auguri Laureato IBS" class="ticket-img" onerror="this.src='laureato.biglietto.auguri.compleanno.scuola.birra.ibs.png'; this.onerror=null;">
-                        </a>
-                    </div>
+                    <a href="laureato.biglietto.auguri.compleanno.scuola.birra.ibs.pdf" target="_blank" style="width:100%;">
+                        <div class="ticket-img-wrapper">
+                            <i class="fa-solid fa-graduation-cap ticket-icon"></i>
+                            <span class="ticket-title">Biglietto Laureato</span>
+                        </div>
+                    </a>
                     <a href="laureato.biglietto.auguri.compleanno.scuola.birra.ibs.pdf" download class="download-btn">
-                        <i class="fa-solid fa-file-pdf"></i> SCARICA PDF
+                        <i class="fa-solid fa-file-pdf"></i> SCARICA PDF LAUREATO
                     </a>
                 </div>
 
                 <!-- SCHEDA 3: Calici -->
                 <div class="ticket-card">
-                    <div class="ticket-img-wrapper">
-                        <a href="calici.biglietto.auguri.compleanno.scuola.birra.ibs.pdf" target="_blank">
-                            <img src="calici.biglietto.auguri.compleanno.scuola.birra.ibs.dpf" alt="Biglietto Auguri Calici IBS" class="ticket-img" onerror="this.src='calici.biglietto.auguri.compleanno.scuola.birra.ibs.png'; this.onerror=null;">
-                        </a>
-                    </div>
+                    <a href="calici.biglietto.auguri.compleanno.scuola.birra.ibs.pdf" target="_blank" style="width:100%;">
+                        <div class="ticket-img-wrapper">
+                            <i class="fa-solid fa-beer-mug-empty ticket-icon"></i>
+                            <span class="ticket-title">Biglietto Calici</span>
+                        </div>
+                    </a>
                     <a href="calici.biglietto.auguri.compleanno.scuola.birra.ibs.pdf" download class="download-btn">
-                        <i class="fa-solid fa-file-pdf"></i> SCARICA PDF
+                        <i class="fa-solid fa-file-pdf"></i> SCARICA PDF CALICI
                     </a>
                 </div>
 
                 <!-- SCHEDA 4: Informazioni -->
                 <div class="ticket-card">
-                    <div class="ticket-img-wrapper">
-                        <a href="informazioni.biglietto.auguri.compleanno.scuola.birra.ibs.pdf" target="_blank">
-                            <img src="informazioni.biglietto.auguri.compleanno.scuola.birra.ibs.pdf" alt="Biglietto Informazioni IBS" class="ticket-img" onerror="this.src='informazioni.biglietto.auguri.compleanno.scuola.birra.ibs.png'; this.onerror=null;">
-                        </a>
-                    </div>
+                    <a href="informazioni.biglietto.auguri.compleanno.scuola.birra.ibs.pdf" target="_blank" style="width:100%;">
+                        <div class="ticket-img-wrapper">
+                            <i class="fa-solid fa-circle-info ticket-icon"></i>
+                            <span class="ticket-title">Info & Dettagli Corso</span>
+                        </div>
+                    </a>
                     <a href="informazioni.biglietto.auguri.compleanno.scuola.birra.ibs.pdf" download class="download-btn">
-                        <i class="fa-solid fa-file-pdf"></i> SCARICA PDF
+                        <i class="fa-solid fa-file-pdf"></i> SCARICA PDF INFO
                     </a>
                 </div>
             </div>
