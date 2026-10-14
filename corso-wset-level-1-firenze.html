@@ -70,8 +70,9 @@
         .tech-info { margin-top: 20px; padding: 15px 20px; border-left: 4px solid #e0ac4c; background: rgba(0,0,0,0.4); border-radius: 0 10px 10px 0; width: 100%; max-width: 440px; box-sizing: border-box; font-size: 0.95em; }
         .tech-info p { margin: 8px 0; }
         .tech-info strong { color: #e0ac4c; }
+        .tech-info .info-line { margin-top: 12px; }
 
-        /* PULSANTE DISABILITATO ED AGGIORNATO */
+        /* PULSANTE ACQUISTO LINK */
         .btn-acquista { 
             display: block; 
             background-color: #8b1a2b; 
@@ -85,8 +86,18 @@
             width: 100%; 
             max-width: 440px; 
             box-sizing: border-box; 
-            cursor: default;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
+        .btn-acquista:hover {
+            background-color: #a52136;
+            transform: translateY(-2px);
+            opacity: 1;
+        }
+
+        /* PULSANTE MOBILE IN FONDO */
+        .mobile-buy-bottom { display: none; margin: 30px 0; text-align: center; }
 
         /* TESTO */
         .text-column { order: 2; font-size: 1em; line-height: 1.6; font-weight: 300; color: #eee; }
@@ -109,6 +120,12 @@
             .text-column { flex: 1.3; order: 1; }
             .img-column { flex: 1; order: 2; position: sticky; top: 20px; }
             .tech-info, .btn-acquista { max-width: 100%; }
+        }
+
+        /* MOBILE LAYOUT */
+        @media screen and (max-width: 899px) {
+            .mobile-buy-bottom { display: block; }
+            .mobile-buy-bottom .btn-acquista { margin: 0 auto; }
         }
 
         .footer { background: rgba(0,0,0,0.8); text-align: center; padding: 20px; font-size: 0.8em; margin-top: auto; }
@@ -165,10 +182,10 @@
                         <p><strong>Date:</strong> 6 February 2027</p>
                         <p><strong>Time:</strong> 09:00 – 18:00</p>
                         <p><strong>Location:</strong> Florence, Italy</p>
-                        <p><strong>Price:</strong> €290 </p>
+                        <p><strong>Price:</strong> €290</p>
+                        <p class="info-line"><strong>Info:</strong> erica@wineschoolitalia.com</p>
                     </div>
-                    <div class="btn-acquista">https://wineschoolitalia.com/corso/wset-level-1-award-in-beer-firenze-febbraio2027/</p>
-                     <p><strong>info: erica @ wineschoolitalia.com</div>
+                    <a href="https://wineschoolitalia.com/corso/wset-level-1-award-in-beer-firenze-febbraio2027/" target="_blank" class="btn-acquista">BUY ON THE PROVIDER WEBSITE</a>
                 </div>
 
                 <div class="text-column">
@@ -183,6 +200,11 @@
                         <li><strong>Beer Styles</strong><span class="sub-list">Malt-driven, Hop-driven (IPAs, Pilsners), Yeast-driven (Weissbier) and Sours</span></li>
                         <li><strong>Food Pairing</strong><span class="sub-list">How flavors interact with different dishes</span></li>
                     </ul>
+
+                    <!-- SECOND PULSANTE PER MOBILE -->
+                    <div class="mobile-buy-bottom">
+                        <a href="https://wineschoolitalia.com/corso/wset-level-1-award-in-beer-firenze-febbraio2027/" target="_blank" class="btn-acquista">BUY ON THE PROVIDER WEBSITE</a>
+                    </div>
                 </div>
             </div>
         </main>
