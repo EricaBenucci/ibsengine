@@ -108,11 +108,15 @@
             background: rgba(224, 172, 76, 0.08);
             border: 1px dashed rgba(224, 172, 76, 0.4);
             gap: 12px;
+            overflow: hidden; /* Assicura che l'immagine rispetti i bordi arrotondati */
+            position: relative;
         }
 
-        .ticket-icon {
-            font-size: 3.5em;
-            color: #e0ac4c;
+        .ticket-preview-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Riempie il box mantenendo le proporzioni */
+            display: block;
         }
 
         .ticket-title {
@@ -121,6 +125,7 @@
             color: #fff;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            margin-top: 5px;
         }
 
         .download-btn {
@@ -146,6 +151,9 @@
             .tickets-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 35px;
+            }
+            .ticket-img-wrapper {
+                height: 220px; /* Altezza leggermente maggiore su schermi grandi */
             }
             h1 { font-size: 2.4em; }
         }
@@ -192,9 +200,9 @@
                 <div class="ticket-card">
                     <a href="biglietto.auguri.corso.birra.firenze.ibs.funghi.pdf" target="_blank" style="width:100%;">
                         <div class="ticket-img-wrapper">
-                            <i class="fa-solid fa-gift ticket-icon"></i>
-                            <span class="ticket-title">Biglietto Compleanno "Fungaiolo"</span>
+                            <img src="anteprima-fungaiolo.webp" alt="Biglietto Compleanno Fungaiolo" class="ticket-preview-img">
                         </div>
+                        <span class="ticket-title">Biglietto Compleanno "Fungaiolo"</span>
                     </a>
                     <a href="biglietto.auguri.corso.birra.firenze.ibs.funghi.pdf" download class="download-btn">
                         <i class="fa-solid fa-file-pdf"></i> SCARICA PDF FUNGAIOLO
@@ -205,9 +213,9 @@
                 <div class="ticket-card">
                     <a href="biglietto.auguri.corso.birra.firenze.ibs.laureato.pdf" target="_blank" style="width:100%;">
                         <div class="ticket-img-wrapper">
-                            <i class="fa-solid fa-graduation-cap ticket-icon"></i>
-                            <span class="ticket-title">Biglietto Compleanno "Laureato"</span>
+                            <img src="anteprima-laureato.webp" alt="Biglietto Compleanno Laureato" class="ticket-preview-img">
                         </div>
+                        <span class="ticket-title">Biglietto Compleanno "Laureato"</span>
                     </a>
                     <a href="biglietto.auguri.corso.birra.firenze.ibs.laureato.pdf" download class="download-btn">
                         <i class="fa-solid fa-file-pdf"></i> SCARICA PDF LAUREATO
@@ -218,9 +226,9 @@
                 <div class="ticket-card">
                     <a href="biglietto.auguri.corso.birra.firenze.ibs.calici.pdf" target="_blank" style="width:100%;">
                         <div class="ticket-img-wrapper">
-                            <i class="fa-solid fa-beer-mug-empty ticket-icon"></i>
-                            <span class="ticket-title">Biglietto Compleanno con Calici</span>
+                            <img src="anteprima-calici.webp" alt="Biglietto Compleanno con Calici" class="ticket-preview-img">
                         </div>
+                        <span class="ticket-title">Biglietto Compleanno con Calici</span>
                     </a>
                     <a href="biglietto.auguri.corso.birra.firenze.ibs.calici.pdf" download class="download-btn">
                         <i class="fa-solid fa-file-pdf"></i> SCARICA PDF CALICI
@@ -231,9 +239,9 @@
                 <div class="ticket-card">
                     <a href="biglietto.auguri.corso.birra.firenze.ibs.sub.pdf" target="_blank" style="width:100%;">
                         <div class="ticket-img-wrapper">
-                            <i class="fa-solid fa-water ticket-icon"></i>
-                            <span class="ticket-title">Biglietto Compleanno "Sub"</span>
+                            <img src="anteprima-sub.webp" alt="Biglietto Compleanno Sub" class="ticket-preview-img">
                         </div>
+                        <span class="ticket-title">Biglietto Compleanno "Sub"</span>
                     </a>
                     <a href="biglietto.auguri.corso.birra.firenze.ibs.sub.pdf" download class="download-btn">
                         <i class="fa-solid fa-file-pdf"></i> SCARICA PDF SUB
