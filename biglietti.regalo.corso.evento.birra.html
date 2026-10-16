@@ -65,45 +65,90 @@
         .flag-rect { width: 20px; }
 
         /* CONTENUTO */
-        .content { flex: 1; padding: 20px; max-width: 800px; margin: 0 auto; width: 100%; box-sizing: border-box; }
+        .content { flex: 1; padding: 20px; max-width: 1100px; margin: 0 auto; width: 100%; box-sizing: border-box; }
 
         .page-header-wrapper { text-align: center; margin-bottom: 30px; }
         h1 { color: #e0ac4c; font-size: 2em; text-transform: uppercase; margin: 0 0 10px 0; }
         .page-intro { font-size: 1.1em; line-height: 1.5; color: #eee; max-width: 800px; margin: 0 auto; }
 
-        /* GRIGLIA PULSANTI */
+        /* GRIGLIA BIGLIETTI */
         .tickets-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
             margin-top: 20px;
         }
 
-        .download-btn {
+        .ticket-card {
+            background: rgba(0, 0, 0, 0.65);
+            border: 1px solid rgba(224, 172, 76, 0.4);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .ticket-card:hover {
+            transform: translateY(-5px);
+            border-color: #e0ac4c;
+        }
+
+        .ticket-img-wrapper {
+            width: 100%;
+            height: 200px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            background: rgba(224, 172, 76, 0.08);
+            border: 1px dashed rgba(224, 172, 76, 0.4);
+            overflow: hidden;
+        }
+
+        .ticket-preview-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .ticket-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             background-color: #e0ac4c;
             color: #000;
             font-weight: bold;
-            font-size: 1.1em;
-            padding: 18px 25px;
-            border-radius: 8px;
+            padding: 12px 20px;
+            border-radius: 6px;
+            margin-top: auto;
             width: 100%;
             box-sizing: border-box;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-            transition: background-color 0.3s, transform 0.2s;
-            text-transform: uppercase;
+            transition: background-color 0.3s;
         }
         .download-btn:hover {
             background-color: #f5c469;
-            transform: translateY(-2px);
-        }
-        .download-btn i {
-            font-size: 1.3em;
         }
 
         @media screen and (min-width: 768px) {
+            .tickets-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 35px;
+            }
             h1 { font-size: 2.4em; }
         }
 
@@ -146,28 +191,48 @@
 
             <div class="tickets-grid">
                 <!-- SCHEDA 1: Fungaiolo -->
-                <a href="biglietto.auguri.corso.birra.firenze.ibs.funghi.pdf" download class="download-btn">
-                    <span>Biglietto Compleanno "Fungaiolo"</span>
-                    <i class="fa-solid fa-file-pdf"></i>
-                </a>
+                <div class="ticket-card">
+                    <div class="ticket-img-wrapper">
+                        <img src="anteprima-biglietto-auguri-compleanno-fungaiolo-firenze.webp" alt="Anteprima Biglietto Auguri Compleanno Fungaiolo" class="ticket-preview-img">
+                    </div>
+                    <span class="ticket-title">Biglietto Compleanno "Fungaiolo"</span>
+                    <a href="biglietto.auguri.corso.birra.firenze.ibs.funghi.pdf" download class="download-btn">
+                        <i class="fa-solid fa-file-pdf"></i> SCARICA QUI
+                    </a>
+                </div>
 
                 <!-- SCHEDA 2: Laureato -->
-                <a href="biglietto.auguri.corso.birra.firenze.ibs.laureato.pdf" download class="download-btn">
-                    <span>Biglietto Compleanno "Laureato"</span>
-                    <i class="fa-solid fa-file-pdf"></i>
-                </a>
+                <div class="ticket-card">
+                    <div class="ticket-img-wrapper">
+                        <img src="anteprima-biglietto-auguri-compleanno-laureato-firenze.webp" alt="Anteprima Biglietto Auguri Compleanno Laureato" class="ticket-preview-img">
+                    </div>
+                    <span class="ticket-title">Biglietto Compleanno "Laureato"</span>
+                    <a href="biglietto.auguri.corso.birra.firenze.ibs.laureato.pdf" download class="download-btn">
+                        <i class="fa-solid fa-file-pdf"></i> SCARICA QUI
+                    </a>
+                </div>
 
                 <!-- SCHEDA 3: Calici -->
-                <a href="biglietto.auguri.corso.birra.firenze.ibs.calici.pdf" download class="download-btn">
-                    <span>Biglietto Compleanno con Calici</span>
-                    <i class="fa-solid fa-file-pdf"></i>
-                </a>
+                <div class="ticket-card">
+                    <div class="ticket-img-wrapper">
+                        <img src="anteprima-biglietto-auguri-compleanno-calici-birra-firenze.webp" alt="Anteprima Biglietto Auguri Compleanno con Calici di Birra" class="ticket-preview-img">
+                    </div>
+                    <span class="ticket-title">Biglietto Compleanno con Calici</span>
+                    <a href="bigliettto.auguri.corso.birra.firenze.ibs.calici.pdf" download class="download-btn">
+                        <i class="fa-solid fa-file-pdf"></i> SCARICA QUI
+                    </a>
+                </div>
 
                 <!-- SCHEDA 4: Sub -->
-                <a href="biglietto.auguri.corso.birra.firenze.ibs.sub.pdf" download class="download-btn">
-                    <span>Biglietto Compleanno "Sub"</span>
-                    <i class="fa-solid fa-file-pdf"></i>
-                </a>
+                <div class="ticket-card">
+                    <div class="ticket-img-wrapper">
+                        <img src="anteprima-biglietto-auguri-compleanno-sub-firenze.webp" alt="Anteprima Biglietto Auguri Compleanno Sub" class="ticket-preview-img">
+                    </div>
+                    <span class="ticket-title">Biglietto Compleanno "Sub"</span>
+                    <a href="biglietto.auguri.corso.birra.firenze.ibs.sub.pdf" download class="download-btn">
+                        <i class="fa-solid fa-file-pdf"></i> SCARICA QUI
+                    </a>
+                </div>
             </div>
         </main>
 
