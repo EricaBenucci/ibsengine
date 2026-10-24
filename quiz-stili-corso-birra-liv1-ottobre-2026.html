@@ -492,6 +492,15 @@
                 }
             }
 
+            // Invia il punteggio a Google Analytics in modo automatico
+            if (typeof gtag === 'function') {
+                gtag('event', 'completamento_quiz', {
+                    'quiz_nome': 'Stili e Storia della Birra - Ottobre 2026',
+                    'punteggio_ottenuto': score,
+                    'punteggio_totale': total
+                });
+            }
+
             // Mostra il risultato totale
             const resultBox = document.getElementById('resultBox');
             const scoreText = document.getElementById('scoreText');
