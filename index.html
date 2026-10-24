@@ -172,6 +172,19 @@
 
         .footer { background-color: rgba(0, 0, 0, 0.8); text-align: center; padding: 25px; font-size: 0.9em; margin-top: auto; }
 
+        /* Stile per la Q segreta nel footer */
+        .secret-quiz-link {
+            color: #e0ac4c;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-left: 10px;
+            opacity: 0.4;
+            transition: opacity 0.3s ease;
+        }
+        .secret-quiz-link:hover {
+            opacity: 1;
+        }
+
         /* Media Query Desktop */
         @media screen and (min-width: 801px) {
             header { padding: 20px 40px; }
@@ -263,19 +276,8 @@
         </main>
 
         <footer class="footer">
-            © 2026 IBS ITALIAN BEER SCHOOL – P.IVA: IT07436420488 | <a href="privacy.html" style="color:#e0ac4c">Privacy</a>
-        /* Stile per la Q segreta nel footer */
-        .secret-quiz-link {
-            color: #e0ac4c;
-            font-size: 0.85em;
-            font-weight: bold;
-            margin-left: 10px;
-            opacity: 0.4;
-            transition: opacity 0.3s ease;
-        }
-        .secret-quiz-link:hover {
-            opacity: 1;
-        }</footer>
+            © 2026 IBS ITALIAN BEER SCHOOL – P.IVA: IT07436420488 | <a href="privacy.html" style="color:#e0ac4c">Privacy</a> <a href="quiz-corso-birra-ottobre-2026.html" class="secret-quiz-link" title="Area Quiz Corsisti">Q</a>
+        </footer>
     </div>
 
     <script>
