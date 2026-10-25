@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z1LYHFBGN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-1Z1LYHFBGN');
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow">
+    <title>Ripasso Corso Birra Livello 1 - Italian Beer School</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+        html, body {
+            margin: 0; padding: 0; height: 100%;
+            font-family: 'Quicksand', sans-serif;
+            background: url('sfondo-birra-ripasso-scuola.webp') no-repeat center center fixed;
+            background-size: cover; color: #fff; overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; transition: opacity 0.3s; }
+        a:hover { opacity: 0.9; }
+
+        .overlay {
+            display: flex; flex-direction: column; min-height: 100vh;
+            background-color: rgba(0, 0, 0, 0.65); position: relative; z-index: 1;
+        }
+
+        /* --- HEADER CON CENTRATURA ASSOLUTA DEL LOGO --- */
+        header {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 10px 15px;
+            position: relative;
+            z-index: 10;
+            min-height: 80px;
+            box-sizing: border-box;
+        }
+        
+        .header-left-col {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .hamburger-menu {
+            background: none; border: none; cursor: pointer;
+            display: flex; flex-direction: column; gap: 6px; width: 30px;
+        }
+        .hamburger-menu .line {
+            width: 30px; height: 3px; background-color: #fff; border-radius: 5px; transition: all 0.3s ease;
+        }
+
+        .header-center-col {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        
+        .logo-container img { 
+            height: 55px; 
+            display: block; 
+        }
+
+        .wset-news-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            position: absolute;
+            right: 100%;
+            margin-right: 15px;
+        }
+        .wset-news-badge:hover {
+            transform: scale(1.05);
+            opacity: 1;
+        }
+        .wset-mini-logo {
+            height: 28px;
+            width: auto;
+            display: block;
+        }
+        .wset-news-text {
+            color: #2b59c3;
+            font-weight: bold;
+            font-size: 0.8em;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            white-space: nowrap;
+        }
+
+        .header-right-col {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        .ig-link { font-size: 1.3em; color: #fff; }
+
+        .menu-pop-up {
+            position: fixed; top: 0; left: -300px; width: 280px; height: 100%;
+            background-color: rgba(0, 0, 0, 0.95); padding-top: 80px;
+            transition: left 0.3s ease-in-out; z-index: 14; display: flex; flex-direction: column;
+        }
+        .menu-pop-up.open { left: 0; }
+        .menu-pop-up a { padding: 12px 25px; font-size: 1.1em; border-bottom: 1px solid rgba(255, 255, 255, 0.05); color: #fff; text-decoration: none; }
+        
+        .menu-pop-up a.sub-menu { 
+            padding-left: 45px; 
+            font-size: 0.9em; 
+            color: #e0ac4c; 
+            border-bottom: none; 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+        }
+        .flag-rect { width: 20px; height: auto; display: inline-block; }
+
+        .content { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px 20px; }
+        
+        .page-main-title {
+            font-size: 3em;
+            color: #e0ac4c;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+            letter-spacing: 2px;
+        }
+
+        .intro-text-top {
+            max-width: 850px; text-align: center; margin: 0 auto 35px auto; 
+            line-height: 1.4; font-size: 1.1em; background: rgba(0,0,0,0.6); 
+            padding: 15px 25px; border-radius: 10px; border: 1px solid rgba(224, 172, 76, 0.3);
+        }
+
+        .highlight-yellow { color: #e0ac4c; font-weight: bold; }
+
+        /* GRIGLIA RIPASSO */
+        .quiz-grid {
+            display: flex; flex-wrap: wrap; gap: 35px;
+            justify-content: center; align-items: stretch;
+            max-width: 1200px; margin: auto;
+        }
+
+        .quiz-box { 
+            flex: 1; 
+            min-width: 280px; 
+            max-width: 340px; 
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px 15px;
+            border-radius: 20px;
+            border: 1px solid rgba(224, 172, 76, 0.3);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .quiz-box:hover {
+            transform: translateY(-5px);
+            border-color: #e0ac4c;
+        }
+        .quiz-box img {
+            width: 100%; aspect-ratio: 1/1; object-fit: cover;
+            border-radius: 50%; box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+        .quiz-box a:hover img { transform: scale(1.05); }
+
+        h2.quiz-title {
+            font-size: 1.3em; font-weight: bold; color: #fff;
+            margin-top: 15px; margin-bottom: 5px; line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        .footer { background-color: rgba(0, 0, 0, 0.8); text-align: center; padding: 25px; font-size: 0.9em; margin-top: auto; }
+
+        @media screen and (min-width: 801px) {
+            header { padding: 20px 40px; }
+            .logo-container img { height: 90px; }
+            .wset-news-badge { margin-right: 35px; gap: 12px; }
+            .wset-mini-logo { height: 42px; }
+            .wset-news-text { font-size: 1.1em; gap: 8px; letter-spacing: 1px; }
+            .ig-link { font-size: 1.5em; }
+            .page-main-title { font-size: 3.5em; }
+        }
+        
+        @media screen and (max-width: 430px) {
+            .wset-news-text { display: none; }
+            .wset-news-badge { margin-right: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <header>
+            <div class="header-left-col">
+                <button class="hamburger-menu" id="hamburgerBtn" aria-label="Menu">
+                    <span class="line"></span><span class="line"></span><span class="line"></span>
+                </button>
+            </div>
+            
+            <div class="header-center-col">
+                <a href="tutti-i-corsidibirra.html" class="wset-news-badge">
+                    <img src="logo-wset-course_english-beer.svg" class="wset-mini-logo" alt="WSET Logo">
+                    <span class="wset-news-text">NOVITÀ <i class="fas fa-arrow-left"></i></span>
+                </a>
+
+                <div class="logo-container">
+                    <a href="index.html"><img src="Logo-IBS-italian-beer-school-firenze.png" alt="Logo IBS Italian Beer School Firenze" /></a>
+                </div>
+            </div>
+
+            <div class="header-right-col">
+                <a href="https://www.instagram.com/italianbeerschool/?hl=en" target="_blank" class="ig-link">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </header>
+
+        <nav class="menu-pop-up" id="mobileMenu">
+            <a href="index.html">HOME</a>
+            <a href="tutti-i-corsidibirra.html">CORSI DI BIRRA</a>
+            <a href="corso-wset-level-1-firenze.html" class="sub-menu">• WSET LEVEL 1 <img src="https://flagcdn.com/gb.svg" class="flag-rect" alt="English"></a>
+            <a href="corso-wset-level-2-firenze.html" class="sub-menu">• WSET LEVEL 2 <img src="https://flagcdn.com/gb.svg" class="flag-rect" alt="English"></a>
+            <a href="corso-birra-base-firenze.html" class="sub-menu">• CORSO BASE <img src="https://flagcdn.com/it.svg" class="flag-rect" alt="Italiano"></a>
+            <a href="corso-secondo-livello-birra-firenze.html" class="sub-menu">• CORSO AVANZATO <img src="https://flagcdn.com/it.svg" class="flag-rect" alt="Italiano"></a>
+            <a href="curiosita-birra.html">LO SAPEVI CHE?</a>
+            <a href="quiz-di-birra.html">QUIZ</a>
+            <a href="degustazioni-passate.html">DEGUSTAZIONI PASSATE</a>
+            <a href="bio.html">CHI SONO</a>
+            <a href="contatti.html">CONTATTI</a>
+        </nav>
+
+        <main class="content">
+            <h1 class="page-main-title">RIPASSO</h1>
+            
+            <div class="intro-text-top">
+                <p>Area dedicata al ripasso degli argomenti del <span class="highlight-yellow">Corso di Birra Livello 1</span>. Seleziona una sezione per ripassare le diapositive e i concetti chiave delle lezioni.</p>
+            </div>
+            
+            <div class="quiz-grid">
+                <!-- RIPASSO 1: Materie Prime -->
+                <div class="quiz-box">
+                    <a href="ripasso-materie-prime-corso-birra-liv1.html">
+                        <img src="quiz-materie-prime-corso-birra-liv1-ottobre-2026.webp" alt="Ripasso Materie Prime Birra" />
+                        <h2 class="quiz-title">MATERIE PRIME</h2>
+                    </a>
+                </div>
+
+                <!-- RIPASSO 2: Produzione -->
+                <div class="quiz-box">
+                    <a href="ripasso-produzione-corso-birra-liv1.html">
+                        <img src="immagine-quiz-produzione-corso-birra-liv1-ottobre-2026.webp" alt="Ripasso Produzione Birra" />
+                        <h2 class="quiz-title">PRODUZIONE</h2>
+                    </a>
+                </div>
+
+                <!-- RIPASSO 3: Stili -->
+                <div class="quiz-box">
+                    <a href="ripasso-stili-corso-birra-liv1.html">
+                        <img src="immagine-quiz-stili-corso-birra-liv1-ottobre-2026.webp" alt="Ripasso Stili di Birra" />
+                        <h2 class="quiz-title">STILI DI BIRRA</h2>
+                    </a>
+                </div>
+
+                <!-- RIPASSO 4: Alta e Bassa Fermentazione -->
+                <div class="quiz-box">
+                    <a href="ripasso-alta-bassa-corso-birra-liv1.html">
+                        <img src="immagine-quiz-alta-bassa-corso-birra-liv1-ottobre-2026.webp" alt="Ripasso Alta e Bassa Fermentazione" />
+                        <h2 class="quiz-title">ALTA E BASSA FERMENTAZIONE</h2>
+                    </a>
+                </div>
+
+                <!-- RIPASSO 5: Temperature -->
+                <div class="quiz-box">
+                    <a href="ripasso-temperature-corso-birra-liv1.html">
+                        <img src="immagine-quiz-temperature-corso-birra-liv1-ottobre-2026.webp" alt="Ripasso Temperature di Servizio" />
+                        <h2 class="quiz-title">TEMPERATURE DI SERVIZIO</h2>
+                    </a>
+                </div>
+
+                <!-- RIPASSO 6: Bicchieri -->
+                <div class="quiz-box">
+                    <a href="ripasso-bicchieri-corso-birra-liv1.html">
+                        <img src="immagine-quiz-bicchieri-corso-birra-liv1-ottobre-2026.webp" alt="Ripasso Bicchieri da Birra" />
+                        <h2 class="quiz-title">BICCHIERI</h2>
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            © 2026 IBS ITALIAN BEER SCHOOL – P.IVA: IT07436420488 | <a href="privacy.html" style="color:#e0ac4c">Privacy</a>
+        </footer>
+    </div>
+
+    <script>
+        const hb = document.getElementById('hamburgerBtn');
+        const menu = document.getElementById('mobileMenu');
+        
+        hb.onclick = function() {
+            menu.classList.toggle('open');
+        };
+
+        document.addEventListener('click', function(event) {
+            if (!menu.contains(event.target) && !hb.contains(event.target)) {
+                menu.classList.remove('open');
+            }
+        });
+    </script>
+</body>
+</html>
