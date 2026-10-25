@@ -13,7 +13,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex, nofollow">
-    <title>Quiz Alta e Bassa Fermentazione - Italian Beer School</title>
+    <title>Quiz Alta, Bassa o Spontanea? - Italian Beer School</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
@@ -67,43 +67,93 @@
 
         .flag-icon { width: 20px; height: auto; vertical-align: middle; border-radius: 2px; display: inline-block; }
 
-        /* --- GRIGLIA QUIZ --- */
-        .content { flex: 1; padding: 40px 20px; }
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px; max-width: 1200px; margin: 0 auto;
-        }
-
-        /* --- EFFETTO FLIP CARD --- */
-        .flip-card { width: 100%; height: 280px; perspective: 1000px; cursor: pointer; }
-        .flip-card-inner {
-            position: relative; width: 100%; height: 100%;
-            transition: transform 0.6s; transform-style: preserve-3d;
-        }
-        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
-
-        .flip-card-front, .flip-card-back {
-            position: absolute; width: 100%; height: 100%;
-            backface-visibility: hidden; border-radius: 15px;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            padding: 20px; box-sizing: border-box; text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background-image: url('bicchiere-schiuma-foam.webp');
-            background-size: cover;
-            background-position: center;
-            color: #000;
-        }
+        /* --- CONTENUTO QUIZ INTERATTIVO --- */
+        .content { flex: 1; padding: 30px 20px; max-width: 900px; margin: 0 auto; width: 100%; box-sizing: border-box; }
         
-        .flip-card-front { font-weight: bold; font-size: 1.2em; }
+        .quiz-title {
+            text-align: center; color: #e0ac4c; font-size: 2em; margin-bottom: 10px; font-weight: bold;
+        }
+        .quiz-subtitle {
+            text-align: center; color: #ddd; font-size: 1.1em; margin-bottom: 30px;
+        }
+
+        .question-card {
+            background-color: rgba(0, 0, 0, 0.75);
+            border: 1px solid rgba(224, 172, 76, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .question-title {
+            font-size: 1.2em; font-weight: bold; color: #fff; margin-bottom: 15px; line-height: 1.4;
+        }
+
+        .options-group { display: flex; flex-direction: column; gap: 10px; }
+
+        .option-label {
+            display: flex; align-items: center; padding: 12px 15px;
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px; cursor: pointer; transition: all 0.2s ease;
+            font-size: 1em; color: #eee;
+        }
+
+        .option-label:hover {
+            background-color: rgba(224, 172, 76, 0.2);
+            border-color: #e0ac4c;
+        }
+
+        .option-label input[type="radio"] {
+            margin-right: 12px; transform: scale(1.2); accent-color: #e0ac4c;
+        }
+
+        /* Stili per la correzione */
+        .option-label.correct {
+            background-color: rgba(40, 167, 69, 0.3) !important;
+            border-color: #28a745 !important;
+            color: #85e89d !important;
+            font-weight: bold;
+        }
+
+        .option-label.incorrect {
+            background-color: rgba(220, 53, 69, 0.3) !important;
+            border-color: #dc3545 !important;
+            color: #ff8b94 !important;
+            text-decoration: line-through;
+        }
+
+        .feedback-icon { margin-left: auto; font-weight: bold; font-size: 1.2em; }
+
+        /* --- PULSANTE ED ESITO --- */
+        .submit-container { text-align: center; margin: 40px 0; }
         
-        /* Risposta in verde scuro grassetto come richiesto */
-        .flip-card-back { transform: rotateY(180deg); font-size: 1.3em; font-weight: bold; color: #006400; }
+        .verify-btn {
+            background-color: #e0ac4c; color: #000; border: none;
+            padding: 15px 40px; font-size: 1.2em; font-weight: bold;
+            border-radius: 30px; cursor: pointer; transition: transform 0.2s, background-color 0.2s;
+            box-shadow: 0 4px 15px rgba(224, 172, 76, 0.4);
+        }
+        .verify-btn:hover { transform: scale(1.05); background-color: #f1bf63; }
 
-        .options-list { list-style: none; padding: 0; margin-top: 15px; font-size: 0.95em; text-align: left; }
-        .options-list li { margin-bottom: 5px; }
+        .result-box {
+            display: none; background-color: rgba(0, 0, 0, 0.9);
+            border: 2px solid #e0ac4c; border-radius: 15px; padding: 25px;
+            text-align: center; margin-top: 30px; animation: fadeIn 0.5s ease;
+        }
 
-        /* --- FOOTER --- */
+        .result-score { font-size: 2.2em; font-weight: bold; color: #e0ac4c; margin-bottom: 10px; }
+        .result-message { font-size: 1.2em; color: #fff; margin-bottom: 20px; }
+
+        .retry-btn {
+            background: transparent; color: #e0ac4c; border: 2px solid #e0ac4c;
+            padding: 10px 25px; font-size: 1em; font-weight: bold;
+            border-radius: 20px; cursor: pointer; transition: all 0.2s;
+        }
+        .retry-btn:hover { background-color: #e0ac4c; color: #000; }
+
+        /* --- FOOTER E COOKIE --- */
         .footer { background-color: rgba(0, 0, 0, 0.8); text-align: center; padding: 25px; font-size: 0.9em; margin-top: auto; }
         
         .secret-quiz-link {
@@ -111,7 +161,6 @@
         }
         .secret-quiz-link:hover { opacity: 1; }
 
-        /* --- COOKIE BANNER --- */
         #cookieBanner {
             position: fixed; bottom: 0; left: 0; width: 100%;
             background: rgba(0, 0, 0, 0.95); color: #fff; padding: 15px;
@@ -121,8 +170,8 @@
 
         @media screen and (max-width: 800px) {
             .logo-container img { height: 65px; }
-            .container { gap: 20px; }
-            .flip-card { height: 300px; }
+            .quiz-title { font-size: 1.6em; }
+            .content { padding: 20px 15px; }
         }
     </style>
 </head>
@@ -156,313 +205,221 @@
         </nav>
 
         <main class="content">
-            <div style="text-align: center; margin-bottom: 30px;">
-                <h1 style="color: #e0ac4c; font-size: 2em; margin-bottom: 5px;">Quiz Stili: Alta, Bassa o Spontanea?</h1>
-                <p style="color: #ddd; font-size: 1.1em;">Clicca sulle schede per scoprire il tipo di fermentazione dei vari stili!</p>
-            </div>
+            <div class="quiz-title">Quiz Stili: Alta, Bassa o Spontanea?</div>
+            <div class="quiz-subtitle">Metti alla prova le tue conoscenze sui metodi di fermentazione dei vari stili di birra! 🍺</div>
 
-            <div class="container">
-                <!-- 1 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Pilsner boema')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>1. Pilsner boema</span></div>
-                        <div class="flip-card-back">Risposta: Bassa</div>
+            <form id="quizForm">
+                <!-- Domanda 1 -->
+                <div class="question-card" id="q1">
+                    <div class="question-title">1. Qual è il principale metodo di fermentazione di una classica Pilsner boema? 🇨🇿</div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="radio" name="q1" value="A"> A) Alta fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q1" value="B"> B) Bassa fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q1" value="C"> C) Fermentazione spontanea</label>
                     </div>
                 </div>
-                <!-- 2 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'German Pils')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>2. German Pils</span></div>
-                        <div class="flip-card-back">Risposta: Bassa</div>
+
+                <!-- Domanda 2 -->
+                <div class="question-card" id="q2">
+                    <div class="question-title">2. A quale famiglia di fermentazione appartiene lo stile Weissbier / Weizen? 🌾</div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="radio" name="q2" value="A"> A) Alta fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q2" value="B"> B) Bassa fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q2" value="C"> C) Fermentazione spontanea</label>
                     </div>
                 </div>
-                <!-- 3 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Dark Lager')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>3. Dark Lager</span></div>
-                        <div class="flip-card-back">Risposta: Bassa</div>
+
+                <!-- Domanda 3 -->
+                <div class="question-card" id="q3">
+                    <div class="question-title">3. Come fermenta tradizionalmente una birra Lambic o una Geuze? 🇧🇪</div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="radio" name="q3" value="A"> A) Alta fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q3" value="B"> B) Bassa fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q3" value="C"> C) Fermentazione spontanea</label>
                     </div>
                 </div>
-                <!-- 4 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Vienna Lager')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>4. Vienna Lager</span></div>
-                        <div class="flip-card-back">Risposta: Bassa</div>
+
+                <!-- Domanda 4 -->
+                <div class="question-card" id="q4">
+                    <div class="question-title">4. Qual è il tipo di fermentazione di una Munich Helles? 🍺</div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="radio" name="q4" value="A"> A) Alta fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q4" value="B"> B) Bassa fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q4" value="C"> C) Fermentazione spontanea</label>
                     </div>
                 </div>
-                <!-- 5 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Munich Helles')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>5. Munich Helles</span></div>
-                        <div class="flip-card-back">Risposta: Bassa</div>
+
+                <!-- Domanda 5 -->
+                <div class="question-card" id="q5">
+                    <div class="question-title">5. Che tipo di fermentazione caratterizza una Belgian Tripel o una Dubbel? ⛪</div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="radio" name="q5" value="A"> A) Alta fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q5" value="B"> B) Bassa fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q5" value="C"> C) Fermentazione spontanea</label>
                     </div>
                 </div>
-                <!-- 6 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Märzen')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>6. Märzen</span></div>
-                        <div class="flip-card-back">Risposta: Bassa</div>
+
+                <!-- Domanda 6 -->
+                <div class="question-card" id="q6">
+                    <div class="question-title">6. Con quale metodo si produce una Märzen / Festbier tipica dell'Oktoberfest? 🥨</div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="radio" name="q6" value="A"> A) Alta fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q6" value="B"> B) Bassa fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q6" value="C"> C) Fermentazione spontanea</label>
                     </div>
                 </div>
-                <!-- 7 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Festbier')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>7. Festbier</span></div>
-                        <div class="flip-card-back">Risposta: Bassa</div>
+
+                <!-- Domanda 7 -->
+                <div class="question-card" id="q7">
+                    <div class="question-title">7. Qual è il metodo di fermentazione di una American IPA o di una Session IPA? 🌿</div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="radio" name="q7" value="A"> A) Alta fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q7" value="B"> B) Bassa fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q7" value="C"> C) Fermentazione spontanea</label>
                     </div>
                 </div>
-                <!-- 8 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Munich Dunkel')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>8. Munich Dunkel</span></div>
-                        <div class="flip-card-back">Risposta: Bassa</div>
+
+                <!-- Domanda 8 -->
+                <div class="question-card" id="q8">
+                    <div class="question-title">8. Le birre Bock e Doppelbock appartengono a quale categoria di fermentazione? 🐐</div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="radio" name="q8" value="A"> A) Alta fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q8" value="B"> B) Bassa fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q8" value="C"> C) Fermentazione spontanea</label>
                     </div>
                 </div>
-                <!-- 9 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Kellerbier')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>9. Kellerbier</span></div>
-                        <div class="flip-card-back">Risposta: Bassa</div>
+
+                <!-- Domanda 9 -->
+                <div class="question-card" id="q9">
+                    <div class="question-title">9. Che tipo di fermentazione viene impiegato per una Irish Stout o una Milk Stout? ☕</div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="radio" name="q9" value="A"> A) Alta fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q9" value="B"> B) Bassa fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q9" value="C"> C) Fermentazione spontanea</label>
                     </div>
                 </div>
-                <!-- 10 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Bock')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>10. Bock</span></div>
-                        <div class="flip-card-back">Risposta: Bassa</div>
+
+                <!-- Domanda 10 -->
+                <div class="question-card" id="q10">
+                    <div class="question-title">10. Come viene fermentata una Blanche (Witbier) con coriandolo e scorza d'arancia? 🍊</div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="radio" name="q10" value="A"> A) Alta fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q10" value="B"> B) Bassa fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q10" value="C"> C) Fermentazione spontanea</label>
                     </div>
                 </div>
-                <!-- 11 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Doppelbock')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>11. Doppelbock</span></div>
-                        <div class="flip-card-back">Risposta: Bassa</div>
+
+                <!-- Domanda 11 -->
+                <div class="question-card" id="q11">
+                    <div class="question-title">11. A quale famiglia appartiene lo stile di tradizione italiana Italian Pilsner? 🇮🇹</div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="radio" name="q11" value="A"> A) Alta fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q11" value="B"> B) Bassa fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q11" value="C"> C) Fermentazione spontanea</label>
                     </div>
                 </div>
-                <!-- 12 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Eisbock')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>12. Eisbock</span></div>
-                        <div class="flip-card-back">Risposta: Bassa</div>
+
+                <!-- Domanda 12 -->
+                <div class="question-card" id="q12">
+                    <div class="question-title">12. Qual è il metodo di fermentazione della Saison belga? 🌾</div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="radio" name="q12" value="A"> A) Alta fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q12" value="B"> B) Bassa fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q12" value="C"> C) Fermentazione spontanea</label>
                     </div>
                 </div>
-                <!-- 13 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Rauchbier')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>13. Rauchbier</span></div>
-                        <div class="flip-card-back">Risposta: Bassa</div>
+
+                <!-- Domanda 13 -->
+                <div class="question-card" id="q13">
+                    <div class="question-title">13. Come fermenta una complessa Imperial Stout o un Barley Wine? 🍷</div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="radio" name="q13" value="A"> A) Alta fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q13" value="B"> B) Bassa fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q13" value="C"> C) Fermentazione spontanea</label>
                     </div>
                 </div>
-                <!-- 14 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Weissbier / Weizen')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>14. Weissbier / Weizen</span></div>
-                        <div class="flip-card-back">Risposta: Alta</div>
+
+                <!-- Domanda 14 -->
+                <div class="question-card" id="q14">
+                    <div class="question-title">14. Qual è la fermentazione tipica delle birre aspre tedesche come Gose e Berliner Weisse? 🍋</div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="radio" name="q14" value="A"> A) Alta fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q14" value="B"> B) Bassa fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q14" value="C"> C) Fermentazione spontanea</label>
                     </div>
                 </div>
-                <!-- 15 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Hefeweizen')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>15. Hefeweizen</span></div>
-                        <div class="flip-card-back">Risposta: Alta</div>
+
+                <!-- Domanda 15 -->
+                <div class="question-card" id="q15">
+                    <div class="question-title">15. Con quale metodo si produce la classica Schwarzbier (la birra scura tedesca a bassa fermentazione)? 🖤</div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="radio" name="q15" value="A"> A) Alta fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q15" value="B"> B) Bassa fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q15" value="C"> C) Fermentazione spontanea</label>
                     </div>
                 </div>
-                <!-- 16 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Kristallweizen')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>16. Kristallweizen</span></div>
-                        <div class="flip-card-back">Risposta: Alta</div>
+
+                <!-- Domanda 16 -->
+                <div class="question-card" id="q16">
+                    <div class="question-title">16. A quale famiglia appartiene l'innovativa Italian Grape Age (IGA)? 🍇</div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="radio" name="q16" value="A"> A) Alta fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q16" value="B"> B) Bassa fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q16" value="C"> C) Fermentazione spontanea</label>
                     </div>
                 </div>
-                <!-- 17 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Dunkelweizen')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>17. Dunkelweizen</span></div>
-                        <div class="flip-card-back">Risposta: Alta</div>
+
+                <!-- Domanda 17 -->
+                <div class="question-card" id="q17">
+                    <div class="question-title">17. Qual è il metodo di fermentazione di una English Porter o di una Brown Ale? 🪵</div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="radio" name="q17" value="A"> A) Alta fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q17" value="B"> B) Bassa fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q17" value="C"> C) Fermentazione spontanea</label>
                     </div>
                 </div>
-                <!-- 18 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Gose')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>18. Gose</span></div>
-                        <div class="flip-card-back">Risposta: Alta</div>
+
+                <!-- Domanda 18 -->
+                <div class="question-card" id="q18">
+                    <div class="question-title">18. Come si fermenta una tipica Kellerbier non filtrata tedesca? 🍻</div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="radio" name="q18" value="A"> A) Alta fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q18" value="B"> B) Bassa fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q18" value="C"> C) Fermentazione spontanea</label>
                     </div>
                 </div>
-                <!-- 19 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Berliner Weisse')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>19. Berliner Weisse</span></div>
-                        <div class="flip-card-back">Risposta: Alta</div>
+
+                <!-- Domanda 19 -->
+                <div class="question-card" id="q19">
+                    <div class="question-title">19. A quale gruppo appartiene una Kriek o una Framboise (alla frutta)? 🍒</div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="radio" name="q19" value="A"> A) Alta fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q19" value="B"> B) Bassa fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q19" value="C"> C) Fermentazione spontanea</label>
                     </div>
                 </div>
-                <!-- 20 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Blanche (Witbier)')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>20. Blanche (Witbier)</span></div>
-                        <div class="flip-card-back">Risposta: Alta</div>
+
+                <!-- Domanda 20 -->
+                <div class="question-card" id="q20">
+                    <div class="question-title">20. Qual è il metodo di fermentazione di una American Pale Ale (APA)? 🍺</div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="radio" name="q20" value="A"> A) Alta fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q20" value="B"> B) Bassa fermentazione</label>
+                        <label class="option-label"><input type="radio" name="q20" value="C"> C) Fermentazione spontanea</label>
                     </div>
                 </div>
-                <!-- 21 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Saison')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>21. Saison</span></div>
-                        <div class="flip-card-back">Risposta: Alta</div>
-                    </div>
+
+                <!-- Pulsante per verificare -->
+                <div class="submit-container">
+                    <button type="button" class="verify-btn" onclick="checkAnswers()">VERIFICA RISPOSTE</button>
                 </div>
-                <!-- 22 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Single')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>22. Single</span></div>
-                        <div class="flip-card-back">Risposta: Alta</div>
-                    </div>
-                </div>
-                <!-- 23 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Dubbel')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>23. Dubbel</span></div>
-                        <div class="flip-card-back">Risposta: Alta</div>
-                    </div>
-                </div>
-                <!-- 24 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Tripel')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>24. Tripel</span></div>
-                        <div class="flip-card-back">Risposta: Alta</div>
-                    </div>
-                </div>
-                <!-- 25 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Quadrupel / Belgian Dark Strong Ale')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>25. Quadrupel / Belgian Dark Strong Ale</span></div>
-                        <div class="flip-card-back">Risposta: Alta</div>
-                    </div>
-                </div>
-                <!-- 26 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Lambic')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>26. Lambic</span></div>
-                        <div class="flip-card-back">Risposta: Spontanea</div>
-                    </div>
-                </div>
-                <!-- 27 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Geuze')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>27. Geuze</span></div>
-                        <div class="flip-card-back">Risposta: Spontanea</div>
-                    </div>
-                </div>
-                <!-- 28 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Kriek / Framboise')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>28. Kriek / Framboise</span></div>
-                        <div class="flip-card-back">Risposta: Spontanea</div>
-                    </div>
-                </div>
-                <!-- 29 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'English Porter')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>29. English Porter</span></div>
-                        <div class="flip-card-back">Risposta: Alta</div>
-                    </div>
-                </div>
-                <!-- 30 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Irish Stout')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>30. Irish Stout</span></div>
-                        <div class="flip-card-back">Risposta: Alta</div>
-                    </div>
-                </div>
-                <!-- 31 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Milk Stout')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>31. Milk Stout</span></div>
-                        <div class="flip-card-back">Risposta: Alta</div>
-                    </div>
-                </div>
-                <!-- 32 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Oatmeal Stout')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>32. Oatmeal Stout</span></div>
-                        <div class="flip-card-back">Risposta: Alta</div>
-                    </div>
-                </div>
-                <!-- 33 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Oyster Stout')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>33. Oyster Stout</span></div>
-                        <div class="flip-card-back">Risposta: Alta</div>
-                    </div>
-                </div>
-                <!-- 34 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Imperial Stout')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>34. Imperial Stout</span></div>
-                        <div class="flip-card-back">Risposta: Alta</div>
-                    </div>
-                </div>
-                <!-- 35 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Barley Wine')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>35. Barley Wine</span></div>
-                        <div class="flip-card-back">Risposta: Alta</div>
-                    </div>
-                </div>
-                <!-- 36 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Winter Warmer')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>36. Winter Warmer</span></div>
-                        <div class="flip-card-back">Risposta: Alta</div>
-                    </div>
-                </div>
-                <!-- 37 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'English IPA')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>37. English IPA</span></div>
-                        <div class="flip-card-back">Risposta: Alta</div>
-                    </div>
-                </div>
-                <!-- 38 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'American IPA')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>38. American IPA</span></div>
-                        <div class="flip-card-back">Risposta: Alta</div>
-                    </div>
-                </div>
-                <!-- 39 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'American Pale Ale (APA)')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>39. American Pale Ale (APA)</span></div>
-                        <div class="flip-card-back">Risposta: Alta</div>
-                    </div>
-                </div>
-                <!-- 40 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Hazy IPA / NEIPA / Juicy IPA')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>40. Hazy IPA / NEIPA / Juicy IPA</span></div>
-                        <div class="flip-card-back">Risposta: Alta</div>
-                    </div>
-                </div>
-                <!-- 41 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'American Brown Ale')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>41. American Brown Ale</span></div>
-                        <div class="flip-card-back">Risposta: Alta</div>
-                    </div>
-                </div>
-                <!-- 42 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Italian Pilsner')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>42. Italian Pilsner</span></div>
-                        <div class="flip-card-back">Risposta: Bassa</div>
-                    </div>
-                </div>
-                <!-- 43 -->
-                <div class="flip-card" onclick="flipAndTrack(this, 'Italian Grape Ale')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front"><span>43. Italian Grape Ale</span></div>
-                        <div class="flip-card-back">Risposta: Alta</div>
-                    </div>
-                </div>
+            </form>
+
+            <!-- Box Risultato Totale -->
+            <div id="resultBox" class="result-box">
+                <div class="result-score" id="scoreText">0 / 20</div>
+                <div class="result-message" id="messageText"></div>
+                <button class="retry-btn" onclick="resetQuiz()">RIPROVA IL QUIZ</button>
             </div>
         </main>
 
@@ -489,17 +446,92 @@
         if (!localStorage.getItem('cookiesAccepted')) { banner.style.display = 'flex'; }
         btn.onclick = () => { localStorage.setItem('cookiesAccepted', 'true'); banner.style.display = 'none'; };
 
-        // Funzione per girare la carta e tracciare l'interazione su Google Analytics
-        function flipAndTrack(card, styleName) {
-            card.classList.toggle('flipped');
-            
-            // Traccia l'interazione con Analytics
+        // Risposte Corrette del Quiz Alta, Bassa o Spontanea (20 domande)
+        const correctAnswers = {
+            q1: "B", q2: "A", q3: "C", q4: "B", q5: "A",
+            q6: "B", q7: "A", q8: "B", q9: "A", q10: "A",
+            q11: "B", q12: "A", q13: "A", q14: "A", q15: "B",
+            q16: "A", q17: "A", q18: "B", q19: "C", q20: "A"
+        };
+
+        function checkAnswers() {
+            let score = 0;
+            const total = Object.keys(correctAnswers).length;
+
+            for (let i = 1; i <= total; i++) {
+                const qKey = 'q' + i;
+                const selected = document.querySelector(`input[name="${qKey}"]:checked`);
+                const qCard = document.getElementById(qKey);
+                const labels = qCard.querySelectorAll('.option-label');
+
+                // Rimuovi precedenti evidenziazioni
+                labels.forEach(label => {
+                    label.classList.remove('correct', 'incorrect');
+                    const oldIcon = label.querySelector('.feedback-icon');
+                    if (oldIcon) oldIcon.remove();
+                });
+
+                // Evidenzia la risposta corretta
+                labels.forEach(label => {
+                    const input = label.querySelector('input');
+                    if (input.value === correctAnswers[qKey]) {
+                        label.classList.add('correct');
+                        label.insertAdjacentHTML('beforeend', '<span class="feedback-icon">✓</span>');
+                    }
+                });
+
+                // Controlla se la risposta selezionata dall'utente è giusta o sbagliata (+1 punto se esatta)
+                if (selected) {
+                    if (selected.value === correctAnswers[qKey]) {
+                        score += 1;
+                    } else {
+                        const wrongLabel = selected.parentElement;
+                        wrongLabel.classList.add('incorrect');
+                        wrongLabel.insertAdjacentHTML('beforeend', '<span class="feedback-icon">✗</span>');
+                    }
+                }
+            }
+
+            // Invia il punteggio a Google Analytics
             if (typeof gtag === 'function') {
-                gtag('event', 'interazione_flip_card', {
+                gtag('event', 'completamento_quiz', {
                     'quiz_nome': 'Alta e Bassa Fermentazione - Ottobre 2026',
-                    'stile_birra': styleName
+                    'punteggio_ottenuto': score,
+                    'punteggio_totale': total
                 });
             }
+
+            // Mostra il risultato totale
+            const resultBox = document.getElementById('resultBox');
+            const scoreText = document.getElementById('scoreText');
+            const messageText = document.getElementById('messageText');
+
+            scoreText.innerText = `Punteggio: ${score} / ${total}`;
+
+            if (score === total) {
+                messageText.innerText = "Eccellente! Conosci alla perfezione i vari metodi di fermentazione di ogni stile! 🍻🏆";
+            } else if (score >= 14) {
+                messageText.innerText = "Ottimo lavoro! Ottima padronanza degli stili e delle fermentazioni! 🍺";
+            } else if (score >= 10) {
+                messageText.innerText = "Buon tentativo! Ripassa la classificazione delle fermentazioni per migliorare! 📚";
+            } else {
+                messageText.innerText = "Serve ancora un po' di ripasso sui tipi di fermentazione. Riprova! 💪";
+            }
+
+            resultBox.style.display = 'block';
+            resultBox.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetQuiz() {
+            document.getElementById('quizForm').reset();
+            const labels = document.querySelectorAll('.option-label');
+            labels.forEach(label => {
+                label.classList.remove('correct', 'incorrect');
+                const icon = label.querySelector('.feedback-icon');
+                if (icon) icon.remove();
+            });
+            document.getElementById('resultBox').style.display = 'none';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
 </body>
