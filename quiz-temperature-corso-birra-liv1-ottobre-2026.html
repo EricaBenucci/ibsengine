@@ -391,7 +391,7 @@
 
                 <!-- Domanda 19 -->
                 <div class="question-card" id="q19">
-                    <div class="question-title">19. Qual è la temperatura di servizio corretta per una Bock o Doppelbock? 🐐</div>
+                    <div class="question-title">19. Qual è la temperatura di servizio corretta per una Bock? 🐐</div>
                     <div class="options-group">
                         <label class="option-label"><input type="radio" name="q19" value="A"> A) 4°C – 7°C</label>
                         <label class="option-label"><input type="radio" name="q19" value="B"> B) 8°C – 12°C</label>
@@ -480,10 +480,10 @@
                     }
                 });
 
-                // Controlla se la risposta selezionata dall'utente è giusta o sbagliata
+                // Controlla se la risposta selezionata dall'utente è giusta o sbagliata (+1 punto se esatta)
                 if (selected) {
                     if (selected.value === correctAnswers[qKey]) {
-                        score++;
+                        score += 1;
                     } else {
                         const wrongLabel = selected.parentElement;
                         wrongLabel.classList.add('incorrect');
