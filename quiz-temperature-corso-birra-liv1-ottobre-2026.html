@@ -13,7 +13,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex, nofollow">
-    <title>Quiz Bicchieri da Birra - Italian Beer School</title>
+    <title>Ripasso Temperature e Conservazione - Italian Beer School</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
@@ -22,18 +22,18 @@
         html, body {
             margin: 0; padding: 0; height: 100%;
             font-family: 'Quicksand', sans-serif;
-            background: url('sfondo-birra-scuola.webp') no-repeat center center fixed;
+            background: url('sfondo-birra-ripasso-scuola.webp') no-repeat center center fixed;
             background-size: cover; color: #fff; overflow-x: hidden;
         }
         .overlay {
             display: flex; flex-direction: column; min-height: 100vh;
-            background-color: rgba(0, 0, 0, 0.65); position: relative; z-index: 1;
+            background-color: rgba(60, 40, 10, 0.45); position: relative; z-index: 1;
         }
 
         /* --- HEADER E MENU --- */
         header {
             display: flex; justify-content: space-between; align-items: center;
-            background-color: rgba(0, 0, 0, 0.8); padding: 25px 20px;
+            background-color: rgba(0, 0, 0, 0.85); padding: 25px 20px;
             position: relative; z-index: 10; min-height: 80px;
         }
         .logo-container {
@@ -67,110 +67,46 @@
 
         .flag-icon { width: 20px; height: auto; vertical-align: middle; border-radius: 2px; display: inline-block; }
 
-        /* --- CONTENUTO QUIZ INTERATTIVO --- */
-        .content { flex: 1; padding: 30px 20px; max-width: 900px; margin: 0 auto; width: 100%; box-sizing: border-box; }
+        /* --- GRIGLIA FLIP CARDS --- */
+        .content { flex: 1; padding: 40px 20px; }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px; max-width: 1200px; margin: 0 auto;
+        }
+
+        /* --- EFFETTO FLIP CARD --- */
+        .flip-card { width: 100%; height: 290px; perspective: 1000px; cursor: pointer; }
+        .flip-card-inner {
+            position: relative; width: 100%; height: 100%;
+            transition: transform 0.6s; transform-style: preserve-3d;
+        }
+        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute; width: 100%; height: 100%;
+            backface-visibility: hidden; border-radius: 15px;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            padding: 20px; box-sizing: border-box; text-align: center;
+            border: 2px solid rgba(224, 172, 76, 0.5);
+            background-image: url('bicchiere-schiuma-foam.webp');
+            background-size: cover;
+            background-position: center;
+            color: #000;
+        }
         
-        .quiz-title {
-            text-align: center; color: #e0ac4c; font-size: 2em; margin-bottom: 10px; font-weight: bold;
-        }
-        .quiz-subtitle {
-            text-align: center; color: #ddd; font-size: 1.1em; margin-bottom: 30px;
-        }
+        .flip-card-front { font-weight: bold; font-size: 1.05em; background-color: rgba(255, 255, 255, 0.92); }
+        .flip-card-back { transform: rotateY(180deg); font-size: 1.1em; font-weight: bold; color: #006400; background-color: rgba(240, 248, 255, 0.95); }
 
-        .question-card {
-            background-color: rgba(0, 0, 0, 0.75);
-            border: 1px solid rgba(224, 172, 76, 0.3);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-
-        .question-title {
-            font-size: 1.2em; font-weight: bold; color: #fff; margin-bottom: 15px; line-height: 1.4;
-        }
-
-        /* Stile Immagini Bicchieri nei Quiz */
-        .quiz-img-wrapper {
-            text-align: center; margin: 10px 0 15px 0;
-        }
-        .quiz-img {
-            max-height: 140px; width: auto; border-radius: 8px;
-            border: 1px solid rgba(224, 172, 76, 0.4); padding: 5px;
-            background-color: rgba(255, 255, 255, 0.9);
-        }
-
-        .options-group { display: flex; flex-direction: column; gap: 10px; }
-
-        .option-label {
-            display: flex; align-items: center; padding: 12px 15px;
-            background-color: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 8px; cursor: pointer; transition: all 0.2s ease;
-            font-size: 1em; color: #eee;
-        }
-
-        .option-label:hover {
-            background-color: rgba(224, 172, 76, 0.2);
-            border-color: #e0ac4c;
-        }
-
-        .option-label input[type="radio"] {
-            margin-right: 12px; transform: scale(1.2); accent-color: #e0ac4c;
-        }
-
-        /* Stili per la correzione */
-        .option-label.correct {
-            background-color: rgba(40, 167, 69, 0.3) !important;
-            border-color: #28a745 !important;
-            color: #85e89d !important;
-            font-weight: bold;
-        }
-
-        .option-label.incorrect {
-            background-color: rgba(220, 53, 69, 0.3) !important;
-            border-color: #dc3545 !important;
-            color: #ff8b94 !important;
-            text-decoration: line-through;
-        }
-
-        .feedback-icon { margin-left: auto; font-weight: bold; font-size: 1.2em; }
-
-        /* --- PULSANTE ED ESITO --- */
-        .submit-container { text-align: center; margin: 40px 0; }
-        
-        .verify-btn {
-            background-color: #e0ac4c; color: #000; border: none;
-            padding: 15px 40px; font-size: 1.2em; font-weight: bold;
-            border-radius: 30px; cursor: pointer; transition: transform 0.2s, background-color 0.2s;
-            box-shadow: 0 4px 15px rgba(224, 172, 76, 0.4);
-        }
-        .verify-btn:hover { transform: scale(1.05); background-color: #f1bf63; }
-
-        .result-box {
-            display: none; background-color: rgba(0, 0, 0, 0.9);
-            border: 2px solid #e0ac4c; border-radius: 15px; padding: 25px;
-            text-align: center; margin-top: 30px; animation: fadeIn 0.5s ease;
-        }
-
-        .result-score { font-size: 2.2em; font-weight: bold; color: #e0ac4c; margin-bottom: 10px; }
-        .result-message { font-size: 1.2em; color: #fff; margin-bottom: 20px; }
-
-        .retry-btn {
-            background: transparent; color: #e0ac4c; border: 2px solid #e0ac4c;
-            padding: 10px 25px; font-size: 1em; font-weight: bold;
-            border-radius: 20px; cursor: pointer; transition: all 0.2s;
-        }
-        .retry-btn:hover { background-color: #e0ac4c; color: #000; }
-
-        /* --- FOOTER E COOKIE --- */
-        .footer { background-color: rgba(0, 0, 0, 0.8); text-align: center; padding: 25px; font-size: 0.9em; margin-top: auto; }
+        /* --- FOOTER --- */
+        .footer { background-color: rgba(0, 0, 0, 0.85); text-align: center; padding: 25px; font-size: 0.9em; margin-top: auto; }
         
         .secret-quiz-link {
             color: #e0ac4c; font-size: 0.85em; font-weight: bold; margin-left: 10px; opacity: 0.4; transition: opacity 0.3s ease;
         }
         .secret-quiz-link:hover { opacity: 1; }
 
+        /* --- COOKIE BANNER --- */
         #cookieBanner {
             position: fixed; bottom: 0; left: 0; width: 100%;
             background: rgba(0, 0, 0, 0.95); color: #fff; padding: 15px;
@@ -180,8 +116,8 @@
 
         @media screen and (max-width: 800px) {
             .logo-container img { height: 65px; }
-            .quiz-title { font-size: 1.6em; }
-            .content { padding: 20px 15px; }
+            .container { gap: 20px; }
+            .flip-card { height: 310px; }
         }
     </style>
 </head>
@@ -215,263 +151,82 @@
         </nav>
 
         <main class="content">
-            <div class="quiz-title">Quiz Bicchieri da Birra</div>
-            <div class="quiz-subtitle">Metti alla prova le tue conoscenze su forme, funzioni e abbinamenti dei bicchieri! 🍺🥂</div>
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h1 style="color: #e0ac4c; font-size: 2em; margin-bottom: 5px;">Ripasso Temperature & Conservazione</h1>
+                <p style="color: #ddd; font-size: 1.1em;">Clicca sulle schede per ripassare le temperature di servizio ideali e le regole di conservazione! 🌡️🍺</p>
+            </div>
 
-            <form id="quizForm">
-                <!-- Domanda 1 -->
-                <div class="question-card" id="q1">
-                    <div class="question-title">1. Qual è il nome di questo bicchiere slanciato?</div>
-                    <div class="quiz-img-wrapper">
-                        <img src="bicchiere-weizenglas.webp" alt="Weizenglas" class="quiz-img" />
-                    </div>
-                    <div class="options-group">
-                        <label class="option-label"><input type="radio" name="q1" value="A"> A) Pinta</label>
-                        <label class="option-label"><input type="radio" name="q1" value="B"> B) Weizenglas</label>
-                        <label class="option-label"><input type="radio" name="q1" value="C"> C) Shaker</label>
+            <div class="container">
+                <!-- 1 (ex Q5) -->
+                <div class="flip-card" onclick="flipAndTrack(this, 'Quali birre a 12-14 gradi')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front"><span>1. Quali birre beneficiano di temperature di servizio più calde (12-14 °C)? 🍫</span></div>
+                        <div class="flip-card-back">Risposta: Imperial Stout, Barley Wine e Quadrupel</div>
                     </div>
                 </div>
-
-                <!-- Domanda 2 -->
-                <div class="question-card" id="q2">
-                    <div class="question-title">2. Qual è la funzione principale del Boccale?</div>
-                    <div class="quiz-img-wrapper">
-                        <img src="bicchiere-boccale.webp" alt="Boccale" class="quiz-img" />
-                    </div>
-                    <div class="options-group">
-                        <label class="option-label"><input type="radio" name="q2" value="A"> A) Concentrare gli aromi complessi</label>
-                        <label class="option-label"><input type="radio" name="q2" value="B"> B) Robusto, mantiene la temperatura</label>
-                        <label class="option-label"><input type="radio" name="q2" value="C"> C) Sviluppare una forte acidità</label>
+                <!-- 2 (ex Q1) -->
+                <div class="flip-card" onclick="flipAndTrack(this, 'Temperatura servizio Pils e Helles')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front"><span>2. Qual è la temperatura ideale di servizio per una Lager chiara (Pils, Helles)? ❄️</span></div>
+                        <div class="flip-card-back">Risposta: 4 - 6 °C</div>
                     </div>
                 </div>
-
-                <!-- Domanda 3 -->
-                <div class="question-card" id="q3">
-                    <div class="question-title">3. Come si chiama questo bicchiere conico da pub?</div>
-                    <div class="quiz-img-wrapper">
-                        <img src="bicchiere-shaker.webp" alt="Shaker" class="quiz-img" />
-                    </div>
-                    <div class="options-group">
-                        <label class="option-label"><input type="radio" name="q3" value="A"> A) Shaker</label>
-                        <label class="option-label"><input type="radio" name="q3" value="B"> B) Teku</label>
-                        <label class="option-label"><input type="radio" name="q3" value="C"> C) Tulipano</label>
+                <!-- 3 (ex Q10) -->
+                <div class="flip-card" onclick="flipAndTrack(this, 'Impatto luce bottiglie trasparenti')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front"><span>3. Qual è l'effetto della luce sulle bottiglie trasparenti o verdi? ☀️</span></div>
+                        <div class="flip-card-back">Risposta: Provoca l'odore di "puzzola" (Lightstruck / Skunked)</div>
                     </div>
                 </div>
-
-                <!-- Domanda 4 -->
-                <div class="question-card" id="q4">
-                    <div class="question-title">4. Quale stile di birra si serve tipicamente nel bicchiere Snifter?</div>
-                    <div class="quiz-img-wrapper">
-                        <img src="bicchiere-snifter.webp" alt="Snifter" class="quiz-img" />
-                    </div>
-                    <div class="options-group">
-                        <label class="option-label"><input type="radio" name="q4" value="A"> A) Helles e Pils</label>
-                        <label class="option-label"><input type="radio" name="q4" value="B"> B) Barley Wine e Imperial Stout</label>
-                        <label class="option-label"><input type="radio" name="q4" value="C"> C) Weissbier</label>
+                <!-- 4 (ex Q3) -->
+                <div class="flip-card" onclick="flipAndTrack(this, 'Temperatura servizio IPA e Pale Ale')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front"><span>4. A che temperatura si serve di norma una IPA o Pale Ale luppolata? 🌿</span></div>
+                        <div class="flip-card-back">Risposta: 8 - 10 °C</div>
                     </div>
                 </div>
-
-                <!-- Domanda 5 -->
-                <div class="question-card" id="q5">
-                    <div class="question-title">5. Qual è la funzione principale del Tulipano?</div>
-                    <div class="quiz-img-wrapper">
-                        <img src="bicchiere-tulipano.webp" alt="Tulipano" class="quiz-img" />
-                    </div>
-                    <div class="options-group">
-                        <label class="option-label"><input type="radio" name="q5" value="A"> A) Robusto e impilabile</label>
-                        <label class="option-label"><input type="radio" name="q5" value="B"> B) Concentra gli aromi</label>
-                        <label class="option-label"><input type="radio" name="q5" value="C"> C) Mantiene la birra ghiacciata</label>
+                <!-- 5 (ex Q8) -->
+                <div class="flip-card" onclick="flipAndTrack(this, 'Posizione conservazione bottiglie')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front"><span>5. Come vanno conservate le bottiglie di birra in cantina/frigo? 🍾</span></div>
+                        <div class="flip-card-back">Risposta: In verticale, al riparo dalla luce</div>
                     </div>
                 </div>
-
-                <!-- Domanda 6 -->
-                <div class="question-card" id="q6">
-                    <div class="question-title">6. Quali stili di birra si abbinano storicamente alla Pinta?</div>
-                    <div class="quiz-img-wrapper">
-                        <img src="bicchiere-pinta.webp" alt="Pinta" class="quiz-img" />
-                    </div>
-                    <div class="options-group">
-                        <label class="option-label"><input type="radio" name="q6" value="A"> A) Stout, Porter e Pale Ale inglesi</label>
-                        <label class="option-label"><input type="radio" name="q6" value="B"> B) Belgian Ale e Saison</label>
-                        <label class="option-label"><input type="radio" name="q6" value="C"> C) Doppelbock e Eisbock</label>
+                <!-- 6 (ex Q2) -->
+                <div class="flip-card" onclick="flipAndTrack(this, 'Effetto birra troppo fredda')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front"><span>6. Cosa succede se si serve una birra complessa troppo fredda (2-3 °C)? 🧊</span></div>
+                        <div class="flip-card-back">Risposta: Si anastetizzano le papille e si nascondono gli aromi</div>
                     </div>
                 </div>
-
-                <!-- Domanda 7 -->
-                <div class="question-card" id="q7">
-                    <div class="question-title">7. Come si chiama questo tipico bicchiere da birra Blanche?</div>
-                    <div class="quiz-img-wrapper">
-                        <img src="bicchiere-jelly.webp" alt="Jelly" class="quiz-img" />
-                    </div>
-                    <div class="options-group">
-                        <label class="option-label"><input type="radio" name="q7" value="A"> A) Jelly</label>
-                        <label class="option-label"><input type="radio" name="q7" value="B"> B) Stivale</label>
-                        <label class="option-label"><input type="radio" name="q7" value="C"> C) Can Glass</label>
+                <!-- 7 (ex Q9) -->
+                <div class="flip-card" onclick="flipAndTrack(this, 'Nemico principale freschezza IPA')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front"><span>7. Qual è il nemico principale della freschezza delle birre luppolate (IPA/NEIPA)? 🧪</span></div>
+                        <div class="flip-card-back">Risposta: L'ossigeno (Ossidazione)</div>
                     </div>
                 </div>
-
-                <!-- Domanda 8 -->
-                <div class="question-card" id="q8">
-                    <div class="question-title">8. Quale bevanda viene tradizionalmente servita in questo bicchiere?</div>
-                    <div class="quiz-img-wrapper">
-                        <img src="bicchiere-lambic.webp" alt="Lambic" class="quiz-img" />
-                    </div>
-                    <div class="options-group">
-                        <label class="option-label"><input type="radio" name="q8" value="A"> A) Birra Lambic (e Geuze / Kriek)</label>
-                        <label class="option-label"><input type="radio" name="q8" value="B"> B) Solo birre analcoliche</label>
-                        <label class="option-label"><input type="radio" name="q8" value="C"> C) Pilsner ceca</label>
+                <!-- 8 (ex Q6) -->
+                <div class="flip-card" onclick="flipAndTrack(this, 'Regola generale gradazione e temperatura')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front"><span>8. Qual è la regola generale che lega gradazione alcolica e temperatura di servizio? 📈</span></div>
+                        <div class="flip-card-back">Risposta: Più è alta la gradazione e la complessità, più alta sarà la temperatura</div>
                     </div>
                 </div>
-
-                <!-- Domanda 9 -->
-                <div class="question-card" id="q9">
-                    <div class="question-title">9. Chi ha ideato il famoso calice universale TEKU (dalle cui iniziali prende il nome TEo + KUaska)?</div>
-                    <div class="quiz-img-wrapper">
-                        <img src="bicchiere-teku.webp" alt="Teku" class="quiz-img" />
-                    </div>
-                    <div class="options-group">
-                        <label class="option-label"><input type="radio" name="q9" value="A"> A) Teo Musso e Kuaska (Lorenzo Dabove)</label>
-                        <label class="option-label"><input type="radio" name="q9" value="B"> B) I monaci trappisti belgi</label>
-                        <label class="option-label"><input type="radio" name="q9" value="C"> C) L'associazione mastri birrai tedeschi</label>
+                <!-- 9 (ex Q4) -->
+                <div class="flip-card" onclick="flipAndTrack(this, 'Temperatura servizio Weissbier e Saison')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front"><span>9. Qual è la temperatura di servizio consueta per una Weissbier o una Saison? 🌾</span></div>
+                        <div class="flip-card-back">Risposta: 6 - 8 °C</div>
                     </div>
                 </div>
-
-                <!-- Domanda 10 -->
-                <div class="question-card" id="q10">
-                    <div class="question-title">10. A quale oggetto assomiglia la forma moderna di questo bicchiere?</div>
-                    <div class="quiz-img-wrapper">
-                        <img src="bicchiere-canglass.webp" alt="Can Glass" class="quiz-img" />
-                    </div>
-                    <div class="options-group">
-                        <label class="option-label"><input type="radio" name="q10" value="A"> A) A una bottiglia di vino</label>
-                        <label class="option-label"><input type="radio" name="q10" value="B"> B) A una lattina di alluminio</label>
-                        <label class="option-label"><input type="radio" name="q10" value="C"> C) A un boccale da 1 litro</label>
+                <!-- 10 (ex Q7) -->
+                <div class="flip-card" onclick="flipAndTrack(this, 'Temperatura ideale conservazione cantina')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front"><span>10. Qual è la temperatura ottimale per la conservazione prolungata (cantina)? 🌡️</span></div>
+                        <div class="flip-card-back">Risposta: 10 - 14 °C costante</div>
                     </div>
                 </div>
-
-                <!-- Domanda 11 -->
-                <div class="question-card" id="q11">
-                    <div class="question-title">11. Qual è il motivo principale per cui la Pinta (specie la Nonic con la classica "pancia") è il bicchiere simbolo dei pub britannici?</div>
-                    <div class="quiz-img-wrapper">
-                        <img src="bicchiere-pinta.webp" alt="Pinta Nonic" class="quiz-img" />
-                    </div>
-                    <div class="options-group">
-                        <label class="option-label"><input type="radio" name="q11" value="A"> A) È robusta, facile da impugnare e la svasatura protegge il bordo dalle sbeccature quando viene impilata o lavata</label>
-                        <label class="option-label"><input type="radio" name="q11" value="B"> B) Trattiene la temperatura fredda a lungo</label>
-                        <label class="option-label"><input type="radio" name="q11" value="C"> C) Crea una schiuma densa e persistente come un Weizenglas</label>
-                    </div>
-                </div>
-
-                <!-- Domanda 12 -->
-                <div class="question-card" id="q12">
-                    <div class="question-title">12. In quale contesto si usa storicamente lo Stivale da birra (Bierstiefel)?</div>
-                    <div class="quiz-img-wrapper">
-                        <img src="bicchiere-stivale.webp" alt="Stivale da birra" class="quiz-img" />
-                    </div>
-                    <div class="options-group">
-                        <label class="option-label"><input type="radio" name="q12" value="A"> A) Durante le feste popolari e giochi goliardici</label>
-                        <label class="option-label"><input type="radio" name="q12" value="B"> B) Per la degustazione tecnica professionale</label>
-                        <label class="option-label"><input type="radio" name="q12" value="C"> C) Esclusivamente nelle abbazie belghe</label>
-                    </div>
-                </div>
-
-                <!-- Domanda 13 -->
-                <div class="question-card" id="q13">
-                    <div class="question-title">13. A quale stile di birra è ideale abbinare il Boccale?</div>
-                    <div class="options-group">
-                        <label class="option-label"><input type="radio" name="q13" value="A"> A) Helles, Märzen e Festbier</label>
-                        <label class="option-label"><input type="radio" name="q13" value="B"> B) Imperial Stout</label>
-                        <label class="option-label"><input type="radio" name="q13" value="C"> C) Saison</label>
-                    </div>
-                </div>
-
-                <!-- Domanda 14 -->
-                <div class="question-card" id="q14">
-                    <div class="question-title">14. Quale bicchiere valorizza e promuove una schiuma importante grazie alla sua strozzatura?</div>
-                    <div class="options-group">
-                        <label class="option-label"><input type="radio" name="q14" value="A"> A) Il Weizenglas</label>
-                        <label class="option-label"><input type="radio" name="q14" value="B"> B) Lo Shaker</label>
-                        <label class="option-label"><input type="radio" name="q14" value="C"> C) Il Can Glass</label>
-                    </div>
-                </div>
-
-                <!-- Domanda 15 -->
-                <div class="question-card" id="q15">
-                    <div class="question-title">15. Quale bicchiere è noto per essere robusto e impilabile?</div>
-                    <div class="options-group">
-                        <label class="option-label"><input type="radio" name="q15" value="A"> A) La Pinta</label>
-                        <label class="option-label"><input type="radio" name="q15" value="B"> B) Il Teku</label>
-                        <label class="option-label"><input type="radio" name="q15" value="C"> C) Il Tulipano</label>
-                    </div>
-                </div>
-
-                <!-- Domanda 16 -->
-                <div class="question-card" id="q16">
-                    <div class="question-title">16. Quale bicchiere è ideale per Belgian Ale, Saison e Italian Grape Ale?</div>
-                    <div class="options-group">
-                        <label class="option-label"><input type="radio" name="q16" value="A"> A) Il Tulipano</label>
-                        <label class="option-label"><input type="radio" name="q16" value="B"> B) Il Boccale</label>
-                        <label class="option-label"><input type="radio" name="q16" value="C"> C) Lo Stivale</label>
-                    </div>
-                </div>
-
-                <!-- Domanda 17 -->
-                <div class="question-card" id="q17">
-                    <div class="question-title">17. Quale bicchiere trattiene e concentra alcoli importanti e grande complessità?</div>
-                    <div class="options-group">
-                        <label class="option-label"><input type="radio" name="q17" value="A"> A) Lo Snifter</label>
-                        <label class="option-label"><input type="radio" name="q17" value="B"> B) La Pinta</label>
-                        <label class="option-label"><input type="radio" name="q17" value="C"> C) Il Weizenglas</label>
-                    </div>
-                </div>
-
-                <!-- Domanda 18 -->
-                <div class="question-card" id="q18">
-                    <div class="question-title">18. Quale celebre birra tedesca viene servita tradizionalmente nella tipica Stange (il bicchiere cilindrico da 0,2 litri)?</div>
-                    <div class="quiz-img-wrapper">
-                        <img src="bicchiere-stange.webp" alt="Stange" class="quiz-img" />
-                    </div>
-                    <div class="options-group">
-                        <label class="option-label"><input type="radio" name="q18" value="A"> A) Kölsch (di Colonia)</label>
-                        <label class="option-label"><input type="radio" name="q18" value="B"> B) Oktoberfest Märzen</label>
-                        <label class="option-label"><input type="radio" name="q18" value="C"> C) Weizenbock</label>
-                    </div>
-                </div>
-
-                <!-- Domanda 19 -->
-                <div class="question-card" id="q19">
-                    <div class="question-title">19. Come viene chiamato il massiccio boccale di birra da 1 litro tipico dell'Oktoberfest?</div>
-                    <div class="options-group">
-                        <label class="option-label"><input type="radio" name="q19" value="A"> A) Mass (o Maß)</label>
-                        <label class="option-label"><input type="radio" name="q19" value="B"> B) Weizenglas</label>
-                        <label class="option-label"><input type="radio" name="q19" value="C"> C) Jelly</label>
-                    </div>
-                </div>
-
-                <!-- Domanda 20 -->
-                <div class="question-card" id="q20">
-                    <div class="question-title">20. Perché la forma a tulipano con svasatura finale è ideale per le Belgian Ale e le Saison?</div>
-                    <div class="quiz-img-wrapper">
-                        <img src="bicchiere-tulipano.webp" alt="Tulipano" class="quiz-img" />
-                    </div>
-                    <div class="options-group">
-                        <label class="option-label"><input type="radio" name="q20" value="A"> A) Perché permette di impilare i bicchieri in grandi quantità</label>
-                        <label class="option-label"><input type="radio" name="q20" value="B"> B) Perché trattiene la CO2 e concentra gli aromi fruttati e spezie esaltando la schiuma</label>
-                        <label class="option-label"><input type="radio" name="q20" value="C"> C) Perché isola termicamente la birra dal calore delle mani</label>
-                    </div>
-                </div>
-
-                <!-- Pulsante per verificare -->
-                <div class="submit-container">
-                    <button type="button" class="verify-btn" onclick="checkAnswers()">VERIFICA RISPOSTE</button>
-                </div>
-            </form>
-
-            <!-- Box Risultato Totale -->
-            <div id="resultBox" class="result-box">
-                <div class="result-score" id="scoreText">0 / 20</div>
-                <div class="result-message" id="messageText"></div>
-                <button class="retry-btn" onclick="resetQuiz()">RIPROVA IL QUIZ</button>
             </div>
         </main>
 
@@ -498,92 +253,16 @@
         if (!localStorage.getItem('cookiesAccepted')) { banner.style.display = 'flex'; }
         btn.onclick = () => { localStorage.setItem('cookiesAccepted', 'true'); banner.style.display = 'none'; };
 
-        // Risposte Corrette del Quiz Bicchieri (20 domande)
-        const correctAnswers = {
-            q1: "B", q2: "B", q3: "A", q4: "B", q5: "B",
-            q6: "A", q7: "A", q8: "A", q9: "A", q10: "B",
-            q11: "A", q12: "A", q13: "A", q14: "A", q15: "A",
-            q16: "A", q17: "A", q18: "A", q19: "A", q20: "B"
-        };
-
-        function checkAnswers() {
-            let score = 0;
-            const total = Object.keys(correctAnswers).length;
-
-            for (let i = 1; i <= total; i++) {
-                const qKey = 'q' + i;
-                const selected = document.querySelector(`input[name="${qKey}"]:checked`);
-                const qCard = document.getElementById(qKey);
-                const labels = qCard.querySelectorAll('.option-label');
-
-                // Rimuovi precedenti evidenziazioni
-                labels.forEach(label => {
-                    label.classList.remove('correct', 'incorrect');
-                    const oldIcon = label.querySelector('.feedback-icon');
-                    if (oldIcon) oldIcon.remove();
-                });
-
-                // Evidenzia la risposta corretta
-                labels.forEach(label => {
-                    const input = label.querySelector('input');
-                    if (input.value === correctAnswers[qKey]) {
-                        label.classList.add('correct');
-                        label.insertAdjacentHTML('beforeend', '<span class="feedback-icon">✓</span>');
-                    }
-                });
-
-                // Controlla se la risposta selezionata dall'utente è giusta o sbagliata (+1 punto se esatta)
-                if (selected) {
-                    if (selected.value === correctAnswers[qKey]) {
-                        score += 1;
-                    } else {
-                        const wrongLabel = selected.parentElement;
-                        wrongLabel.classList.add('incorrect');
-                        wrongLabel.insertAdjacentHTML('beforeend', '<span class="feedback-icon">✗</span>');
-                    }
-                }
-            }
-
-            // Invia il punteggio a Google Analytics
+        // Funzione per girare la carta e tracciare l'interazione su Google Analytics
+        function flipAndTrack(card, itemName) {
+            card.classList.toggle('flipped');
+            
             if (typeof gtag === 'function') {
-                gtag('event', 'completamento_quiz', {
-                    'quiz_nome': 'Bicchieri da Birra - Ottobre 2026',
-                    'punteggio_ottenuto': score,
-                    'punteggio_totale': total
+                gtag('event', 'interazione_flip_card', {
+                    'quiz_nome': 'Ripasso Temperature e Conservazione - Ottobre 2026',
+                    'elemento_ripasso': itemName
                 });
             }
-
-            // Mostra il risultato totale
-            const resultBox = document.getElementById('resultBox');
-            const scoreText = document.getElementById('scoreText');
-            const messageText = document.getElementById('messageText');
-
-            scoreText.innerText = `Punteggio: ${score} / ${total}`;
-
-            if (score === total) {
-                messageText.innerText = "Eccellente! Conosci perfettamente ogni bicchiere, la sua storia e la sua funzione! 🍺🥂🏆";
-            } else if (score >= 14) {
-                messageText.innerText = "Ottimo lavoro! Hai una bellissima padronanza della vetreria da birra! 🍺";
-            } else if (score >= 10) {
-                messageText.innerText = "Buon tentativo! Ripassa un po' le forme e gli stili abbinati! 📚";
-            } else {
-                messageText.innerText = "Serve ancora un po' di ripasso sulle forme dei bicchieri. Riprova! 💪";
-            }
-
-            resultBox.style.display = 'block';
-            resultBox.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function resetQuiz() {
-            document.getElementById('quizForm').reset();
-            const labels = document.querySelectorAll('.option-label');
-            labels.forEach(label => {
-                label.classList.remove('correct', 'incorrect');
-                const icon = label.querySelector('.feedback-icon');
-                if (icon) icon.remove();
-            });
-            document.getElementById('resultBox').style.display = 'none';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
 </body>
