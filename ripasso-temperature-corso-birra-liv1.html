@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z1LYHFBGN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-1Z1LYHFBGN');
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow">
+    <title>Ripasso Biccheri e Servizio - Italian Beer School</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+        /* --- STILE BASE --- */
+        html, body {
+            margin: 0; padding: 0; height: 100%;
+            font-family: 'Quicksand', sans-serif;
+            background: url('sfondo-birra-ripasso-scuola.webp') no-repeat center center fixed;
+            background-size: cover; color: #fff; overflow-x: hidden;
+        }
+        .overlay {
+            display: flex; flex-direction: column; min-height: 100vh;
+            background-color: rgba(60, 40, 10, 0.45); position: relative; z-index: 1;
+        }
+
+        /* --- HEADER E MENU --- */
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            background-color: rgba(0, 0, 0, 0.85); padding: 25px 20px;
+            position: relative; z-index: 10; min-height: 80px;
+        }
+        .logo-container {
+            position: absolute; left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .logo-container img { height: 90px; display: block; }
+        .nav-right { display: flex; align-items: center; gap: 20px; z-index: 15; }
+        .ig-link { font-size: 1.5em; color: #fff; }
+        
+        .hamburger-menu {
+            background: none; border: none; cursor: pointer;
+            display: flex; flex-direction: column; gap: 6px; width: 30px; z-index: 15;
+        }
+        .hamburger-menu .line {
+            width: 30px; height: 3px; background-color: #fff; border-radius: 5px; transition: all 0.3s ease;
+        }
+
+        .menu-pop-up {
+            position: fixed; top: 0; left: -300px; width: 280px; height: 100%;
+            background-color: rgba(0, 0, 0, 0.95); padding-top: 80px;
+            transition: left 0.3s ease-in-out; z-index: 20; display: flex; flex-direction: column;
+        }
+        .menu-pop-up a { padding: 12px 25px; font-size: 1.1em; border-bottom: 1px solid rgba(255, 255, 255, 0.05); color: #fff; text-decoration: none; }
+        .menu-pop-up a.sub-menu {
+            padding-left: 45px; font-size: 0.95em; color: #e0ac4c; border-bottom: none; opacity: 0.8;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .menu-pop-up.open { left: 0; }
+        .close-menu { position: absolute; top: 25px; right: 25px; font-size: 2.5em; cursor: pointer; color: #fff; }
+
+        .flag-icon { width: 20px; height: auto; vertical-align: middle; border-radius: 2px; display: inline-block; }
+
+        /* --- GRIGLIA FLIP CARDS --- */
+        .content { flex: 1; padding: 40px 20px; }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px; max-width: 1200px; margin: 0 auto;
+        }
+
+        /* --- EFFETTO FLIP CARD --- */
+        .flip-card { width: 100%; height: 330px; perspective: 1000px; cursor: pointer; }
+        .flip-card-inner {
+            position: relative; width: 100%; height: 100%;
+            transition: transform 0.6s; transform-style: preserve-3d;
+        }
+        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute; width: 100%; height: 100%;
+            backface-visibility: hidden; border-radius: 15px;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            padding: 15px; box-sizing: border-box; text-align: center;
+            border: 2px solid rgba(224, 172, 76, 0.5);
+            background-image: url('bicchiere-schiuma-foam.webp');
+            background-size: cover;
+            background-position: center;
+            color: #000;
+        }
+        
+        .flip-card-front { font-weight: bold; font-size: 1em; background-color: rgba(255, 255, 255, 0.92); }
+        .flip-card-back { transform: rotateY(180deg); font-size: 1.05em; font-weight: bold; color: #006400; background-color: rgba(240, 248, 255, 0.95); }
+
+        .card-img-thumb {
+            width: 70px; height: 70px; object-fit: contain; margin-bottom: 10px;
+        }
+
+        /* --- FOOTER --- */
+        .footer { background-color: rgba(0, 0, 0, 0.85); text-align: center; padding: 25px; font-size: 0.9em; margin-top: auto; }
+        
+        .secret-quiz-link {
+            color: #e0ac4c; font-size: 0.85em; font-weight: bold; margin-left: 10px; opacity: 0.4; transition: opacity 0.3s ease;
+        }
+        .secret-quiz-link:hover { opacity: 1; }
+
+        /* --- COOKIE BANNER --- */
+        #cookieBanner {
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            background: rgba(0, 0, 0, 0.95); color: #fff; padding: 15px;
+            display: none; justify-content: center; align-items: center; gap: 20px; z-index: 1000;
+        }
+        #cookieBanner button { background: #e0ac4c; border: none; padding: 8px 20px; font-weight: bold; cursor: pointer; border-radius: 5px; }
+
+        @media screen and (max-width: 800px) {
+            .logo-container img { height: 65px; }
+            .container { gap: 20px; }
+            .flip-card { height: 330px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <header>
+            <button class="hamburger-menu" aria-label="Menu">
+                <span class="line"></span><span class="line"></span><span class="line"></span>
+            </button>
+            <div class="logo-container">
+                <a href="index.html"><img src="Logo-IBS-italian-beer-school-firenze.png" alt="Logo IBS" /></a>
+            </div>
+            <div class="nav-right">
+                <a href="https://www.instagram.com/italianbeerschool/?hl=en" target="_blank" class="ig-link">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </header>
+
+        <nav class="menu-pop-up">
+            <div class="close-menu">&times;</div>
+            <a href="index.html">HOME</a>
+            <a href="tutti-i-corsidibirra.html">CORSI DI BIRRA</a>
+            <a href="corso-base-firenze.html" class="sub-menu">• CORSO BASE <img src="https://flagcdn.com/it.svg" class="flag-icon" alt="IT"></a>
+            <a href="corso-secondo-livello-birra-firenze.html" class="sub-menu">• CORSO AVANZATO <img src="https://flagcdn.com/it.svg" class="flag-icon" alt="IT"></a>
+            <a href="curiosita-birra.html">LO SAPEVI CHE?</a>
+            <a href="quizdibirra.html">QUIZ</a>
+            <a href="degustazioni-passate.html">DEGUSTAZIONI PASSATE</a>
+            <a href="bio.html">CHI SONO</a>
+            <a href="contatti.html">CONTATTI</a>
+        </nav>
+
+        <main class="content">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h1 style="color: #e0ac4c; font-size: 2em; margin-bottom: 5px;">Ripasso Biccheri e Servizio</h1>
+                <p style="color: #ddd; font-size: 1.1em;">Clicca sulle schede per ripassare i bicchieri da birra, le loro funzioni e i contesti di servizio!</p>
+            </div>
+
+            <div class="container">
+                <!-- 1 (ex Q9) -->
+                <div class="flip-card" onclick="flipAndTrack(this, 'Ideatori bicchiere TEKU')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="bicchiere-teku.webp" alt="Teku" class="card-img-thumb" />
+                            <span>1. Chi ha ideato il famoso calice universale TEKU (TEo + KUaska)?</span>
+                        </div>
+                        <div class="flip-card-back">Risposta: Teo Musso e Kuaska (Lorenzo Dabove)</div>
+                    </div>
+                </div>
+                <!-- 2 (ex Q4) -->
+                <div class="flip-card" onclick="flipAndTrack(this, 'Stili per bicchiere Snifter')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="bicchiere-snifter.webp" alt="Snifter" class="card-img-thumb" />
+                            <span>2. Quale stile di birra si serve tipicamente nel bicchiere Snifter?</span>
+                        </div>
+                        <div class="flip-card-back">Risposta: Barley Wine e Imperial Stout</div>
+                    </div>
+                </div>
+                <!-- 3 (ex Q15) -->
+                <div class="flip-card" onclick="flipAndTrack(this, 'Bicchiere robusto e impilabile')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="bicchiere-pinta.webp" alt="Pinta" class="card-img-thumb" />
+                            <span>3. Quale bicchiere è noto per essere robusto e impilabile?</span>
+                        </div>
+                        <div class="flip-card-back">Risposta: La Pinta</div>
+                    </div>
+                </div>
+                <!-- 4 (ex Q1) -->
+                <div class="flip-card" onclick="flipAndTrack(this, 'Nome bicchiere slanciato Weizenglas')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="bicchiere-weizenglas.webp" alt="Weizenglas" class="card-img-thumb" />
+                            <span>4. Qual è il nome di questo bicchiere slanciato?</span>
+                        </div>
+                        <div class="flip-card-back">Risposta: Weizenglas</div>
+                    </div>
+                </div>
+                <!-- 5 (ex Q11) -->
+                <div class="flip-card" onclick="flipAndTrack(this, 'Perché Pinta Nonic nei pub')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="bicchiere-pinta.webp" alt="Pinta Nonic" class="card-img-thumb" />
+                            <span>5. Perché la Pinta (specie la Nonic con la pancia) è il simbolo dei pub britannici?</span>
+                        </div>
+                        <div class="flip-card-back">Risposta: È robusta, facile da impugnare e la svasatura protegge il bordo dalle sbeccature quando viene impilata o lavata</div>
+                    </div>
+                </div>
+                <!-- 6 (ex Q18) -->
+                <div class="flip-card" onclick="flipAndTrack(this, 'Birra servita nella Stange')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="bicchiere-stange.webp" alt="Stange" class="card-img-thumb" />
+                            <span>6. Quale celebre birra tedesca viene servita tradizionalmente nella tipica Stange (0,2 l)?</span>
+                        </div>
+                        <div class="flip-card-back">Risposta: Kölsch (di Colonia)</div>
+                    </div>
+                </div>
+                <!-- 7 (ex Q7) -->
+                <div class="flip-card" onclick="flipAndTrack(this, 'Bicchiere per birra Blanche Jelly')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="bicchiere-jelly.webp" alt="Jelly" class="card-img-thumb" />
+                            <span>7. Come si chiama questo tipico bicchiere da birra Blanche?</span>
+                        </div>
+                        <div class="flip-card-back">Risposta: Jelly</div>
+                    </div>
+                </div>
+                <!-- 8 (ex Q10) -->
+                <div class="flip-card" onclick="flipAndTrack(this, 'Forma moderna Can Glass')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="bicchiere-canglass.webp" alt="Can Glass" class="card-img-thumb" />
+                            <span>8. A quale oggetto assomiglia la forma moderna di questo bicchiere?</span>
+                        </div>
+                        <div class="flip-card-back">Risposta: A una lattina di alluminio</div>
+                    </div>
+                </div>
+                <!-- 9 (ex Q3) -->
+                <div class="flip-card" onclick="flipAndTrack(this, 'Nome bicchiere conico da pub Shaker')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="bicchiere-shaker.webp" alt="Shaker" class="card-img-thumb" />
+                            <span>9. Come si chiama questo bicchiere conico da pub?</span>
+                        </div>
+                        <div class="flip-card-back">Risposta: Shaker</div>
+                    </div>
+                </div>
+                <!-- 10 (ex Q12) -->
+                <div class="flip-card" onclick="flipAndTrack(this, 'Contesto stivale da birra')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="bicchiere-stivale.webp" alt="Stivale" class="card-img-thumb" />
+                            <span>10. In quale contesto si usa storicamente lo Stivale da birra (Bierstiefel)?</span>
+                        </div>
+                        <div class="flip-card-back">Risposta: Durante le feste popolari e giochi goliardici</div>
+                    </div>
+                </div>
+                <!-- 11 (ex Q2) -->
+                <div class="flip-card" onclick="flipAndTrack(this, 'Funzione principale del Boccale')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="bicchiere-boccale.webp" alt="Boccale" class="card-img-thumb" />
+                            <span>11. Qual è la funzione principale del Boccale?</span>
+                        </div>
+                        <div class="flip-card-back">Risposta: Robusto, mantiene la temperatura</div>
+                    </div>
+                </div>
+                <!-- 12 (ex Q8) -->
+                <div class="flip-card" onclick="flipAndTrack(this, 'Bevanda per bicchiere Lambic')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="bicchiere-lambic.webp" alt="Lambic" class="card-img-thumb" />
+                            <span>12. Quale bevanda viene tradizionalmente servita in questo bicchiere?</span>
+                        </div>
+                        <div class="flip-card-back">Risposta: Birra Lambic (e Geuze / Kriek)</div>
+                    </div>
+                </div>
+                <!-- 13 (ex Q5) -->
+                <div class="flip-card" onclick="flipAndTrack(this, 'Funzione principale del Tulipano')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="bicchiere-tulipano.webp" alt="Tulipano" class="card-img-thumb" />
+                            <span>13. Qual è la funzione principale del Tulipano?</span>
+                        </div>
+                        <div class="flip-card-back">Risposta: Concentra gli aromi</div>
+                    </div>
+                </div>
+                <!-- 14 (ex Q14) -->
+                <div class="flip-card" onclick="flipAndTrack(this, 'Bicchiere schiuma con strozzatura')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span>14. Quale bicchiere valorizza e promuove una schiuma importante grazie alla sua strozzatura?</span>
+                        </div>
+                        <div class="flip-card-back">Risposta: Il Weizenglas</div>
+                    </div>
+                </div>
+                <!-- 15 (ex Q6) -->
+                <div class="flip-card" onclick="flipAndTrack(this, 'Stili abbinati alla Pinta')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span>15. Quali stili di birra si abbinano storicamente alla Pinta?</span>
+                        </div>
+                        <div class="flip-card-back">Risposta: Stout, Porter e Pale Ale inglesi</div>
+                    </div>
+                </div>
+                <!-- 16 (ex Q13) -->
+                <div class="flip-card" onclick="flipAndTrack(this, 'Stili ideali per il Boccale')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span>16. A quale stile di birra è ideale abbinare il Boccale?</span>
+                        </div>
+                        <div class="flip-card-back">Risposta: Helles, Märzen e Festbier</div>
+                    </div>
+                </div>
+                <!-- 17 (ex Q16) -->
+                <div class="flip-card" onclick="flipAndTrack(this, 'Bicchiere Belgian Ale Saison IGA')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span>17. Quale bicchiere è ideale per Belgian Ale, Saison e Italian Grape Ale?</span>
+                        </div>
+                        <div class="flip-card-back">Risposta: Il Tulipano</div>
+                    </div>
+                </div>
+                <!-- 18 (ex Q17) -->
+                <div class="flip-card" onclick="flipAndTrack(this, 'Bicchiere per alcoli e complessità')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span>18. Quale bicchiere trattiene e concentra alcoli importanti e grande complessità?</span>
+                        </div>
+                        <div class="flip-card-back">Risposta: Lo Snifter</div>
+                    </div>
+                </div>
+                <!-- 19 (ex Q19) -->
+                <div class="flip-card" onclick="flipAndTrack(this, 'Nome boccale 1 litro Oktoberfest')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span>19. Come viene chiamato il massiccio boccale di birra da 1 litro tipico dell'Oktoberfest?</span>
+                        </div>
+                        <div class="flip-card-back">Risposta: Mass (o Maß)</div>
+                    </div>
+                </div>
+                <!-- 20 (ex Q20) -->
+                <div class="flip-card" onclick="flipAndTrack(this, 'Perché forma a tulipano per Belgian Ale')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span>20. Perché la forma a tulipano con svasatura finale è ideale per le Belgian Ale e le Saison?</span>
+                        </div>
+                        <div class="flip-card-back">Risposta: Perché trattiene la CO2 e concentra gli aromi fruttati e spezie esaltando la schiuma</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            © 2026 IBS ITALIAN BEER SCHOOL – P.IVA: IT07436420488 | <a href="privacy.html" style="color:#e0ac4c">Privacy</a> <a href="quiz-corso-birra-ottobre-2026.html" class="secret-quiz-link" title="Area Quiz Corsisti">Q</a>
+        </footer>
+    </div>
+
+    <div id="cookieBanner">
+        <p>Utilizziamo i cookie per migliorare la tua esperienza. <a href="privacy.html" style="color:#e0ac4c">Privacy Policy</a></p>
+        <button id="acceptBtn">Accetta</button>
+    </div>
+
+    <script>
+        // Gestione Menu Pop-up
+        const hb = document.querySelector('.hamburger-menu'), 
+              menu = document.querySelector('.menu-pop-up'), 
+              close = document.querySelector('.close-menu');
+        function toggle() { menu.classList.toggle('open'); }
+        hb.onclick = toggle; close.onclick = toggle;
+
+        // Gestione Cookie Banner
+        const banner = document.getElementById('cookieBanner'), btn = document.getElementById('acceptBtn');
+        if (!localStorage.getItem('cookiesAccepted')) { banner.style.display = 'flex'; }
+        btn.onclick = () => { localStorage.setItem('cookiesAccepted', 'true'); banner.style.display = 'none'; };
+
+        // Funzione per girare la carta e tracciare l'interazione su Google Analytics
+        function flipAndTrack(card, itemName) {
+            card.classList.toggle('flipped');
+            
+            if (typeof gtag === 'function') {
+                gtag('event', 'interazione_flip_card', {
+                    'quiz_nome': 'Ripasso Biccheri e Servizio - Ottobre 2026',
+                    'elemento_ripasso': itemName
+                });
+            }
+        }
+    </script>
+</body>
+</html>
