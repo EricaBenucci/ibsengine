@@ -13,9 +13,9 @@
     <meta charset="UTF-8" />
     <meta name="google-site-verification" content="FFhcd98mR3QTa7Taxvf0Dti0ztHZHrU676BqkiBrtSk" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ripasso Alta e Bassa Fermentazione - Italian Beer School</title>
+    <title>Quiz Corso Birra Livello 1 - Italian Beer School</title>
     
-    <meta name="description" content="Ripasso interattivo sulle tipologie di fermentazione e stili di birra del Corso di Birra Livello 1: alta e bassa fermentazione a confronto.">
+    <meta name="description" content="Metti alla prova le tue conoscenze sulla birra con i quiz interattivi del Corso di Birra Livello 1: materie prime, produzione, stili, fermentazione, temperature e bicchieri.">
     <meta name="robots" content="noindex, nofollow">
     <link rel="icon" type="image/png" href="favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet" />
@@ -32,7 +32,7 @@
 
         .overlay {
             display: flex; flex-direction: column; min-height: 100vh;
-            background-color: rgba(60, 40, 10, 0.45); position: relative; z-index: 1;
+            background-color: rgba(0, 0, 0, 0.6); position: relative; z-index: 1;
         }
 
         /* --- HEADER CON CENTRATURA ASSOLUTA DEL LOGO --- */
@@ -40,7 +40,7 @@
             display: grid;
             grid-template-columns: 1fr auto 1fr;
             align-items: center;
-            background-color: rgba(0, 0, 0, 0.85);
+            background-color: rgba(0, 0, 0, 0.8);
             padding: 10px 15px;
             position: relative;
             z-index: 10;
@@ -48,6 +48,7 @@
             box-sizing: border-box;
         }
         
+        /* Colonna Sinistra (Hamburger) */
         .header-left-col {
             display: flex;
             align-items: center;
@@ -61,6 +62,7 @@
             width: 30px; height: 3px; background-color: #fff; border-radius: 5px; transition: all 0.3s ease;
         }
 
+        /* Colonna Centrale */
         .header-center-col {
             display: flex;
             justify-content: center;
@@ -73,6 +75,7 @@
             display: block; 
         }
 
+        /* Badge WSET */
         .wset-news-badge {
             display: flex;
             align-items: center;
@@ -103,6 +106,7 @@
             white-space: nowrap;
         }
 
+        /* Colonna Destra (Instagram) */
         .header-right-col {
             display: flex;
             justify-content: flex-end;
@@ -110,13 +114,14 @@
         }
         .ig-link { font-size: 1.3em; color: #fff; }
 
+        /* Stili Menu Pop-up */
         .menu-pop-up {
             position: fixed; top: 0; left: -300px; width: 280px; height: 100%;
             background-color: rgba(0, 0, 0, 0.95); padding-top: 80px;
             transition: left 0.3s ease-in-out; z-index: 14; display: flex; flex-direction: column;
         }
         .menu-pop-up.open { left: 0; }
-        .menu-pop-up a { padding: 12px 25px; font-size: 1.1em; border-bottom: 1px solid rgba(255, 255, 255, 0.05); color: #fff; text-decoration: none; }
+        .menu-pop-up a { padding: 12px 25px; font-size: 1.1em; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
         
         .menu-pop-up a.sub-menu { 
             padding-left: 45px; 
@@ -131,123 +136,58 @@
 
         .content { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 30px 20px; }
         
-        .page-main-title {
-            font-size: 2.5em;
-            color: #ffd700;
-            text-align: center;
-            font-weight: bold;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.9);
-            letter-spacing: 1px;
-            text-transform: uppercase;
+        .seo-title {
+            position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; 
+            overflow: hidden; clip: rect(0,0,0,0); border: 0;
         }
 
         .intro-text-top {
-            max-width: 850px; text-align: center; margin: 0 auto 30px auto; 
-            line-height: 1.4; font-size: 1.1em; background: rgba(0, 0, 0, 0.75); 
-            padding: 15px 25px; border-radius: 12px; border: 1px solid rgba(224, 172, 76, 0.5);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            max-width: 850px; text-align: center; margin: 0 auto 25px auto; 
+            line-height: 1.4; font-size: 1.1em; background: rgba(0,0,0,0.5); 
+            padding: 15px 25px; border-radius: 10px; border: 1px solid rgba(224, 172, 76, 0.3);
         }
 
-        .highlight-yellow { color: #ffd700; font-weight: bold; }
+        .highlight-yellow { color: #e0ac4c; font-weight: bold; }
 
-        /* GRIGLIA FLIP CARDS */
-        .cards-grid {
-            display: flex; flex-wrap: wrap; gap: 30px;
+        /* GRIGLIA QUIZ SILOS */
+        .quiz-grid {
+            display: flex; flex-wrap: wrap; gap: 35px;
             justify-content: center; align-items: stretch;
             max-width: 1200px; margin: auto;
         }
 
-        .flip-card {
-            background-color: transparent;
-            width: 320px;
-            height: 340px;
-            perspective: 1000px;
-            cursor: pointer;
-        }
-
-        .flip-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
+        .quiz-box { 
+            flex: 1; 
+            min-width: 280px; 
+            max-width: 340px; 
             text-align: center;
-            transition: transform 0.6s;
-            transform-style: preserve-3d;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 15px;
             border-radius: 20px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+            border: 1px solid rgba(224, 172, 76, 0.2);
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
-
-        .flip-card.flipped .flip-card-inner {
-            transform: rotateY(180deg);
+        .quiz-box:hover {
+            transform: translateY(-5px);
+            border-color: #e0ac4c;
         }
-
-        .flip-card-front, .flip-card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            box-sizing: border-box;
-            border: 2px solid rgba(224, 172, 76, 0.5);
+        .quiz-box img {
+            width: 100%; aspect-ratio: 1/1; object-fit: cover;
+            border-radius: 50%; box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
         }
+        .quiz-box a:hover img { transform: scale(1.05); }
 
-        .flip-card-front {
-            background: rgba(15, 10, 5, 0.88);
-            color: white;
-        }
-
-        .flip-card-back {
-            background: rgba(30, 20, 10, 0.92);
-            color: #fff;
-            transform: rotateY(180deg);
-            text-align: left;
-            justify-content: flex-start;
-            padding-top: 25px;
-        }
-
-        .card-icon {
-            font-size: 2.5em;
-            color: #ffd700;
-            margin-bottom: 15px;
-        }
-
-        .card-title {
-            font-size: 1.3em;
-            font-weight: bold;
-            color: #ffd700;
+        h2.quiz-title {
+            font-size: 1.4em; font-weight: bold; color: #fff;
+            margin-top: 15px; margin-bottom: 5px; line-height: 1.2;
             text-transform: uppercase;
-            margin-bottom: 10px;
         }
+        .quiz-subtitle { font-size: 0.95em; color: #e0ac4c; margin-top: 5px; }
 
-        .card-subtitle {
-            font-size: 0.95em;
-            color: #ddd;
-        }
+        .footer { background-color: rgba(0, 0, 0, 0.8); text-align: center; padding: 25px; font-size: 0.9em; margin-top: auto; }
 
-        .card-back-text {
-            font-size: 0.92em;
-            line-height: 1.5;
-            color: #f0f0f0;
-        }
-
-        .card-back-text strong {
-            color: #ffd700;
-        }
-
-        .click-hint {
-            font-size: 0.75em;
-            color: #aaa;
-            margin-top: 15px;
-            font-style: italic;
-        }
-
-        .footer { background-color: rgba(0, 0, 0, 0.85); text-align: center; padding: 25px; font-size: 0.9em; margin-top: auto; }
-
+        /* Media Query Desktop */
         @media screen and (min-width: 801px) {
             header { padding: 20px 40px; }
             .logo-container img { height: 90px; }
@@ -257,22 +197,24 @@
             .ig-link { font-size: 1.5em; }
         }
         
+        /* Gestione schermi molto piccoli */
         @media screen and (max-width: 430px) {
             .wset-news-text { display: none; }
             .wset-news-badge { margin-right: 10px; }
-            .flip-card { width: 100%; max-width: 320px; }
         }
     </style>
 </head>
 <body>
     <div class="overlay">
         <header>
+            <!-- COLONNA SINISTRA: Hamburger Menu -->
             <div class="header-left-col">
                 <button class="hamburger-menu" id="hamburgerBtn" aria-label="Menu">
                     <span class="line"></span><span class="line"></span><span class="line"></span>
                 </button>
             </div>
             
+            <!-- COLONNA CENTRALE -->
             <div class="header-center-col">
                 <a href="tutti-i-corsidibirra.html" class="wset-news-badge">
                     <img src="logo-wset-course_english-beer.svg" class="wset-mini-logo" alt="WSET Logo">
@@ -284,6 +226,7 @@
                 </div>
             </div>
 
+            <!-- COLONNA DESTRA: Instagram -->
             <div class="header-right-col">
                 <a href="https://www.instagram.com/italianbeerschool/?hl=en" target="_blank" class="ig-link">
                     <i class="fab fa-instagram"></i>
@@ -291,12 +234,13 @@
             </div>
         </header>
 
+        <!-- MENU LATERALE POP-UP -->
         <nav class="menu-pop-up" id="mobileMenu">
             <a href="index.html">HOME</a>
             <a href="tutti-i-corsidibirra.html">CORSI DI BIRRA</a>
             <a href="corso-wset-level-1-firenze.html" class="sub-menu">• WSET LEVEL 1 <img src="https://flagcdn.com/gb.svg" class="flag-rect" alt="English"></a>
             <a href="corso-wset-level-2-firenze.html" class="sub-menu">• WSET LEVEL 2 <img src="https://flagcdn.com/gb.svg" class="flag-rect" alt="English"></a>
-            <a href="corso-base-firenze.html" class="sub-menu">• CORSO BASE <img src="https://flagcdn.com/it.svg" class="flag-rect" alt="Italiano"></a>
+            <a href="corso-birra-base-firenze.html" class="sub-menu">• CORSO BASE <img src="https://flagcdn.com/it.svg" class="flag-rect" alt="Italiano"></a>
             <a href="corso-secondo-livello-birra-firenze.html" class="sub-menu">• CORSO AVANZATO <img src="https://flagcdn.com/it.svg" class="flag-rect" alt="Italiano"></a>
             <a href="curiosita-birra.html">LO SAPEVI CHE?</a>
             <a href="quiz-di-birra.html">QUIZ</a>
@@ -306,127 +250,59 @@
         </nav>
 
         <main class="content">
-            <h1 class="page-main-title">Ripasso: Fermentazione</h1>
+            <h1 class="seo-title">Quiz Corso di Birra Livello 1 - Italian Beer School</h1>
             
             <div class="intro-text-top">
-                <p>Clicca sulle schede per scoprire le caratteristiche chiave dei diversi stili e delle <span class="highlight-yellow">metodologie di fermentazione (Alta e Bassa)</span>.</p>
+                <p>Metti alla prova la tua cultura brassicola! Seleziona un argomento dal <span class="highlight-yellow">Corso di Birra Livello 1</span> e completa i test interattivi per ripassare gli argomenti delle lezioni.</p>
             </div>
             
-            <div class="cards-grid">
-                <!-- CARD 1: Pilsner (Bassa) -->
-                <div class="flip-card" onclick="this.classList.toggle('flipped');">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <i class="fas fa-beer card-icon"></i>
-                            <div class="card-title">Pilsner / German Pils</div>
-                            <div class="card-subtitle">Bassa Fermentazione (Lager)</div>
-                            <div class="click-hint"><i class="fas fa-sync-alt"></i> Clicca per girare</div>
-                        </div>
-                        <div class="flip-card-back">
-                            <div class="card-title" style="font-size: 1.1em;">Pilsner</div>
-                            <div class="card-back-text">
-                                • <strong>Famiglia:</strong> Bassa fermentazione (Lager)<br>
-                                • <strong>Lievito:</strong> <em>Saccharomyces pastorianus</em><br>
-                                • <strong>Caratteristiche:</strong> Colore paglierino chiaro, corpo snello, spiccata nota luppolata erbacea/floreale (es. Saaz) e finale pulito e dissetante.
-                            </div>
-                        </div>
-                    </div>
+            <div class="quiz-grid">
+                <!-- SILO 1: Materie Prime -->
+                <div class="quiz-box">
+                    <a href="quiz-materie-prime-corso-birra-liv1-ottobre-2026.html">
+                        <img src="quiz-materie-prime-corso-birra-liv1-ottobre-2026.webp" alt="Quiz Materie Prime Birra" />
+                        <h2 class="quiz-title">MATERIE PRIME</h2>
+                    </a>
                 </div>
 
-                <!-- CARD 2: IPA / Pale Ale (Alta) -->
-                <div class="flip-card" onclick="this.classList.toggle('flipped');">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <i class="fas fa-glass-cheers card-icon"></i>
-                            <div class="card-title">IPA & Pale Ale</div>
-                            <div class="card-subtitle">Alta Fermentazione (Ale)</div>
-                            <div class="click-hint"><i class="fas fa-sync-alt"></i> Clicca per girare</div>
-                        </div>
-                        <div class="flip-card-back">
-                            <div class="card-title" style="font-size: 1.1em;">IPA & Pale Ale</div>
-                            <div class="card-back-text">
-                                • <strong>Famiglia:</strong> Alta fermentazione (Ale)<br>
-                                • <strong>Lievito:</strong> <em>Saccharomyces cerevisiae</em><br>
-                                • <strong>Caratteristiche:</strong> Profumi intensi fruttati ed agrumati dati dai luppoli americani o moderni, corpo strutturato e amaro pronunciato ma bilanciato.
-                            </div>
-                        </div>
-                    </div>
+                <!-- SILO 2: Produzione -->
+                <div class="quiz-box">
+                    <a href="quiz-produzione-corso-birra-liv1-ottobre-2026.html">
+                        <img src="immagine-quiz-produzione-corso-birra-liv1-ottobre-2026.webp" alt="Quiz Produzione Birra" />
+                        <h2 class="quiz-title">PRODUZIONE</h2>
+                    </a>
                 </div>
 
-                <!-- CARD 3: Bock / Doppelbock (Bassa) -->
-                <div class="flip-card" onclick="this.classList.toggle('flipped');">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <i class="fas fa-beer card-icon"></i>
-                            <div class="card-title">Bock & Doppelbock</div>
-                            <div class="card-subtitle">Bassa Fermentazione (Lager)</div>
-                            <div class="click-hint"><i class="fas fa-sync-alt"></i> Clicca per girare</div>
-                        </div>
-                        <div class="flip-card-back">
-                            <div class="card-title" style="font-size: 1.1em;">Bock & Doppelbock</div>
-                            <div class="card-back-text">
-                                • <strong>Famiglia:</strong> Bassa fermentazione (Lager forte)<br>
-                                • <strong>Caratteristiche:</strong> Birre tradizionali tedesche a lunga stagionatura, ricche note di malto, crosta di pane, frutta secca e caramello, con tenore alcolico sostenuto.
-                            </div>
-                        </div>
-                    </div>
+                <!-- SILO 3: Stili -->
+                <div class="quiz-box">
+                    <a href="quiz-stili-corso-birra-liv1-ottobre-2026.html">
+                        <img src="immagine-quiz-stili-corso-birra-liv1-ottobre-2026.webp" alt="Quiz Stili Birrai" />
+                        <h2 class="quiz-title">STILI DI BIRRA</h2>
+                     </a>
                 </div>
 
-                <!-- CARD 4: Weissbier / Weizen (Alta) -->
-                <div class="flip-card" onclick="this.classList.toggle('flipped');">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <i class="fas fa-glass-cheers card-icon"></i>
-                            <div class="card-title">Weissbier / Weizen</div>
-                            <div class="card-subtitle">Alta Fermentazione (Ale di frumento)</div>
-                            <div class="click-hint"><i class="fas fa-sync-alt"></i> Clicca per girare</div>
-                        </div>
-                        <div class="flip-card-back">
-                            <div class="card-title" style="font-size: 1.1em;">Weissbier / Weizen</div>
-                            <div class="card-back-text">
-                                • <strong>Famiglia:</strong> Alta fermentazione (Birra di frumento bavarese)<br>
-                                • <strong>Caratteristiche:</strong> Uso di malto di frumento (min 50%), tipici aromi di chiodi di garofano e banana dovuti agli esteri del lievito, aspetto velato e schiuma abbondante.
-                            </div>
-                        </div>
-                    </div>
+                <!-- SILO 4: Alta e Bassa Fermentazione -->
+                <div class="quiz-box">
+                    <a href="quiz-alta-bassa-corso-birra-liv1-ottobre-2026.html">
+                        <img src="immagine-quiz-alta-bassa-corso-birra-liv1-ottobre-2026.webp" alt="Quiz Alta e Bassa Fermentazione" />
+                        <h2 class="quiz-title">ALTA E BASSA FERMENTAZIONE</h2>
+                    </a>
                 </div>
 
-                <!-- CARD 5: Munich Dunkel (Bassa) -->
-                <div class="flip-card" onclick="this.classList.toggle('flipped');">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <i class="fas fa-beer card-icon"></i>
-                            <div class="card-title">Munich Dunkel</div>
-                            <div class="card-subtitle">Bassa Fermentazione (Lager scura)</div>
-                            <div class="click-hint"><i class="fas fa-sync-alt"></i> Clicca per girare</div>
-                        </div>
-                        <div class="flip-card-back">
-                            <div class="card-title" style="font-size: 1.1em;">Munich Dunkel</div>
-                            <div class="card-back-text">
-                                • <strong>Famiglia:</strong> Bassa fermentazione (Lager scura classica)<br>
-                                • <strong>Caratteristiche:</strong> Colore ambrato scuro/marrone con riflessi rubino, note maltate di cioccolato al latte, biscotto e crosta di pane tostato, con amaro delicato.
-                            </div>
-                        </div>
-                    </div>
+                <!-- SILO 5: Temperature -->
+                <div class="quiz-box">
+                    <a href="quiz-temperature-corso-birra-liv1-ottobre-2026.html">
+                        <img src="immagine-quiz-temperature-corso-birra-liv1-ottobre-2026.webp" alt="Quiz Temperature Servizio Birra" />
+                        <h2 class="quiz-title">TEMPERATURE DI SERVIZIO</h2>
+                    </a>
                 </div>
 
-                <!-- CARD 6: Belgian Dubbel / Tripel (Alta) -->
-                <div class="flip-card" onclick="this.classList.toggle('flipped');">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <i class="fas fa-glass-cheers card-icon"></i>
-                            <div class="card-title">Belgian Stile (Dubbel/Tripel)</div>
-                            <div class="card-subtitle">Alta Fermentazione (Abbazia/Trappiste)</div>
-                            <div class="click-hint"><i class="fas fa-sync-alt"></i> Clicca per girare</div>
-                        </div>
-                        <div class="flip-card-back">
-                            <div class="card-title" style="font-size: 1.1em;">Belgian Dubbel / Tripel</div>
-                            <div class="card-back-text">
-                                • <strong>Famiglia:</strong> Alta fermentazione (Tradizione trappista)<br>
-                                • <strong>Caratteristiche:</strong> Complesse note speziate e fruttate (spezie, frutta scura o frutta gialla matura), uso di zuccheri canditi, corpo rotondo e alto grado alcolico ben nascosto.
-                            </div>
-                        </div>
-                    </div>
+                <!-- SILO 6: Bicchieri -->
+                <div class="quiz-box">
+                    <a href="quiz-bicchieri-corso-birra-liv1-ottobre-2026.html">
+                        <img src="immagine-quiz-bicchieri-corso-birra-liv1-ottobre-2026.webp" alt="Quiz Bicchieri da Birra" />
+                        <h2 class="quiz-title">BICCHIERI</h2>
+                    </a>
                 </div>
             </div>
         </main>
@@ -445,10 +321,3 @@
         };
 
         document.addEventListener('click', function(event) {
-            if (!menu.contains(event.target) && !hb.contains(event.target)) {
-                menu.classList.remove('open');
-            }
-        });
-    </script>
-</body>
-</html>
