@@ -169,20 +169,36 @@
             display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap;
         }
         .event-date { font-size: 1.4em; color: #e0ac4c; margin-top: 10px; }
+        .event-location { font-size: 1.05em; color: #ddd; margin-top: 6px; }
 
         .footer { background-color: rgba(0, 0, 0, 0.8); text-align: center; padding: 25px; font-size: 0.9em; margin-top: auto; }
 
-        /* Stile per la Q e la R segrete nel footer */
-        .secret-quiz-link {
-            color: #e0ac4c;
-            font-size: 0.85em;
-            font-weight: bold;
-            margin-left: 10px;
-            opacity: 0.4;
-            transition: opacity 0.3s ease;
-        }
-        .secret-quiz-link:hover {
-            opacity: 1;
+        /* Ottimizzazione Mobile: prima CORSI DI BIRRA, poi WSET LEVEL 1 */
+        @media screen and (max-width: 800px) {
+            .content {
+                justify-content: flex-start;
+                gap: 24px;
+                padding: 20px 15px;
+            }
+            .event-grid {
+                flex-direction: column;
+                align-items: center;
+                gap: 32px;
+                margin: 0 auto;
+                width: 100%;
+            }
+            .event-box {
+                min-width: 0;
+                width: 100%;
+                max-width: 280px;
+            }
+            h2.event-title {
+                font-size: 1.5em;
+                margin-top: 18px;
+            }
+            .event-date {
+                font-size: 1.2em;
+            }
         }
 
         /* Media Query Desktop */
@@ -264,19 +280,20 @@
                     </a>
                 </div>
 
-                <!-- SCHEDA 2: Birre di Natale -->
+                <!-- SCHEDA 2: WSET Level 1 -->
                 <div class="event-box">
-                    <a href="degustazione.birre.firenze.natale.2026.html">
-                        <img src="degustazione-birra-natale-firenze.webp" alt="Degustazione birre di Natale Firenze" />
-                        <h2 class="event-title">DEGUSTAZIONE DI NATALE</h2>
-                        <div class="event-date">17 Novembre 2026, Firenze</div>
+                    <a href="corso-wset-level-1-firenze.html">
+                        <img src="logo-wset-course_english-beer.svg" alt="WSET Level 1 Award in Beer Firenze" />
+                        <h2 class="event-title">WSET LEVEL 1 <img src="https://flagcdn.com/gb.svg" class="flag-rect" alt="English"></h2>
+                        <div class="event-date">Sat 6 February 2027</div>
+                        <div class="event-location">Enoteca Calice H, Via Bellini 59, Firenze</div>
                     </a>
                 </div>
             </div>
         </main>
 
         <footer class="footer">
-            © 2026 IBS ITALIAN BEER SCHOOL – P.IVA: IT07436420488 | <a href="privacy.html" style="color:#e0ac4c">Privacy</a> <a href="quiz-corso-birra-ottobre-2026.html" class="secret-quiz-link" title="Area Quiz Corsisti">Q</a> <a href="ripasso-corso-birra-primo-livello.html" class="secret-quiz-link" title="Area Ripasso Corsisti">R</a>
+            © 2026 IBS ITALIAN BEER SCHOOL – P.IVA: IT07436420488 | <a href="privacy.html" style="color:#e0ac4c">Privacy</a>
         </footer>
     </div>
 
