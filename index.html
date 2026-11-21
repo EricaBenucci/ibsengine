@@ -161,17 +161,29 @@
             border-radius: 50%; box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
             transition: transform 0.3s ease;
         }
+        .wset-circle-wrapper {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.72);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 32px;
+            box-sizing: border-box;
+            transition: transform 0.3s ease;
+        }
+        .event-box a:hover .wset-circle-wrapper {
+            transform: scale(1.05);
+        }
         .event-box img.wset-card-logo {
-            width: auto;
-            max-width: 100%;
+            width: 100%;
             height: auto;
-            max-height: 220px;
             aspect-ratio: auto;
             object-fit: contain;
             border-radius: 0;
             box-shadow: none;
-            margin: 35px auto;
-            display: block;
         }
         .event-box img.event-flag {
             width: 28px;
@@ -181,7 +193,7 @@
             box-shadow: none;
             display: inline-block;
         }
-        .event-box a:hover img:not(.event-flag) { transform: scale(1.05); }
+        .event-box a:hover img:not(.event-flag):not(.wset-card-logo) { transform: scale(1.05); }
 
         h2.event-title {
             font-size: 1.8em; font-weight: bold; color: #fff;
@@ -212,9 +224,8 @@
                 width: 100%;
                 max-width: 280px;
             }
-            .event-box img.wset-card-logo {
-                max-height: 165px;
-                margin: 25px auto;
+            .wset-circle-wrapper {
+                padding: 26px;
             }
             h2.event-title {
                 font-size: 1.5em;
@@ -307,7 +318,9 @@
                 <!-- SCHEDA 2: WSET Level 1 -->
                 <div class="event-box">
                     <a href="corso-wset-level-1-firenze.html">
-                        <img src="logo-wset-course_english-beer.svg" class="wset-card-logo" alt="WSET Level 1 Award in Beer Firenze" />
+                        <div class="wset-circle-wrapper">
+                            <img src="logo-wset-course_english-beer.svg" class="wset-card-logo" alt="WSET Level 1 Award in Beer Firenze" />
+                        </div>
                         <h2 class="event-title">WSET LEVEL 1 <img src="https://flagcdn.com/gb.svg" class="event-flag" alt="English"></h2>
                         <div class="event-date">Sat 6 February 2027</div>
                         <div class="event-location">Enoteca Calice H, Via Bellini 59, Firenze</div>
