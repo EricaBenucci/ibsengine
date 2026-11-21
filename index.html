@@ -161,6 +161,18 @@
             border-radius: 50%; box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
             transition: transform 0.3s ease;
         }
+        .event-box img.wset-card-logo {
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            max-height: 220px;
+            aspect-ratio: auto;
+            object-fit: contain;
+            border-radius: 0;
+            box-shadow: none;
+            margin: 35px auto;
+            display: block;
+        }
         .event-box img.event-flag {
             width: 28px;
             height: auto;
@@ -199,6 +211,10 @@
                 min-width: 0;
                 width: 100%;
                 max-width: 280px;
+            }
+            .event-box img.wset-card-logo {
+                max-height: 165px;
+                margin: 25px auto;
             }
             h2.event-title {
                 font-size: 1.5em;
@@ -291,7 +307,7 @@
                 <!-- SCHEDA 2: WSET Level 1 -->
                 <div class="event-box">
                     <a href="corso-wset-level-1-firenze.html">
-                        <img src="logo-wset-course_english-beer.svg" alt="WSET Level 1 Award in Beer Firenze" />
+                        <img src="logo-wset-course_english-beer.svg" class="wset-card-logo" alt="WSET Level 1 Award in Beer Firenze" />
                         <h2 class="event-title">WSET LEVEL 1 <img src="https://flagcdn.com/gb.svg" class="event-flag" alt="English"></h2>
                         <div class="event-date">Sat 6 February 2027</div>
                         <div class="event-location">Enoteca Calice H, Via Bellini 59, Firenze</div>
