@@ -1,360 +1,183 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evento: Birre Trappiste - Italian Beer School</title>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJd4Vf8kL61J6o7jM0/A+x6wA2I330G8vS+K1L+R1J75r1Xf8Wk+Y0B1n5Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-        /* ---------------------- */
-        /* Stili Base e Sfondo - Adattato per Trappiste.jpg */
-        /* ---------------------- */
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            font-family: 'Quicksand', sans-serif;
-            /* Sfondo specifico per l'evento Trappiste */
-            background: url('trappiste.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: #fff;
-        }
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-        a:visited {
-            color: inherit;
-            text-decoration: none;
-        }
-        .overlay {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            background-color: rgba(0, 0, 0, 0.6);
-            position: relative;
-            z-index: 1;
-        }
-        /* ---------------------- */
-        /* Header / Navbar (Come le altre pagine) */
-        /* ---------------------- */
-        header {
-            display: flex;
-            justify-content: space-between; 
-            align-items: center;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 85px 20px;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 2;
-        }
-        .logo-container {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 0;
-            border-radius: 0;
-        }
-        .logo-container a {
-            display: inline-block;
-        }
-        .logo-container img {
-            height: 110px;
-        }
-        .hamburger-menu {
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 6px;
-            width: 30px;
-            height: 30px;
-        }
-        .hamburger-menu .line {
-            width: 30px;
-            height: 3px;
-            background-color: #fff;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-        .hamburger-menu.open .line:nth-child(1) { transform: translateY(9px) rotate(45deg); }
-        .hamburger-menu.open .line:nth-child(2) { opacity: 0; }
-        .hamburger-menu.open .line:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
-        
-        /* STILI PER ICONA INSTAGRAM NELL'HEADER */
-        .social-icons-header {
-            /* Per posizionare a destra */
-            margin-left: auto; 
-            display: flex;
-            align-items: center;
-            position: relative; /* Per posizionamento */
-            right: 20px; /* Spazio dal bordo */
-        }
-        .social-icons-header a {
-            color: #fff;
-            font-size: 1.5em; /* Dimensione icona */
-        }
-        /* Fine Stili Icona */
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z1LYHFBGN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-        /* Pop-up Menu Laterale (Come le altre pagine) */
+      gtag('config', 'G-1Z1LYHFBGN');
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Degustazione Birre Trappiste Firenze - 22 Gennaio 2027 - IBS</title>
+    
+    <!-- Meta Description Ottimizzata -->
+    <meta name="description" content="Serata speciale Birre Trappiste a Firenze (22 Gennaio 2027). Degustazione guidata di 5 birre trappiste di vari Paesi con piccoli assaggi in abbinamento e quiz finale.">
+    
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <style>
+        /* RESET E STILI BASE */
+        html, body {
+            margin: 0; padding: 0; height: 100%;
+            font-family: 'Quicksand', sans-serif;
+            background: url('trappiste.jpg') no-repeat center center fixed;
+            background-size: cover; color: #fff; overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; transition: opacity 0.3s; }
+        
+        .overlay {
+            display: flex; flex-direction: column; min-height: 100vh;
+            background-color: rgba(0, 0, 0, 0.75); position: relative; z-index: 1;
+        }
+
+        /* HEADER */
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            background-color: rgba(0, 0, 0, 0.85); padding: 15px 20px;
+            position: relative; z-index: 10; min-height: 70px;
+        }
+        .logo-container { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+        .logo-container img { height: 70px; display: block; }
+        .nav-right { z-index: 15; }
+        .ig-link { font-size: 1.5em; color: #fff; }
+
+        .hamburger-menu {
+            background: none; border: none; cursor: pointer;
+            display: flex; flex-direction: column; gap: 6px; width: 30px; z-index: 15;
+        }
+        .hamburger-menu .line { width: 30px; height: 3px; background-color: #fff; border-radius: 5px; }
+
+        /* MENU LATERALE */
         .menu-pop-up {
-            position: fixed;
-            top: 0;
-            left: -300px;
-            width: 280px;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.95);
-            color: #fff;
-            padding-top: 80px;
-            transition: left 0.3s ease-in-out;
-            z-index: 4;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+            position: fixed; top: 0; left: -300px; width: 280px; height: 100%;
+            background-color: rgba(0, 0, 0, 0.95); padding-top: 80px;
+            transition: left 0.3s ease-in-out; z-index: 14; display: flex; flex-direction: column;
         }
-        .menu-pop-up a {
-            padding: 15px 20px;
-            display: block;
-            font-size: 1.2em;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        .menu-pop-up.open { left: 0; }
+        .menu-pop-up a { padding: 12px 25px; font-size: 1.1em; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .menu-pop-up a.sub-menu { padding-left: 45px; font-size: 0.9em; color: #e0ac4c; border-bottom: none; display: flex; align-items: center; gap: 8px; }
+        .flag-rect { width: 20px; height: auto; display: inline-block; }
+
+        /* CONTENUTO */
+        .content { flex: 1; padding: 15px; max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; }
+
+        .page-header-wrapper { margin-bottom: 15px; }
+        h1 { color: #e0ac4c; font-size: 1.8em; text-transform: uppercase; margin: 0; }
+        .quote { font-style: italic; color: #f5c469; font-size: 1.1em; margin-top: 8px; margin-bottom: 0; }
+
+        .main-container { display: flex; flex-direction: column; gap: 20px; }
+
+        /* COLONNA DESTRA (Immagine e Info) */
+        .img-column { order: 1; display: flex; flex-direction: column; align-items: center; }
+        .main-course-img { width: 100%; max-width: 380px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.5); }
+
+        .tech-info { 
+            margin-top: 15px; padding: 12px 18px; 
+            border-left: 4px solid #e0ac4c; background: rgba(0,0,0,0.4); 
+            border-radius: 0 10px 10px 0; width: 100%; max-width: 380px; 
+            box-sizing: border-box; font-size: 0.9em; text-align: left;
         }
-        .menu-pop-up a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        .menu-pop-up.open {
-            left: 0;
-        }
-        .close-menu {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            color: #fff;
-            font-size: 2em;
-            cursor: pointer;
-        }
-        /* ---------------------- */
-        /* Stili Contenuto Evento */
-        /* ---------------------- */
-        .event-content {
-            padding: 40px 20px;
-            max-width: 700px;
-            margin: 40px auto;
-            flex-grow: 1;
-            background-color: rgba(0, 0, 0, 0.75); /* Sfondo scuro per il contenuto */
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            line-height: 1.6;
-        }
-        .event-content h1 {
-            font-size: 2.8em;
-            text-align: center;
-            color: #e0ac4c; /* Colore oro/ambra */
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-        .event-content h2.subtitle {
-            font-size: 1.4em;
-            text-align: center;
-            color: #fff;
-            margin-bottom: 30px;
-            font-weight: normal;
-        }
-        .event-details {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 1.1em;
-            color: #f0f0f0;
-        }
-        .event-details p {
-            margin: 5px 0;
-        }
-        .event-image {
-            width: 100%;
-            max-height: 400px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-        }
-        .event-description {
-            font-size: 1.1em;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            /* Allineamento a sinistra (come era in origine) */
-            text-align: left; 
-        }
-        .event-description p {
-            /* Rimuove margini per evitare spazi indesiderati tra i paragrafi */
-            margin: 0 0 1em 0; 
-        }
-        .program-section h3 {
-            font-size: 1.8em;
-            color: #e0ac4c;
-            margin-bottom: 15px;
-            border-left: 4px solid #e0ac4c;
-            padding-left: 10px;
-        }
-        .program-section ul {
+        .tech-info p { margin: 5px 0; }
+        .tech-info strong { color: #e0ac4c; }
+
+        .stripe-container { width: 100%; max-width: 380px; margin-top: 15px; text-align: center; }
+
+        /* COLONNA SINISTRA (Testo) */
+        .text-column { order: 2; font-size: 1em; line-height: 1.6; font-weight: 300; color: #eee; }
+        
+        /* PROGRAMMA DELLA SERATA LISTA */
+        .program-list {
             list-style: none;
             padding: 0;
-            margin: 0 0 30px 0;
+            margin: 20px 0;
         }
-        .program-section li {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 10px 15px;
-            margin-bottom: 8px;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .program-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 12px;
+            font-size: 1.05em;
         }
-        .program-section li strong {
+        .program-list li i {
+            position: absolute;
+            left: 0;
+            top: 4px;
             color: #e0ac4c;
-            font-weight: bold;
         }
 
-        /* BOX DI PRENOTAZIONE CON LINK EVENTBRITE */
-        .reservation-box {
-            background-color: rgba(255, 255, 255, 0.1); 
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            margin: 30px auto;
-            max-width: 400px; 
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        }
-        .reservation-box p {
-            font-size: 1.2em;
-            margin: 5px 0 15px 0;
-        }
-        .reservation-box a.email-button {
-            display: inline-block;
-            background-color: #e0ac4c; 
-            color: #000;
-            font-size: 1.1em;
-            font-weight: bold;
-            padding: 12px 25px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            word-break: break-all; 
-        }
-        .reservation-box a.email-button:hover {
-            background-color: #d19e44;
-        }
-        /* Vecchi stili per coerenza di navigazione non pertinenti */
-        .contact-info {
-            text-align: center;
-            margin-top: 30px;
-            font-size: 1.1em;
-            color: #f0f0f0;
-        }
-        /* ---------------------- */
-        /* Footer (Come le altre pagine) */
-        /* ---------------------- */
-        .footer {
-            background-color: rgba(0, 0, 0, 0.8);
-            text-align: center;
-            padding: 10px;
-            font-size: 0.9em;
-        }
-        .footer a {
-            color: #fff;
-            text-decoration: underline;
-        }
-        /* ---------------------- */
-        /* Cookie Banner */
-        /* ---------------------- */
-        .cookie-banner {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            color: #fff;
-            padding: 15px 20px;
-            text-align: center;
-            font-size: 0.9em;
-            z-index: 1000;
-            border-top: 1px solid #e0ac4c;
-            display: none; /* Inizialmente nascosto, mostrato via JS */
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        .cookie-banner p {
-            margin: 0;
-            flex-grow: 1;
+        /* PULSANTE BIGLIETTI REGALO */
+        .gift-button-container {
+            margin-top: 20px;
             text-align: left;
         }
-        .cookie-banner a {
-            color: #e0ac4c;
-            text-decoration: underline;
-        }
-        .cookie-banner button {
+        .gift-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             background-color: #e0ac4c;
             color: #000;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
+            font-size: 0.9em;
             font-weight: bold;
-            white-space: nowrap;
+            padding: 10px 18px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: background-color 0.3s, transform 0.2s;
         }
-        .cookie-banner button:hover {
-            background-color: #d19e44;
+        .gift-btn:hover {
+            background-color: #f5c469;
+            transform: scale(1.02);
+            opacity: 1;
         }
-        /* ---------------------- */
-        /* Responsive rules (Come le altre pagine) */
-        /* ---------------------- */
-        @media screen and (max-width: 1200px) {
-            .logo-container img { height: 90px; }
+
+        /* PULSANTE SECONDARIO SOLO MOBILE */
+        .mobile-buy-bottom { display: none; margin: 30px 0; text-align: center; }
+
+        /* PC LAYOUT */
+        @media screen and (min-width: 900px) {
+            h1 { font-size: 2.5em; text-align: left; }
+            .content { padding-top: 10px; }
+            .main-container { flex-direction: row; align-items: flex-start; }
+            .text-column { flex: 1.3; order: 1; }
+            .img-column { flex: 1; order: 2; position: sticky; top: 15px; }
         }
-        @media screen and (max-width: 800px) {
-            header { padding: 30px 10px; }
-            .logo-container img { height: 65px; }
-            .event-content { padding: 20px; margin: 20px auto; }
-            .event-content h1 { font-size: 2.2em; }
-            .event-content h2.subtitle { font-size: 1.2em; }
-            .cookie-banner p { text-align: center; }
-            .cookie-banner { flex-direction: column; }
-            .social-icons-header { right: 10px; } /* Avvicina al bordo */
+
+        /* MOBILE LAYOUT */
+        @media screen and (max-width: 899px) {
+            h1, .quote { text-align: center; }
+            .mobile-buy-bottom { display: block; }
+            .gift-button-container { text-align: center; }
         }
+
+        .footer { background: rgba(0, 0, 0, 0.85); text-align: center; padding: 15px; font-size: 0.8em; margin-top: auto; }
     </style>
+    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
 </head>
 <body>
     <div class="overlay">
         <header>
-            <button class="hamburger-menu" aria-label="Menu">
-                <span class="line"></span>
-                <span class="line"></span>
-                <span class="line"></span>
+            <button class="hamburger-menu" id="hamburgerBtn" onclick="toggleMenu()" aria-label="Menu">
+                <span class="line"></span><span class="line"></span><span class="line"></span>
             </button>
             <div class="logo-container">
-                <a href="index.html">
-                    <img src="logonew.png" alt="Logo ITALIAN BEER SCHOOL" />
-                </a>
+                <a href="index.html"><img src="Logo-IBS-italian-beer-school-firenze.png" alt="Logo IBS" /></a>
             </div>
-            <div class="social-icons-header">
-                <a href="https://www.instagram.com/italianbeerschool/" target="_blank" aria-label="Seguici su Instagram">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
+            <div class="nav-right">
+                <a href="https://www.instagram.com/italianbeerschool/" target="_blank" class="ig-link"><i class="fa-brands fa-instagram"></i></a>
             </div>
         </header>
 
         <nav class="menu-pop-up" id="mobileMenu">
             <a href="index.html">HOME</a>
             <a href="tutti-i-corsidibirra.html">CORSI DI BIRRA</a>
-            <a href="corso-wset-level-1-firenze.html" class="sub-menu">• WSET LEVEL 1 <img src="https://flagcdn.com/gb.svg" class="flag-rect"></a>
-            <a href="corso-wset-level-2-firenze.html" class="sub-menu">• WSET LEVEL 2 <img src="https://flagcdn.com/gb.svg" class="flag-rect"></a>
-            <a href="corso-birra-base-firenze.html" class="sub-menu">• CORSO BASE <img src="https://flagcdn.com/it.svg" class="flag-rect"></a>
-            <a href="corso-secondo-livello-birra-firenze.html" class="sub-menu">• CORSO AVANZATO <img src="https://flagcdn.com/it.svg" class="flag-rect"></a>
+            <a href="corso-wset-level-1-firenze.html" class="sub-menu">• WSET LEVEL 1 <img src="https://flagcdn.com/gb.svg" class="flag-rect" alt="English"></a>
+            <a href="corso-wset-level-2-firenze.html" class="sub-menu">• WSET LEVEL 2 <img src="https://flagcdn.com/gb.svg" class="flag-rect" alt="English"></a>
+            <a href="corso-birra-base-firenze.html" class="sub-menu">• CORSO BASE <img src="https://flagcdn.com/it.svg" class="flag-rect" alt="Italiano"></a>
+            <a href="corso-secondo-livello-birra-firenze.html" class="sub-menu">• CORSO AVANZATO <img src="https://flagcdn.com/it.svg" class="flag-rect" alt="Italiano"></a>
             <a href="curiosita-birra.html">LO SAPEVI CHE?</a>
             <a href="quiz-di-birra.html">QUIZ</a>
             <a href="degustazioni-passate.html">DEGUSTAZIONI PASSATE</a>
@@ -362,99 +185,80 @@
             <a href="contatti.html">CONTATTI</a>
         </nav>
 
-        <main class="event-content">
-            <h1>BIRRE TRAPPISTE</h1>
-            <h2 class="subtitle">Alla Scoperta delle Birre Trappiste</h2>
-            
-            <div class="tech-info">
-            <p><strong>Quando:</strong> Venerdì 22 Gennaio 2027</p>
-            <p><strong>Orario:</strong> 20:30 – 23:00</p>
-            <p><strong>Dove:</strong> 📍 Presso Enoteca Calice H, Via Bellini 59, Firenze</p>
-            <p><strong>Costo:</strong> €35,00</p>
+        <main class="content">
+            <div class="page-header-wrapper">
+                <h1>BIRRE TRAPPISTE</h1>
+                <p class="quote">"Alla scoperta delle birre trappiste tra storia, monaci e calici iconici"</p>
             </div>
 
-            <img src="trappiste.jpg" alt="Birre Trappiste" class="event-image">
+            <div class="main-container">
+                <div class="img-column">
+                    <img src="trappiste.jpg" class="main-course-img" alt="Degustazione Birre Trappiste Firenze">
+                    
+                    <div class="tech-info">
+                        <p><strong>Quando:</strong> Venerdì 22 Gennaio 2027</p>
+                        <p><strong>Orario:</strong> 20:30 – 23:00</p>
+                        <p><strong>Dove:</strong> 📍 Presso Enoteca Calice H, Via Bellini 59, Firenze</p>
+                        <p><strong>Costo:</strong> €35,00</p>
+                    </div>
 
-            <div class="event-description">
-                <p>
-                    Un viaggio nel cuore della tradizione birraria. Le Birre Trappiste narrano storie di origini antiche, mantenendo una qualità costante ed eccelsa.
-                </p>
-                
-                <p>
-                    Purtroppo, stanno diventando sempre più introvabili. I monaci invecchiano, alcuni monasteri chiudono il birrificio interno e ne vengono prodotte sempre meno.
-                </p>
-                
-                <p>
-                    È il momento di scoprire questi capolavori liquidi. Parleremo di leggende, caratteristiche produttive, stili e tipicità di queste birre iconiche.
-                </p>
-            </div>
-
-            <div class="program-section">
-                <h3>Programma della serata</h3>
-                <ul>
-                    <li>🍺 Degustazione guidata di cinque birre trappiste di vari Paesi.</li>
-                    <li>🥨🧀 Piccoli assaggi in abbinamento.</li>
-                    <li>⭐ Quiz con sorteggio finale: in palio birre speciali! 🎁</li>
-                </ul>
-            </div>
-
-             <div class="stripe-container">
+                    <div class="stripe-container">
                         <stripe-buy-button
                             buy-button-id="buy_btn_1UPtvNDr58zog1ugP2J6wcg9"
                             publishable-key="pk_live_51T9ryfDr58zog1uge0JD8PovKc0fGetzsGpFkt7TEKkrHavI0580YPj85wHf9sT1v4q0Ecx973slY7KRIlkxePon00mLxwI2tL"
                         ></stripe-buy-button>
                     </div>
-                </div> <!-- Chiusura corretta di .img-column -->
+                </div>
 
-            <div class="contact-info">
-                <p>Quota di partecipazione: €35,00 (Posti limitati)</p>
+                <div class="text-column">
+                    <p>Un viaggio nel cuore della tradizione birraria. Le Birre Trappiste narrano storie di origini antiche, mantenendo una qualità costante ed eccelsa.</p>
+                    
+                    <p>Purtroppo, stanno diventando sempre più introvabili. I monaci invecchiano, alcuni monasteri chiudono il birrificio interno e ne vengono prodotte sempre meno.</p>
+                    
+                    <p>È il momento di scoprire questi capolavori liquidi. Parleremo di leggende, caratteristiche produttive, stili e tipicità di queste birre iconiche.</p>
+                    
+                    <h2 style="color:#e0ac4c; margin-top:20px;">✨ PROGRAMMA DELLA SERATA</h2>
+                    <ul class="program-list">
+                        <li><i class="fa-solid fa-beer-mug-empty"></i> Degustazione guidata di <strong>cinque</strong> birre trappiste di vari Paesi</li>
+                        <li><i class="fa-solid fa-utensils"></i> Piccoli assaggi in abbinamento</li>
+                        <li><i class="fa-solid fa-trophy"></i> Quiz con sorteggio finale: in palio birre speciali! 🎁</li>
+                    </ul>
+
+                    <p><strong>Quota di partecipazione:</strong> €35,00 (Posti limitati)</p>
+                    <p><strong>Per info:</strong> info@italianbeerschool.it</p>
+
+                    <div class="gift-button-container">
+                        <a href="voucher-degustazione-birre-trappiste-2027.pdf" download class="gift-btn">
+                            <i class="fa-solid fa-gift"></i> Scarica il Biglietto Regalo!
+                        </a>
+                    </div>
+
+                    <div class="mobile-buy-bottom">
+                        <stripe-buy-button
+                            buy-button-id="buy_btn_1UPtvNDr58zog1ugP2J6wcg9"
+                            publishable-key="pk_live_51T9ryfDr58zog1uge0JD8PovKc0fGetzsGpFkt7TEKkrHavI0580YPj85wHf9sT1v4q0Ecx973slY7KRIlkxePon00mLxwI2tL"
+                        ></stripe-buy-button>
+                    </div>
+                </div>
             </div>
-
         </main>
 
-        <div class="footer">
-            2026 ITALIAN BEER SCHOOL – Tutti i diritti riservati P.IVA: IT07436420488 | <a href="privacy.html">Privacy</a>
-        </div>
-    </div>
-
-    <div class="cookie-banner" id="cookie-banner">
-        <p>
-            Utilizziamo cookie tecnici per il corretto funzionamento del sito e, previo tuo consenso, cookie di profilazione e analitici per fini statistici. Clicca "Accetto" per proseguire o consulta l'<a href="privacy.html">informativa privacy</a> per maggiori dettagli.
-        </p>
-        <button onclick="acceptCookies()">Accetto</button>
+        <footer class="footer">
+            © 2026 IBS ITALIAN BEER SCHOOL – P.IVA: IT07436420488 | <a href="privacy.html" style="color:#e0ac4c">Privacy</a>
+        </footer>
     </div>
 
     <script>
-        const hamburgerBtn = document.querySelector('.hamburger-menu');
-        const menuPopUp = document.querySelector('.menu-pop-up');
-        const closeMenuBtn = document.querySelector('.close-menu');
-        const cookieBanner = document.getElementById('cookie-banner');
-
         function toggleMenu() {
-            menuPopUp.classList.toggle('open');
-            hamburgerBtn.classList.toggle('open');
+            document.getElementById('mobileMenu').classList.toggle('open');
         }
 
-        hamburgerBtn.addEventListener('click', toggleMenu);
-        closeMenuBtn.addEventListener('click', toggleMenu);
-
-        // Funzione per mostrare/nascondere il banner dei cookie
-        function checkCookieConsent() {
-            if (!localStorage.getItem('cookie_consent')) {
-                cookieBanner.style.display = 'flex';
-            } else {
-                cookieBanner.style.display = 'none';
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('mobileMenu');
+            const hb = document.getElementById('hamburgerBtn');
+            if (!menu.contains(event.target) && !hb.contains(event.target)) {
+                menu.classList.remove('open');
             }
-        }
-
-        // Funzione per accettare i cookie
-        function acceptCookies() {
-            localStorage.setItem('cookie_consent', 'accepted');
-            cookieBanner.style.display = 'none';
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            checkCookieConsent();
         });
     </script>
 </body>
