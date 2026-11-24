@@ -67,7 +67,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative; /* Permette il posizionamento assoluto del badge */
+            position: relative;
         }
         
         .logo-container img { 
@@ -83,8 +83,8 @@
             cursor: pointer;
             transition: transform 0.2s ease;
             position: absolute;
-            right: 100%; /* Si allinea esattamente dove finisce il logo a sinistra */
-            margin-right: 15px; /* Spazio di sicurezza dal logo */
+            right: 100%;
+            margin-right: 15px;
         }
         .wset-news-badge:hover {
             transform: scale(1.05);
@@ -96,7 +96,7 @@
             display: block;
         }
         .wset-news-text {
-            color: #2b59c3; /* Azzurro WSET ufficiale */
+            color: #2b59c3;
             font-weight: bold;
             font-size: 0.8em;
             letter-spacing: 0.5px;
@@ -134,47 +134,96 @@
         }
         .flag-rect { width: 20px; height: auto; display: inline-block; }
 
-        .content { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px 20px; }
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 15px 35px;
+            gap: 20px;
+            box-sizing: border-box;
+        }
         
         .seo-title {
             position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; 
             overflow: hidden; clip: rect(0,0,0,0); border: 0;
         }
 
-       .intro-text-top {
-            max-width: 850px; text-align: center; margin: 0 auto 0 auto; 
-            line-height: 1.2; font-size: 1.1em; background: rgba(0,0,0,0.4); 
-            padding: 2px 15px; border-radius: 10px; border: 1px solid rgba(224, 172, 76, 0.2);
+        .intro-text-top {
+            max-width: 850px;
+            text-align: center;
+            margin: 0 auto;
+            line-height: 1.3;
+            font-size: 1.1em;
+            background: rgba(0, 0, 0, 0.55);
+            padding: 6px 18px;
+            border-radius: 10px;
+            border: 1px solid rgba(224, 172, 76, 0.25);
         }
+        .intro-text-top p { margin: 0; }
 
         .highlight-yellow { color: #e0ac4c; font-weight: bold; }
 
+        /* Griglia compatta 1-2 / 3-4 su PC, colonna singola su mobile */
         .event-grid {
-            display: flex; flex-wrap: wrap; gap: 40px;
-            justify-content: center; align-items: flex-start;
-            max-width: 1200px; margin: auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+            width: 100%;
+            max-width: 860px;
+            margin: 0 auto;
         }
 
-        .event-box { flex: 1; min-width: 300px; max-width: 350px; text-align: center; }
-        .event-box img {
-            width: 100%; aspect-ratio: 1/1; object-fit: cover;
-            border-radius: 50%; box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        .event-box {
+            background: rgba(0, 0, 0, 0.68);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 14px;
+            padding: 16px 18px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+        }
+        .event-box:hover {
+            transform: translateY(-3px);
+            border-color: rgba(224, 172, 76, 0.65);
+            background: rgba(0, 0, 0, 0.78);
+        }
+        .event-card-link {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-align: left;
+        }
+
+        .event-box img.card-thumb {
+            width: 82px;
+            height: 82px;
+            flex-shrink: 0;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
             transition: transform 0.3s ease;
         }
+        .event-box:hover img.card-thumb {
+            transform: scale(1.05);
+        }
+
         .wset-circle-wrapper {
-            width: 100%;
-            aspect-ratio: 1/1;
+            width: 82px;
+            height: 82px;
+            flex-shrink: 0;
             border-radius: 50%;
-            background-color: rgba(0, 0, 0, 0.72);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            background-color: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 32px;
+            padding: 9px;
             box-sizing: border-box;
             transition: transform 0.3s ease;
         }
-        .event-box a:hover .wset-circle-wrapper {
+        .event-box:hover .wset-circle-wrapper {
             transform: scale(1.05);
         }
         .event-box img.wset-card-logo {
@@ -185,58 +234,58 @@
             border-radius: 0;
             box-shadow: none;
         }
+
+        .event-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            min-width: 0;
+        }
+
+        h2.event-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #fff;
+            margin: 0;
+            line-height: 1.25;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
         .event-box img.event-flag {
-            width: 28px;
+            width: 22px;
             height: auto;
             aspect-ratio: auto;
             border-radius: 2px;
             box-shadow: none;
             display: inline-block;
         }
-        .event-box a:hover img:not(.event-flag):not(.wset-card-logo) { transform: scale(1.05); }
-
-        h2.event-title {
-            font-size: 1.8em; font-weight: bold; color: #fff;
-            margin-top: 25px; line-height: 1.2;
-            display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap;
+        .event-date {
+            font-size: 1em;
+            font-weight: bold;
+            color: #e0ac4c;
         }
-        .event-date { font-size: 1.4em; color: #e0ac4c; margin-top: 10px; }
-        .event-location { font-size: 1.05em; color: #ddd; margin-top: 6px; }
+        .event-location {
+            font-size: 0.9em;
+            color: #ddd;
+            line-height: 1.3;
+        }
 
         .footer { background-color: rgba(0, 0, 0, 0.8); text-align: center; padding: 25px; font-size: 0.9em; margin-top: auto; }
 
-        /* Ottimizzazione Mobile: prima CORSI DI BIRRA, poi WSET LEVEL 1 */
-        @media screen and (max-width: 800px) {
-            .content {
-                justify-content: flex-start;
-                gap: 24px;
-                padding: 20px 15px;
-            }
+        /* Griglia 2x2 ordinata 1-2 / 3-4 su PC */
+        @media screen and (min-width: 768px) {
             .event-grid {
-                flex-direction: column;
-                align-items: center;
-                gap: 32px;
-                margin: 0 auto;
-                width: 100%;
-            }
-            .event-box {
-                min-width: 0;
-                width: 100%;
-                max-width: 280px;
-            }
-            .wset-circle-wrapper {
-                padding: 26px;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 22px;
             }
             h2.event-title {
-                font-size: 1.5em;
-                margin-top: 18px;
-            }
-            .event-date {
-                font-size: 1.2em;
+                font-size: 1.28em;
             }
         }
 
-        /* Media Query Desktop */
+        /* Media Query Desktop Header */
         @media screen and (min-width: 801px) {
             header { padding: 20px 40px; }
             .logo-container img { height: 90px; }
@@ -248,8 +297,12 @@
         
         /* Gestione schermi molto piccoli per evitare sovrapposizioni tra hamburger e WSET text */
         @media screen and (max-width: 430px) {
-            .wset-news-text { display: none; } /* Mostra solo l'icona tonda WSET sui telefoni piccoli per salvare spazio */
+            .wset-news-text { display: none; }
             .wset-news-badge { margin-right: 10px; }
+            .event-box { padding: 14px; }
+            .event-box img.card-thumb,
+            .wset-circle-wrapper { width: 70px; height: 70px; }
+            h2.event-title { font-size: 1.1em; }
         }
     </style>
 </head>
@@ -302,28 +355,57 @@
             <h1 class="seo-title">Italian Beer School: Corsi di Degustazione Birra a Firenze</h1>
             
             <div class="intro-text-top">
-                <p>Benvenuti alla <span class="highlight-yellow">Italian Beer School!</span></p>
+                <p>Benvenuti alla <span class="highlight-yellow">Italian Beer School!</span> Ecco i prossimi appuntamenti e corsi in programma:</p>
             </div>
             
             <div class="event-grid">
-                <!-- SCHEDA 1: Corsi di Birra -->
+                <!-- 1. Evento Birre Trappiste -->
                 <div class="event-box">
-                    <a href="tutti-i-corsidibirra.html">
-                        <img src="corso-birra-base-firenze.webp" alt="Corsi professionali birra Firenze" />
-                        <h2 class="event-title">CORSI DI BIRRA</h2>
-                        <div class="event-date">Varie date, Firenze</div>
+                    <a href="degustazione.birre.firenze.trappiste.2027.html" class="event-card-link">
+                        <img src="trappiste.jpg" class="card-thumb" alt="Degustazione Birre Trappiste Firenze" />
+                        <div class="event-info">
+                            <h2 class="event-title">BIRRE TRAPPISTE <img src="https://flagcdn.com/it.svg" class="event-flag" alt="Italiano"></h2>
+                            <div class="event-date">Venerdì 22 Gennaio 2027 · 20:30</div>
+                            <div class="event-location">Enoteca Calice H, Via Bellini 59, Firenze</div>
+                        </div>
                     </a>
                 </div>
 
-                <!-- SCHEDA 2: WSET Level 1 -->
+                <!-- 2. WSET Level 1 -->
                 <div class="event-box">
-                    <a href="corso-wset-level-1-firenze.html">
+                    <a href="corso-wset-level-1-firenze.html" class="event-card-link">
                         <div class="wset-circle-wrapper">
                             <img src="logo-wset-course_english-beer.svg" class="wset-card-logo" alt="WSET Level 1 Award in Beer Firenze" />
                         </div>
-                        <h2 class="event-title">WSET LEVEL 1 <img src="https://flagcdn.com/gb.svg" class="event-flag" alt="English"></h2>
-                        <div class="event-date">Sat 6 February 2027</div>
-                        <div class="event-location">Enoteca Calice H, Via Bellini 59, Firenze</div>
+                        <div class="event-info">
+                            <h2 class="event-title">WSET LEVEL 1 <img src="https://flagcdn.com/gb.svg" class="event-flag" alt="English"></h2>
+                            <div class="event-date">Sat 6 February 2027</div>
+                            <div class="event-location">Enoteca Calice H, Via Bellini 59, Firenze</div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- 3. Corso Base -->
+                <div class="event-box">
+                    <a href="corso-birra-base-firenze.html" class="event-card-link">
+                        <img src="corso-birra-base-firenze.webp" class="card-thumb" alt="Corso Base di Birra Firenze" />
+                        <div class="event-info">
+                            <h2 class="event-title">CORSO BASE <img src="https://flagcdn.com/it.svg" class="event-flag" alt="Italiano"></h2>
+                            <div class="event-date">Giovedì 4, 11, 18 e 25 Marzo 2027</div>
+                            <div class="event-location">Firenze</div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- 4. Corso Avanzato -->
+                <div class="event-box">
+                    <a href="corso-secondo-livello-birra-firenze.html" class="event-card-link">
+                        <img src="corso-birra-livello2-firenze.webp" class="card-thumb" alt="Corso Avanzato di Birra Firenze" />
+                        <div class="event-info">
+                            <h2 class="event-title">CORSO AVANZATO <img src="https://flagcdn.com/it.svg" class="event-flag" alt="Italiano"></h2>
+                            <div class="event-date">Giovedì 1, 8, 15, 22 e 29 Aprile 2027</div>
+                            <div class="event-location">Firenze</div>
+                        </div>
                     </a>
                 </div>
             </div>
